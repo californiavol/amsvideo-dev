@@ -1,3 +1,9 @@
 *~
 *.ini
 Bootstrap.php
+.settings
+.zfproject.xml
+.buildpath
+.project
+index.php
+*zend_cache

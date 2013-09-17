@@ -30,21 +30,7 @@ class AdminController extends Zend_Controller_Action
 		//get individual course if courseId param set                                                                        
 		$this->view->course = $this->coursesTable->getCourseById($this->courseId);    	
     	
-    	//todays date
-        $today = $this->videosTable->getTodaysDate();
-        $this->view->todaysDate = $today;
-        
-        //video release date
-        $datearray = array('year' => 2013, 'month' => '09', 'day' => '09');
-		$releaseDate = new Zend_Date($datearray);
-		
-		$this->view->releaseDate = $releaseDate;
-		
-		if ($releaseDate <= $today) {
-			$this->view->availableDate = $releaseDate;
-		} else {
-			$this->view->availableDate = 'not yet available';
-		}
+
     }
     
     public function cleancacheAction()
