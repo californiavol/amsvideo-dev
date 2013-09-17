@@ -1,0 +1,135 @@
+@CHARSET "UTF-8";
+
+/*  local styles  */
+
+.pagenav-container {margin-top:1em;}
+
+.pageContextNavigation {
+	display:block;
+	position:relative;
+	width:950px;
+	background-image:none;
+	font-size:0.8em;
+	background-color:#262626;
+	height:3em;
+	vertical-align:bottom;
+}
+
+.pageContextNavigation ul {
+	list-style-type:none;
+	height:3em;
+	vertical-align:bottom;
+	position:absolute;
+}
+
+.pageContextNavigation li {
+	display:inline;
+	float:left;
+	width:125px;
+	padding-left:0.5em;
+	text-align:center;
+		height:3em;
+	vertical-align:bottom;
+}
+
+
+#sacstate_videoplayer {
+    display:block;
+    position:relative;
+    width:100%;
+    margin-left:auto;
+    margin-right:auto;
+    
+}
+.ss-videoplayer {
+    display:block;
+    position:relative;
+
+}
+#sacstate_videoplayer_wrapper {
+    margin-left:auto;
+    margin-right:auto;
+}
+.ss-videoplayer-container {
+    display:block;
+    position:relative;
+    width:100%;
+    margin-left:auto;
+    margin-right:auto;
+
+}
+
+.ss-videoplayer.backdrop {
+    display:block;
+    position:relative;
+    margin-left:auto;
+    margin-right:auto;
+
+    padding:1em;
+    background:url('http://www.csus.edu/cached/Colleges/2.0/assets/images/gray-noise-background.jpg') no-repeat;   
+    border:0.5em solid #262626;
+
+}
+
+.ss-videoplayer.backdrop.large {
+    background:url('/video/assets/images/backdrop-large.png') no-repeat;   
+}
+
+.ss-videoplayer h1,
+.ss-videoplayer h2,
+.ss-videoplayer h3,
+.ss-videoplayer h4,
+.ss-videoplayer h5,
+.ss-videoplayer h6 {
+    font-family: "trajan pro", georgia, sans-serif;
+    text-transform:uppercase;
+}
+
+.ss-videoplayer p {}
+
+.ss-videoplayer a {}
+
+.ss-videoplayer ul {}
+.ss-videoplayer ul li {}
+
+.ss-videoplayer-metadata-container {
+    display:block;
+    position:relative;
+    width:100%;
+    height:auto;
+    padding:0;
+    margin-top:1em;
+    margin-bottom:1em;
+    margin-left:auto;
+    margin-right:auto;  
+
+}
+
+.ss-videoplayer-metadata-container p {
+    font-size:1.3em;
+    background-color:#262626;
+    color:#fff;
+}
+
+
+
+.ss-videogallery  {display:block; position:relative; margin-top:1em; margin-bottom:3em;overflow:hidden;}
+.ss-videogallery p {color:#fff; background-color:#262626;font-size:1.2em;}
+.ss-videogallery-list {display:block; position:relative; }
+.ss-videogallery-list ul {padding-left:0;margin-left:0;overflow-y:scroll; overflow-x:hidden; height:710px;}
+.ss-videogallery-list ul li {background-color:#262626;padding:1em; border-bottom:1px inset #444;}
+
+.ss-videogallery-metadata {display:block; position:relative;clear:both;}
+.ss-videogallery-metadata img {display:inline; position:relative;   }
+.ss-videogallery-metadata em {color:#fff; font-size:1.4em;}
+.ss-videogallery-metadata p {color:#fff; font-size:1.2em;padding-left:0; padding-right:1em;}
+
+
+/********************************/
+/** course videos list **/
+.ss-coursevideos-list {display:block; position:relative; }
+.ss-coursevideos-list ul {padding-left:0;margin-left:0; overflow-y:scroll; overflow-x:hidden; height:480px;}
+.ss-coursevideos-list ul li {background-color:#262626;color:#fff; padding:1em; border-bottom:1px inset #444;}
+
+.ss-coursevideos-list ul li h4 {color:#fff; font-size:1.2em; padding-bottom:0; margin-bottom:0;}
+.ss-coursevideos-list ul li p {color:#fff; font-size:1.1em;padding-left:0; padding-right:1em; padding-bottom:0; line-height:normal; margin-bottom:0.2em;}

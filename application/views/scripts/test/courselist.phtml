@@ -1,0 +1,8 @@
+<?php
+if ($this->courses) {
+  echo '<h3>Courses</h3>';     
+  echo '<ul>';
+  echo $this->partialLoop('test/_courseListBrief.phtml', $this->courses);
+  echo '</ul>';
+  
+ }

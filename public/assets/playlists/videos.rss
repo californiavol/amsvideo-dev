@@ -1,0 +1,12 @@
+<rss version="2.0" xmlns:jwplayer="http://rss.jwpcdn.com/">
+    <channel>
+        <item>
+            <title>RTMP On Demand</title>
+            <description>AMS Server</description>
+            <jwplayer:image>http://www.csus.edu/cached/Colleges/2.0/assets/media/billboard/billboard-default.png</jwplayer:image>
+            <jwplayer:source file="http://video2.csus.edu/vod/prj/disted/ams_web_archive/2013/TESTs1/TESTs1_2013_08_09P.f4m"/>      
+            <jwplayer:source file="http://video2.csus.edu/hds-vod/prj/disted/ams_web_archive/2013/TESTs1/TESTs1_2013_08_09M.f4m"/>
+            <jwplayer:source file="http://video2.csus.edu/hls-vod/prj/disted/ams_web_archive/2013/TESTs1/TESTs1_2013_08_09M.m3u8"/>
+        </item>     
+    </channel>
+</rss>

@@ -1,0 +1,494 @@
+a:2:{s:4:"data";s:13539:"<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+
+<meta content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible"/>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+
+<title>Sacramento State Course Videos</title>
+
+
+<!-- css -->
+<link href="http://www.csus.edu/cached/Colleges/1.0/css/blueprint/src/reset.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="http://www.csus.edu/cached/Colleges/1.0/css/blueprint/screen.css" media="screen" rel="stylesheet" type="text/css"/>
+<link href="http://www.csus.edu/cached/Colleges/2.0/assets/css/monet-20-styles.css" media="all" rel="stylesheet" type="text/css"/>
+
+
+<!-- Colleges Template IE7 Styles -->
+
+<!--[if IE 7]><link rel="stylesheet" href="/Colleges/1.0/css/ie7.css" type="text/css" media="all" /><![endif]-->
+
+
+<!-- page level css -->
+<link href="/video/assets/css/video-styles.css" media="all" rel="stylesheet" type="text/css"/>
+
+<!-- end css -->
+
+
+
+<!-- javascript -->
+<!-- google api: google loader for swfobject, jquery -->
+<!-- google api --><script src="http://www.google.com/jsapi" type="text/javascript"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+      google.load("swfobject", "2.2");
+      google.load("jquery", "1");
+      google.load("jqueryui", "1");
+    //]]>
+</script>
+<!-- end google api -->
+
+
+<!-- Enable IE to recognize html5 elements -->
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<!-- end fixes -->
+
+<!-- end javascript -->
+
+</head>
+
+<body>
+
+<!--  #skip  Skip link as defined by webaim http://webaim.org/techniques/css/invisiblecontent/ --><div id="skip"><a href="#mainContent">Skip to Main Content</a></div><!-- end #skip -->
+
+
+
+<!-- #body container -->
+
+<div class="container" id="container"> 
+
+  
+
+  <!-- #banner region -->
+
+  <div class="span-24 last">
+
+    <!-- #banner_container "/Library/monet-2.0-banner.lbi" --><!-- #banner_container --><div class="banner-container" id="banner_container"><!-- #banner -->
+
+<div class="banner span-24 last" id="banner" role="banner">
+
+<div class="logo-container span-10" id="logo_container">
+
+<div class="logo" id="logo"><a href="http://www.csus.edu/" title="Sacramento State Homepage"><img alt="Sacramento State logo" src="http://www.csus.edu/homep/monet/Images/header/logo-banner.png"/></a></div>
+
+</div>
+
+<!-- end #logo_container--> <!-- #banner_nav_container -->
+
+<div class="banner-nav-container span-14 last" id="banner_nav_container"><!-- #secondary_nav_container-->
+
+<div class="secondary-nav-container span-9" id="secondary_nav_container">
+
+<div class="secondary-nav" id="secondary_nav">
+
+<ul id="secondary_nav_ul" role="navigation" tabindex="-1" title="Secondary Navigation">
+
+<li><a href="https://my.csus.edu/" title="My Sac State">My Sac State</a></li>
+
+<li><a href="http://www.csus.edu/Contact/index.html" title="Contact">Contact</a></li>
+
+<li><button aria-pressed="false" class="secondary-nav-button" id="secondary_nav_button" role="button" title="Directories" type="button">Directories</button></li>
+
+</ul>
+
+</div>
+
+</div>
+
+<!-- end #secondary_nav_container--> <!-- #global_search_container-->
+
+<div class="global-search-container span-5 last" id="global_search_container" role="search" title="Google Search of Sac State website">
+
+<div class="global-search" id="global_search"><form action="http://google.calstate.edu/search" class="clearfix" method="get"><input class="search" name="q" title="Search Sac State" type="text"/> <input name="submit" type="submit" value="Go"/> <input name="access" type="hidden" value="p"/> <input name="site" type="hidden" value="csus"/> <input name="output" type="hidden" value="xml_no_dtd"/> <input name="client" type="hidden" value="csus-edu"/> <input name="sort" type="hidden" value="date:D:L:d1"/> <input name="proxystylesheet" type="hidden" value="csus-edu"/> <input name="oe" type="hidden" value="UTF-8"/></form></div>
+
+</div>
+
+<!-- end #global_search_container --> <!-- #secondary_sub_links -->
+
+<div class="secondary-nav-sublinks-container span-14 last" id="secondary_nav_sublinks_container">
+
+<ul aria-labelledby="secondary_nav_button" class="secondary-nav-sublinks hidden-sublinks" id="secondary_nav_sublinks" role="navigation" tabindex="-1">
+
+<li><a href="http://www.csus.edu/Contact/directories.html" title="Find A Person or Department">Find A Person or Department</a></li>
+
+<li><a href="http://www.csus.edu/About/AtoZ.html" title="A - Z Index">A - Z Index</a></li>
+
+<li class="third-child"><a href="http://www.csus.edu/webpages/facultyweb.stm" title="Faculty Webpages">Faculty Webpages</a></li>
+
+</ul>
+
+</div>
+
+<!-- #primary_navigation_container-->
+
+<div class="primary-navigation-container span-11" id="primary_navigation_container">
+
+<div class="primary-navigation" id="primary_navigation">
+
+<ul role="navigation" tabindex="-1" title="Primary Global Navigation">
+
+<li><a href="http://www.csus.edu/about/index.html" title="About">About</a></li>
+
+<li><a href="http://www.csus.edu/academics/index.html" title="Academics">Academics</a></li>
+
+<li><a href="http://www.csus.edu/admissions" title="Admissions">Admissions</a></li>
+
+<li><a href="http://www.csus.edu/athletics/index.html" title="Athletics">Athletics</a></li>
+
+<li><a href="http://www.csus.edu/giving" title="Make A Gift">Make A Gift</a></li>
+
+</ul>
+
+</div>
+
+</div>
+
+<!-- end #navigation --> <!-- #quicklinks_container -->
+
+<div class="quicklinks-container span-3 last" id="quicklinks_container">
+
+<div class="quicklinks-nav" id="quicklinks_nav"><button aria-pressed="false" class="quicklinks-button" id="quicklinks_button" role="button" title="Quick Links Menu" type="button"><span class="arrow-down">Quick Links</span></button>
+
+<ul>
+
+<li class="hidden-quicklinks">
+
+<ul aria-labelledby="quicklinks_button" class="quicklinks-nav-menu" id="quicklinks_nav_menu" role="navigation" tabindex="-1" title="Quicklinks">
+
+<li><a href="http://www.csus.edu/about/calendars/">Calendars</a></li>
+
+<li><a href="http://www.csus.edu/campusmap/">Campus Map</a></li>
+
+<li><a href="http://aaweb.csus.edu/catalog/default.html">Catalog</a></li>
+
+<li><a href="http://www.collegeportraits.org/CA/CSUS">College Portrait</a></li>
+
+<li><a href="http://www.csus.edu/Academics/index.html">Colleges &amp; Depts</a></li>
+
+<li><a href="http://www.csus.edu/Technology/index.html">Computing &amp; Technology</a></li>
+
+<li><a href="http://www.csus.edu/about/employment/">Jobs</a></li>
+
+<li><a href="http://library.csus.edu">Library</a></li>
+
+<li><a href="http://online.csus.edu">Online Courses (SacCT)</a></li>
+
+<li><a href="https://www.saclink.csus.edu/">SacLink</a></li>
+
+</ul>
+
+</li>
+
+</ul>
+
+</div>
+
+<!-- end #quicklinks --></div>
+
+<!-- end #quicklinks_container --></div>
+
+<!-- end #banner_nav_container --></div>
+
+<!-- end #banner --></div><!-- end #banner_container --><!-- #EndLibraryItem -->
+
+  </div>
+
+  <!-- end #banner --> 
+
+  
+
+  
+
+  <!-- #main: page content goes here-->
+
+  <div class="span-24 last" id="main" role="main"> <a id="mainContent"></a> <!-- accessibility, skip to main content target --> 
+
+    
+
+    <!-- #pageContent -->
+
+    <div id="pageContent"> 
+
+      
+
+      <!-- #mainRegionContainer -->
+
+      <div id="mainRegionContainer">
+
+        
+
+        
+
+        <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Zend Framework Default Application</title>
+</head>
+<body>
+  <h1>An error occurred</h1>
+  <h2>Application error</h2>
+
+  
+</body>
+</html>
+
+     
+      </div>
+
+      <!-- end #mainRegionContainer --> 
+
+      
+
+    </div>
+
+    <!-- end #pageContent --> 
+
+    
+
+  </div>
+
+  <!-- end #main --> 
+
+  
+
+  
+
+</div>
+
+<!-- end #container --> 
+
+
+
+<!-- #bottom - make footer spread across entire page rather than be confined by 950 grid. -->
+
+<div class="clear bottom">
+
+<div class="contentinfo" id="contentinfo" role="contentinfo">
+
+  <!-- #contentinfo :contentinfo is landmark region for the footer -->
+
+    <div id="contentInfoFooter">
+
+      <div class="contentinfo-container" id="contentinfo_container">
+
+       <div class="contentinfo span-24 last" id="contentinfo" role="contentinfo">
+<div class="footer-logo span-2"><a href="http://www.csus.edu"><img alt="Sac State Home" height="61" src="http://www.csus.edu/Monet/Images/global/footer_logo.png" width="59"/></a></div>
+<div class="address span-10" id="address">
+<div itemtype="http://schema.org/EducationalOrganization"><span itemprop="name">California State University, Sacramento</span><br/>
+<div itemprop="address" itemtype="http://schema.org/PostalAddress"><span itemprop="streetAddress">6000 J Street</span><br/>
+ <span itemprop="addressLocality">Sacramento</span>, <span itemprop="addressRegion">CA</span> <span itemprop="postalCode">95819</span><br/>
+ <span itemprop="telephone">(916) 278-6011</span></div>
+</div>
+
+</div>
+
+<div class="span-12 last">
+
+<div class="span-12 last footer-icons">
+
+<ul>
+
+<li><a href="http://www.facebook.com/sacstate"><img alt="facebook icon" height="32" src="http://www.csus.edu/homep//Monet/Images/icons/facebook.png" width="32"/></a></li>
+
+<li><a href="http://twitter.com/sacstate"><img alt="twitter icon" height="31" src="http://www.csus.edu/homep//Monet/Images/icons/twitter.png" width="32"/></a></li>
+
+<li><a href="http://www.youtube.com/SacStateVideo"><img alt="youtube icon" height="31" src="http://www.csus.edu/homep//Monet/Images/icons/youtube.png" width="32"/></a></li>
+
+<li><a href="http://www.flickr.com/photos/sacstate"><img alt="Flickr icon" height="31" src="http://www.csus.edu/homep//Monet/Images/icons/flickr.jpg" width="32"/></a></li>
+
+</ul>
+
+</div>
+
+<div class="span-12 last footer-links">
+
+<ul>
+
+<li><a href="http://www.csus.edu/contact/Comments.html">Comments &amp; Questions</a></li>
+
+<li><a href="http://www.csus.edu/About/AtoZ.html">A to Z Index</a></li>
+
+<li class="last"><a href="http://www.csus.edu/About/accessibility.html">Accessibility</a></li>
+
+<li class="last"><a href="http://www.collegeportraits.org/CA/CSUS">College Portrait</a></li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+</div><!-- end #contentinfo_container -->
+
+    </div>
+
+  <!-- end #contentinfo --> 
+
+</div>
+
+</div>
+
+
+
+<!-- js at the bottom of page for faster load times -->
+
+<script src="http://www.csus.edu/cached/Colleges/1.0/js/application/cufon/cufon.js" type="text/javascript"></script>
+
+<script src="http://www.csus.edu/cached/Colleges/1.0/js/application/cufon/Trajan_Pro.font.js" type="text/javascript"></script>
+
+<script src="http://www.csus.edu/cached/Colleges/1.0/js/application/jquery.cycle.all.min.js" type="text/javascript"></script>
+
+<script src="http://www.csus.edu/cached/Colleges/1.0/js/application/jquery.easingMenu.js" type="text/javascript"></script>
+
+<script src="http://www.csus.edu/cached/Colleges/1.0/js/application/jquery.nestedAccordion.js" type="text/javascript"></script>
+
+<script src="http://www.csus.edu/cached/Colleges/2.0/assets/js/monet-20-app.js" type="text/javascript"></script>
+
+
+
+<script src="/video/assets/js/osmf.js" type="text/javascript"></script>
+
+
+
+
+
+<!-- cufon to compensate for un-safe web fonts -->
+
+<script type="text/javascript">
+
+//<![CDATA[
+
+      Cufon.now();
+
+    //]]>
+
+    </script>
+
+
+
+<!-- google anayltics -->
+
+<script src="http://www.google-analytics.com/ga.js" type="text/javascript">
+
+</script>
+
+<script type="text/javascript">
+
+//<![CDATA[
+
+  
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', 'UA-798015-1']);
+
+  _gaq.push(['_trackPageview']);
+
+
+
+  (function() {
+
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+
+  })();
+
+  
+
+
+
+$(function () {
+
+  var track = function(x,y) {
+
+    _gaq.push(['_trackEvent', 'Homepage - Monet 2.0', x, y]);
+
+  };
+
+  
+
+  var track_region = function (selector, name) { 
+
+    $(selector).live('click', function(e){
+
+      var _t = $(this);
+
+      track(name,  (_t.text() || _t.children('img:first').attr('alt')));
+
+    })
+
+  };
+
+  
+
+   track_region('#logo a', 'Logo');
+
+   track_region('#secondaryGlobalNav li a', 'Secondary Nav Link');
+
+   track_region('.subLinks li a', 'Secondary Sub Nav Link');
+
+   track_region('.globalNavigation ul li a', 'Primary Navigation Link');
+
+   track_region('#quickLinks-menu li a', 'Quicklinks Links');
+
+   track_region('.slide a', 'Marquee Story Image');
+
+   track_region('.accordion-more-link a', 'Marque Story More Link');
+
+   track_region('.panel-col ul li a', 'Audience Bucket Link');
+
+   track_region('#panel-1-header', 'Future Students');
+
+   track_region('#panel-2-header', 'Current Students');
+
+   track_region('#panel-3-header', 'Faculty Staff');
+
+   track_region('#panel-4-header', 'Parents Families');
+
+   track_region('#panel-5-header', 'Visitors Alumni');
+
+   track_region('.item a', 'Calendar Item');
+
+   track_region('#video-cycle-pane', 'Video Link');
+
+   track_region('#oncampus-cycle-pane', 'Spotlight Link');
+
+   track_region('.ss-previewer-pane-content-item a', 'Top Story Link');
+
+   track_region('.ss-previewer-menu-item a', 'Headlines Story Link');
+
+   track_region('.footer-logo a', 'Footer Logo');
+
+   track_region('.footer-links ul li a', 'Footer Link');
+
+   track_region('.footer-icons ul li a', 'Social Media');
+
+});
+
+
+
+    //]]>
+
+</script>
+
+
+
+<!-- put nothing after this region -->
+
+
+
+
+
+</body>
+
+</html>";s:7:"headers";a:0:{}}

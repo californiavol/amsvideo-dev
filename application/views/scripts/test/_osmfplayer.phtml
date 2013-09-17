@@ -1,0 +1,35 @@
+<script type="text/javascript">
+   swfobject.registerObject("sacstate_video", "10.1.0", "http://www2.csus.edu/video/assets/players/10.1/scripts/expressInstall.swf");
+</script>
+
+
+<div class="ss-videoplayer backdrop">
+   <h2><?php echo $this->course_number; ?> <?php echo $this->days; ?> <?php echo $this->start_dt; ?></h2>
+
+  <object id="sacstate_video" type="application/x-shockwave-flash" width="640" height="480">
+<!-- http://video2.csus.edu/vod/prj/disted/ams_web_archive/2013/<?php echo $this->course_number;?>/<?php echo $this->course_number;?>_<?php echo $this->filename;?>P.f4m -->
+   
+    <param name="movie" value="http://www2.csus.edu/video/assets/players/StrobeMediaPlayback.swf"></param>
+    <param name="flashvars" value="src=http://video2.csus.edu/vod/prj/disted/ams_web_archive/2013/<?php echo $this->course_number;?>/<?php echo $this->course_number;?>_<?php echo $this->filename;?>P.f4m&streamType=recorded&autoPlay=true&bufferTime=12&initialBufferTime=8"></param>
+    <param name="allowFullScreen" value="true"/>
+    <param name="allowscriptaccess" value="always"/>
+
+ <embed src="http://www2.csus.edu/video/assets/players/StrobeMediaPlayback.swf" 
+        type="application/x-shockwave-flash" 
+        allowscriptaccess="always" allowfullscreen="true" 
+        width="640" height="480" 
+        flashVars"http://video2.csus.edu/vod/prj/disted/ams_web_archive/2013/<?php echo $this->course_number;?>/<?php echo $this->course_number;?>_<?php echo $this->filename;?>P.f4m&bufferTime=12&initialBufferTime=8"> 
+    </embed> 
+
+      
+      <div>
+        <p>
+          <video controls width="640" height="360" poster="http://www.csus.edu/cached/Colleges/2.0/assets/media/billboard/billboard-default.png">
+            <source src="http://video2.csus.edu/hls-vod/prj/disted/ams_web_archive/2013/<?php echo $this->course_number;?>/<?php echo $this->course_number;?>_<?php echo $this->filename;?>M.m3u8">
+            Your browser does not support Flash Player 10.1 or the HTML5 video element. 
+   
+          </video>
+        </p>
+      </div>
+  </object>
+</div>
