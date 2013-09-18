@@ -43,7 +43,7 @@ class Application_Model_DbTable_Devices extends Zend_Db_Table_Abstract
 		}
 		//The value of $ip at this point would look something like: "192.0.34.166"
 		
-		//convert it to store as an INT
+		//convert it to store as an INT see: http://daipratt.co.uk/mysql-store-ip-address/
 		$ip = ip2long($ip);
 		//use php function longtoip to convert back to dotted number when retrieving from db
 		return $ip;
