@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/11/trunk/lib/Newsky/Google/Chart/Background
+END
+Striped.php
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/11/trunk/lib/Newsky/Google/Chart/Background/Striped.php
+END
+Solid.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/11/trunk/lib/Newsky/Google/Chart/Background/Solid.php
+END
+Gradient.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/11/trunk/lib/Newsky/Google/Chart/Background/Gradient.php
+END
+Exception.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/11/trunk/lib/Newsky/Google/Chart/Background/Exception.php
+END

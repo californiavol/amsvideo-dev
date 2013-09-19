@@ -1,0 +1,47 @@
+
+    
+<header class="headingRegion"><h1>Video Page Loads by Device Type</h1></header>    
+<div class="mainRegion whiteBg  span-24 last">
+
+<div class="span-4">
+<p>Computer Count: <?php echo $this->computerCount; ?></p>
+<ul>
+	<li>Chrome</li>
+	<li>Firefox</li>
+	<li>IE</li>
+	<li>Safari</li>
+</ul>
+<p>Phone Count: <?php echo $this->phoneCount; ?></p>
+<ul>
+	<li>iOS</li>
+	<li>Android</li>
+	<li>Windows</li>
+	<li>Blackberry</li>
+</ul>
+<p>Tablet Count: <?php echo $this->tabletCount; ?></p>
+<ul>
+	<li>iPad</li>
+	<li>Samsung</li>
+	<li>Kindle</li>
+	<li>Nexus</li>
+	<li>Other</li>
+</ul>
+</div>
+
+
+<!--Div that will hold the pie chart-->
+<div id="chart_div" class="span-20 last">
+	<?php echo $this->chart; ?>
+</div>
+
+<div id="computerCount" style="display:none;"><?php echo $this->computerCount; ?></div>
+<div id="phoneCount" style="display:none;"><?php echo $this->phoneCount; ?></div>
+<div id="tabletCount" style="display:none;"><?php echo $this->tabletCount; ?></div>
+
+
+
+
+</div>
+
+
+    

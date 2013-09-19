@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/11/trunk/lib/Newsky/Google
+END
+Exception.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/3/trunk/lib/Newsky/Google/Exception.php
+END
+Chart.php
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/11/trunk/lib/Newsky/Google/Chart.php
+END
