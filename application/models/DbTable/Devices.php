@@ -49,5 +49,23 @@ class Application_Model_DbTable_Devices extends Zend_Db_Table_Abstract
 		return $ip;
     }
 
-}
+    public function getCountByDeviceType($deviceType = NULL)
+    {
+    	$rows = $this->fetchAll($this->select()->where('deviceType = ?', $deviceType));
+    	$rowCount = count($rows);
+      	return $rowCount;
+    }
 
+	public function getBrowserByDeviceTypeCount()
+	{
+		
+	}
+	
+	public function getOsByDeviceTypeCount()
+	{
+		
+	}
+
+
+//close class
+}

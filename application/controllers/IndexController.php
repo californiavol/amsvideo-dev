@@ -25,39 +25,41 @@ class IndexController extends Zend_Controller_Action
         		}
                                 
                 //get db tables                                                                                                              
-                $this->coursesTable = new Application_Model_DbTable_Courses();       		                                                                                  
-                $this->videosTable = new Application_Model_DbTable_Videos();
-                $this->devicesTable = new Application_Model_DbTable_Devices();
+                $this->coursesTable    = new Application_Model_DbTable_Courses();       		                                                                                  
+                $this->videosTable     = new Application_Model_DbTable_Videos();
+                $this->devicesTable    = new Application_Model_DbTable_Devices();
+                $this->videostatsTable = new Application_Model_DbTable_Videostats();
                 
-                //ajax setup
-            	$ajaxContext = $this->_helper->getHelper('AjaxContext');
-            	$ajaxContext->addActionContext('videolist', 'html')
-                        ->initContext();
+              
     }
 
     public function indexAction()
     {
-        // action body
-                if ($this->courseId) {
-                	//get all courses for course list
-                	$this->view->courses = $this->coursesTable->getCourses();
+	    if ($this->courseId) {
+           	//get all courses for course list
+           	$this->view->courses = $this->coursesTable->getCourses();
                 	
-                	//get individual course if courseId param set
-                	$this->view->course = $this->coursesTable->getCourseById($this->courseId);;
+           	//get individual course if courseId param set
+           	$this->view->course = $this->coursesTable->getCourseById($this->courseId);;
         			
-                	//get videos by courseId
-                	//$this->view->coursevideos = $this->videosTable->getVideosByCourseId($this->courseId);
-        			$this->view->coursevideos = $this->videosTable->getVideosByCourseIdSectionId($this->courseId, $this->section);	
+           	//get videos by courseId
+           	//$this->view->coursevideos = $this->videosTable->getVideosByCourseId($this->courseId);
+        	$this->view->coursevideos = $this->videosTable->getVideosByCourseIdSectionId($this->courseId, $this->section);	
                 	
-        			//get most recent video by date and courseId
-                	$this->view->recentvideo = $this->videosTable->getMostRecentVideo($this->courseId);        
-                } 
+        	//get most recent video by date and courseId
+            $this->view->recentvideo = $this->videosTable->getMostRecentVideo($this->courseId);        
+        } 
                 
         
                 
-                if ($this->videoId) {
-                	$this->view->video = $this->videosTable->getVideoById($this->videoId);
-                }
+        if ($this->videoId) {
+            $this->view->video = $this->videosTable->getVideoById($this->videoId);
+            //log video page load if course_id and section exist
+            if ($this->courseId != NULL && $this->section != NULL) {
+            	$this->videostatsTable->logVideoPageLoad($this->videoId, $this->courseId, $this->section);
+            }
+                	
+        }
     }
 
     public function edsAction()
@@ -208,10 +210,16 @@ class IndexController extends Zend_Controller_Action
         //get all courses for course list
                 $this->view->courses = $this->coursesTable->getCourses();
     }
-
+    
+   
     public function detectAction()
     {
     	$this->devicesTable->addDevice();
+    	   	
+ 		$this->view->computerCount = $this->devicesTable->getCountByDeviceType('computer');
+ 		$this->view->tabletCount = $this->devicesTable->getCountByDeviceType('tablet');
+ 		$this->view->phoneCount = $this->devicesTable->getCountByDeviceType('phone');
+    	
     	//log device type in devices table
         // what type of device?
         //$deviceType = $this->_helper->mobileDetect();
