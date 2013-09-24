@@ -307,8 +307,21 @@ class IndexController extends Zend_Controller_Action
 		$gc->setParam('chco', '#f0e1b0');
 
 		$this->view->chart = $gc;
-        
+		
+		$computerIeCount = $this->devicesTable->getCountByDeviceTypeAndBrowser($deviceType = 'computer', $browser = 'IE');
+		$this->view->computerIeCount = $computerIeCount;
 
+		$computerFirefoxCount = $this->devicesTable->getCountByDeviceTypeAndBrowser($deviceType = 'computer', $browser = 'Firefox');
+		$this->view->computerFirefoxCount = $computerFirefoxCount;
+
+		$computerChromeCount = $this->devicesTable->getCountByDeviceTypeAndBrowser($deviceType = 'computer', $browser = 'Chrome');
+		$this->view->computerChromeCount = $computerChromeCount;
+
+		$computerSafariCount = $this->devicesTable->getCountByDeviceTypeAndBrowser($deviceType = 'computer', $browser = 'Safari');
+		$this->view->computerSafariCount = $computerSafariCount;
+
+		$computerUnknownCount = $this->devicesTable->getCountByDeviceTypeAndBrowser($deviceType = 'computer', $browser = 'unknown');
+		$this->view->computerUnknownCount = $computerUnknownCount;		
     }
 
 

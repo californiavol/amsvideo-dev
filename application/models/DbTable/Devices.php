@@ -5,14 +5,26 @@ class Application_Model_DbTable_Devices extends Zend_Db_Table_Abstract
 
     protected $_name = 'devices';
     
+	protected $_browsers = array('IE', 'Safari', 'Firefox', 'Chrome', 'unknown');
+	protected $_devices = array('computer', 'phone', 'tablet');
+    
+    public function init()
+    {
+    	require_once APPLICATION_PATH . '/../library/vendors/Mobile-Detect-2.7.0/Mobile_Detect.php';
+        
+	    $detect = new Mobile_Detect;
+	    $this->_detect = $detect;    	
+    }
+    
     public function addDevice()
     {
     	$deviceType = $this->getDeviceType();
-    	$ipAddress = $this->getIpAddress();
+    	$ipAddress  = $this->getIpAddress();
+    	$browser    = $this->detectComputerBrowser();
     	$data = array(
 			'deviceType' => $deviceType,
 			'os'         => 'os',
-			'browser'    => 'browser',
+			'browser'    => $browser,
 			'ip'         => $ipAddress
 		);
 	                     
@@ -22,11 +34,8 @@ class Application_Model_DbTable_Devices extends Zend_Db_Table_Abstract
 
     protected function getDeviceType()
     {
-    	require_once APPLICATION_PATH . '/../library/vendors/Mobile-Detect-2.7.0/Mobile_Detect.php';
-        
-	    $detect = new Mobile_Detect;
 	    //are we dealing with mobile, tablet, or computer?
-	    $deviceType = ($detect->isMobile() ? ($detect->isTablet() ? 'tablet' : 'phone') : 'computer');  
+	    $deviceType = ($this->_detect->isMobile() ? ($this->_detect->isTablet() ? 'tablet' : 'phone') : 'computer');  
 	    return $deviceType;
     }
     
@@ -56,16 +65,38 @@ class Application_Model_DbTable_Devices extends Zend_Db_Table_Abstract
       	return $rowCount;
     }
 
-	public function getBrowserByDeviceTypeCount()
-	{
-		
-	}
-	
-	public function getOsByDeviceTypeCount()
-	{
-		
-	}
+    public function detectComputerBrowser()
+    {
+		$msie    = strpos($_SERVER["HTTP_USER_AGENT"], 'MSIE') ? true : false;
+        $firefox = strpos($_SERVER["HTTP_USER_AGENT"], 'Firefox') ? true : false;
+        $safari  = strpos($_SERVER["HTTP_USER_AGENT"], 'Safari') ? true : false;
+        $chrome  = strpos($_SERVER["HTTP_USER_AGENT"], 'Chrome') ? true : false;
+        			
+    	if ($firefox) {
+			$browser = 'Firefox';
+		} elseif ($chrome) {
+			$browser = 'Chrome';	
+		} elseif ($safari) {
+    		$browser = 'Safari';	
+		} elseif ($msie) {
+        	$browser = 'IE';
+        } else {
+        	$browser = 'unknown';
+        }
+        
+        return $browser;
+    }
 
+	public function getCountByDeviceTypeAndBrowser($deviceType = NULL, $browser = NULL)
+	{
+		if ($deviceType == NULL) {
+			return;
+		}
+		
+    	$rows = $this->fetchAll($this->select()->where('deviceType = ?', $deviceType)->where('browser = ?', $browser ));
+    	$rowCount = count($rows);
+      	return $rowCount;		
+	}
 
 //close class
 }
