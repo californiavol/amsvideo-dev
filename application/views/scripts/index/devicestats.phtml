@@ -3,8 +3,13 @@
 <header class="headingRegion"><h1>Video Page Loads by Device Type</h1></header>    
 <div class="mainRegion whiteBg  span-24 last">
 
-<div class="span-4">
-<p>Computer Count: <?php echo $this->computerCount; ?></p>
+<!--Div that will hold the pie chart-->
+<div id="chart_div" class="span-24 last">
+	<?php echo $this->chart; ?>
+</div>
+
+<div class="span-8">
+<h3>Computer Count: <?php echo $this->computerCount; ?></h3>
 <table>
   <tr>
 	<td>IE</td><td><?php echo $this->computerIeCount; ?></td>
@@ -23,42 +28,50 @@
   </tr> 
 </table>
 
-<ul>
-	<li>Chrome: </li>
-	<li>Firefox</li>
-	<li>IE: <?php echo $this->computerIeCount; ?></li>
-	<li>Safari</li>
-</ul>
-<p>Phone Count: <?php echo $this->phoneCount; ?></p>
-<ul>
-	<li>Chrome</li>
-	<li>Firefox</li>
-	<li>IE</li>
-	<li>Safari</li>
-</ul>
-<p>Tablet Count: <?php echo $this->tabletCount; ?></p>
-<ul>
-	<li>Chrome</li>
-	<li>Firefox</li>
-	<li>IE</li>
-	<li>Safari</li>
-</ul>
 </div>
 
 
-<!--Div that will hold the pie chart-->
-<div id="chart_div" class="span-20 last">
-	<?php echo $this->chart; ?>
+<div class="span-8">
+<h3>Phone Count: <?php echo $this->phoneCount; ?></h3>
+<table>
+  <tr>
+	<td>IE</td><td><?php echo $this->phoneIeCount; ?></td>
+  </tr>
+  <tr>
+	<td>Firefox</td><td><?php echo $this->phoneFirefoxCount; ?></td>
+  </tr>
+  <tr>
+	<td>Chrome</td><td><?php echo $this->phoneChromeCount; ?></td>
+  </tr>
+  <tr>
+	<td>Safari</td><td><?php echo $this->phoneSafariCount; ?></td>
+  </tr>   
+  <tr>
+	<td>Unknown</td><td><?php echo $this->phoneUnknownCount; ?></td>
+  </tr> 
+</table>
 </div>
 
-<div id="computerCount" style="display:none;"><?php echo $this->computerCount; ?></div>
-<div id="phoneCount" style="display:none;"><?php echo $this->phoneCount; ?></div>
-<div id="tabletCount" style="display:none;"><?php echo $this->tabletCount; ?></div>
-
-
-
-
+<div class="span-8 last">
+<h3>Tablet Count: <?php echo $this->tabletCount; ?></h3>
+<table>
+  <tr>
+	<td>IE</td><td><?php echo $this->tabletIeCount; ?></td>
+  </tr>
+  <tr>
+	<td>Firefox</td><td><?php echo $this->tabletFirefoxCount; ?></td>
+  </tr>
+  <tr>
+	<td>Chrome</td><td><?php echo $this->tabletChromeCount; ?></td>
+  </tr>
+  <tr>
+	<td>Safari</td><td><?php echo $this->tabletSafariCount; ?></td>
+  </tr>   
+  <tr>
+	<td>Unknown</td><td><?php echo $this->tabletUnknownCount; ?></td>
+  </tr> 
+</table>
 </div>
 
 
-    
+</div>
