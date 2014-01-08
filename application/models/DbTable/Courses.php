@@ -5,6 +5,16 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
 
     protected $_name = 'courses';
     
+    public function parseCsv()
+    {
+    	$this->_parseCsv();
+    }
+    
+    public function insertCsv() 
+    {
+    	$this->_insertCsv2Db();
+    }
+    
     public function getCourses()
     {
         $rows = $this->fetchAll();
@@ -19,6 +29,30 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
 		
 	$row = $this->fetchRow($this->select()->where('course_id = ?', $id));
 	return $row;	
+    }
+    
+    private function _parseCsv()
+    {
+    	require_once APPLICATION_PATH . '/../library/vendors/Datasource.php';
+    	
+    	$videosCsv = APPLICATION_PATH . '/../data/csv/sac_cm_courses.csv';
+    	
+    	if (!file_exists($videosCsv)) {
+    		die();
+    	}
+    	
+    	$inputFile = $videosCsv;
+    	
+    	$csv = new File_CSV_DataSource;
+		$csv->load($inputFile);
+		$csvarray = $csv->connect();
+		return $csvarray;    	
+    }
+    
+    private function _insertCsv2Db()
+    {
+    	$data = $this->_parseCsv();
+    	var_dump($data);
     }
     
     public function addCoursesFromXls()
