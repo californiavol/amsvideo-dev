@@ -16,8 +16,7 @@
     
  <div class="span-7 last ss-coursevideos-list" id="course_video_container">
     <?php if ($this->course) {
-    echo '<h3>'.$this->course->course_number. ' Videos</h3>';  
-    echo '<p>' .$this->recentvideo->filename. '</p>';   
+     
     echo '<ul>';
     echo $this->partialLoop('index/_courseVideoLoop.phtml', $this->coursevideos);
     echo '</ul>';
@@ -28,18 +27,6 @@
 
    </div>
 </div>
-
-<div class="span-24 last">	
-  <div class="" style="background-color:#262626; color:#fff; font-size:1.2em;">
-  
-  	<h3><?php echo $this->course->course_name; ?></h3>
-	<p><?php echo $this->course->course_number; ?> Section: <?php echo $this->course->class_section; ?> Instructor: <?php echo $this->course->instructor; ?>
-	<?php echo $this->course->semester; ?> <?php echo $this->course->year; ?></p>
-	<p ><?php echo $this->course->course_description; ?></p>
-
-  </div>
-</div>  
-
 
 <div class="span-24 last">	
   <div class="pagenav-container">

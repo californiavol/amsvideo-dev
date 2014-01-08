@@ -3,7 +3,7 @@
 class IndexController extends Zend_Controller_Action
 {
 
-    public $courseId = null;
+    public $class_nbr = null;
 
     public $videoId = null;
 
@@ -13,7 +13,7 @@ class IndexController extends Zend_Controller_Action
     {
         /* Initialize action controller here */
                         if ($this->getRequest()->getParam('cid')) {
-                        	$this->courseId = $this->getRequest()->getParam('cid');
+                        	$this->class_nbr = $this->getRequest()->getParam('cid');
                         }
                                         
                         if ($this->getRequest()->getParam('vid')) {
@@ -34,19 +34,31 @@ class IndexController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        if ($this->courseId) {
+    	//is there a class_nbr
+    	if (!$this->class_nbr) {
+    		echo 'no class nbr';
+    	}
+    	
+    	// if no video specified then show most recent video along with course video list
+    	
+    	//get individual course if courseId param set
+        $this->view->course = $this->coursesTable->getCourseByClassNbr($this->class_nbr);
+    	$this->view->coursevideos = $this->videosTable->getVideosByClassNbr($this->class_nbr);
+    	
+		/*        		
+ 			if ($this->courseId) {
                    	//get all courses for course list
                    	$this->view->courses = $this->coursesTable->getCourses();
                         	
                    	//get individual course if courseId param set
-                   	$this->view->course = $this->coursesTable->getCourseById($this->courseId);;
+                   	$this->view->course = $this->coursesTable->getCourseById($this->class_nbr);;
                 			
-                   	//get videos by courseId
-                   	//$this->view->coursevideos = $this->videosTable->getVideosByCourseId($this->courseId);
-                	$this->view->coursevideos = $this->videosTable->getVideosByCourseIdSectionId($this->courseId, $this->section);	
+                   	//get videos by class_nbr
+                   	//$this->view->coursevideos = $this->videosTable->getVideosByclass_nbr($this->class_nbr);
+                	$this->view->coursevideos = $this->videosTable->getVideosByclass_nbrSectionId($this->class_nbr, $this->section);	
                         	
-                	//get most recent video by date and courseId
-                    $this->view->recentvideo = $this->videosTable->getMostRecentVideo($this->courseId);        
+                	//get most recent video by date and class_nbr
+                    $this->view->recentvideo = $this->videosTable->getMostRecentVideo($this->class_nbr);        
                 } 
                         
                 
@@ -56,6 +68,7 @@ class IndexController extends Zend_Controller_Action
                 	$this->view->video = $this->videosTable->getVideoById($this->videoId);
                     
                     //log video page load if course_id and section exist
+
                     if ($this->courseId != NULL && $this->section != NULL) {
                     	
                     	//log the device type - computer, phone, tablet
@@ -63,10 +76,23 @@ class IndexController extends Zend_Controller_Action
                     	
                     	//log video page load
                     	$this->videostatsTable->logVideoPageLoad($this->videoId, $this->courseId, $this->section);
-                    }
-                }
-    }
 
+                    if ($this->class_nbr != NULL && $this->section != NULL) {
+                    	$this->videostatsTable->logVideoPageLoad($this->videoId, $this->class_nbr, $this->section);
+
+                    }
+                    
+                }
+                */
+    }
+    
+
+
+    public function coursepageAction()
+    {
+    	$this->view->coursevideos = $this->videosTable->getVideosByClassNbr($this->class_nbr);
+    }
+    
     public function edsAction()
     {
         if ($this->courseId) {
