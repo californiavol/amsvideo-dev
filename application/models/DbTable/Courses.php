@@ -5,6 +5,13 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
 
     protected $_name = 'courses';
     
+    public function init()
+    {
+		$logger = Zend_Registry::get('log');
+		$this->logger = $logger;
+		//$this->logger->log('Informational message', Zend_Log::INFO);
+    }   
+    
     public function getCourses()
     {
         $rows = $this->fetchAll();
@@ -14,12 +21,59 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
     public function getCourseById($id)
     {
     	if ($id == NULL) {
-	  return;
-	}
+	  		return;
+		}
 		
-	$row = $this->fetchRow($this->select()->where('course_id = ?', $id));
-	return $row;	
+		$row = $this->fetchRow($this->select()->where('course_id = ?', $id));
+		return $row;	
     }
+    
+    
+    public function insertCsv()
+    {
+    	$data = $this->_parseCsv();
+    	return $data;
+    }
+    
+    private function _parseCsv()
+    {
+    	 $coursesCsv = APPLICATION_PATH . '/../data/csv/sac_cm_courses.csv';	
+    	 
+    	 if (file_exists($coursesCsv)) {
+	    	$exception = new Zend_Exception('Courses CSV did not parse');
+	    	$this->logger->err($exception);
+	     }
+	    
+	    
+		require_once APPLICATION_PATH . '/../library/vendors/DataSource.php';
+		
+		$csv = new File_CSV_DataSource;
+		
+		$csv->load($coursesCsv);
+		$csvarray = $csv->connect();
+		
+		$rowCount = $csv->countRows();
+		
+    	for ($row=1; $rowCount; $row++) 
+		{         
+	  		
+	  
+			$data = array(
+				'start_dt'    => $csvarray[0],
+				'days'        => $csvarray[1],
+				'studio'      => $csvarray[2],
+				'start_time'  => $csvarray[3],
+				'duration'    => $csvarray[4],
+				'course_name' => $csvarray[5],
+				'section'     => $csvarray[6],
+				'course_id'   => $csvarray[7],
+			);  
+
+			var_dump($data);                  
+	  		//$this->insert($data); 
+		}   
+    }
+    
     
     public function addCoursesFromXls()
     {

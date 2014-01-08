@@ -22,6 +22,7 @@ class AdminController extends Zend_Controller_Action
      */
     public function indexAction()
     {
+    	$this->view->csvexists = $this->coursesTable->insertCsv();
         
         //get most recent video by course
     	$mostRecentVideo = $this->videosTable->getMostRecentVideo($this->courseId);
