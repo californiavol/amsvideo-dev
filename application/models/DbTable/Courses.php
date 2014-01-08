@@ -54,24 +54,43 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
 		
 		$rowCount = $csv->countRows();
 		
-    	for ($row=1; $rowCount; $row++) 
+		//var_dump($csvarray);
+		
+		$vals = array();
+		foreach ($csvarray as $vals) {
+			$data = array(
+				'start_dt'    => $vals['START_DT'],
+				'days'        => $vals['DAYS'],
+				
+			);  
+			var_dump($data);
+		}
+		
+		
+    	/*
+		for ($row=1; $row<=$rowCount; $row++) 
 		{         
+	  		$vals = array();
 	  		
+	  		for ($col=1;$col<=$csv->colcount();$col++) {         
+	    		$vals[] = $csv->value($row,$col);
+	  		}
 	  
 			$data = array(
-				'start_dt'    => $csvarray[0],
-				'days'        => $csvarray[1],
-				'studio'      => $csvarray[2],
-				'start_time'  => $csvarray[3],
-				'duration'    => $csvarray[4],
-				'course_name' => $csvarray[5],
-				'section'     => $csvarray[6],
-				'course_id'   => $csvarray[7],
+				'start_dt'    => $vals[0],
+				'days'        => $vals[1],
+				'studio'      => $vals[2],
+				'start_time'  => $vals[3],
+				'duration'    => $vals[4],
+				'course_name' => $vals[5],
+				'section'     => $vals[6],
+				'course_id'   => $vals[7],
 			);  
 
 			var_dump($data);                  
 	  		//$this->insert($data); 
-		}   
+		} */
+		  
     }
     
     
