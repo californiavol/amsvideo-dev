@@ -21,6 +21,16 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
         return $rows;    	
     }
     
+    public function getCourseByClassNbr($classNbr)
+    {
+ 		if ($classNbr == NULL) {
+	  		return;
+		}
+		
+		$row = $this->fetchRow($this->select()->where('class_nbr = ?', $classNbr));
+		return $row;   	
+    }
+    
     public function getCourseById($id)
     {
     	if ($id == NULL) {
@@ -51,8 +61,33 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
     
     private function _insertCsv2Db()
     {
-    	$data = $this->_parseCsv();
-    	var_dump($data);
+    	$csvData = $this->_parseCsv();
+    	
+    	$val = array();
+    	foreach ($csvData as $val) {
+    		$data = array(
+    			'start_dt' => $val['START_DT'],
+    			'days' => $val['DAYS'],
+    			'studio' => $val['STUDIO'],
+    			'start_time' => $val['START TIME'],
+    			'duration' => $val['DURATION'],
+    			'name' => $val['NAME'],
+    			'class_section' => $val['CLASS_SECTION'],
+    			'crse_id' => $val['CRSE_ID'],
+    			'course_name' => $val['COURSE_NAME'],
+    			'course_number' => $val['COURSE_NUMBER'],
+    			'section' => $val['SECTION'],
+    			'course_description' => $val['COURSE_DESCRIPTION'],
+    			'instructor' => $val['INSTRUCTOR'],
+    			'semester' => $val['SEMESTER'],
+    			'year' => $val['YEAR'],
+    			'class_nbr' => $val['CLASS_NBR'],
+    			'combined_id' => $val['COMBINED_ID'],
+    			'combined_class_nbr' => $val['COMBINED_CLASS_NBR'],
+    		);
+    		//var_dump($data);	
+    		$this->insert($data); 
+    	}
     }
     
     public function addCoursesFromXls()
