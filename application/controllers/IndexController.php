@@ -29,10 +29,7 @@ class IndexController extends Zend_Controller_Action
                         $this->videosTable     = new Application_Model_DbTable_Videos();
                         $this->devicesTable    = new Application_Model_DbTable_Devices();
                         $this->videostatsTable = new Application_Model_DbTable_Videostats();
-                        
-        				$ajaxContext = $this->_helper->getHelper('AjaxContext');
-        				$ajaxContext->addActionContext('devicestats', 'json')
-                    				->initContext();
+
     }
 
     public function indexAction()
@@ -67,10 +64,22 @@ class IndexController extends Zend_Controller_Action
                 
                         
                 if ($this->videoId) {
-                    $this->view->video = $this->videosTable->getVideoById($this->videoId);
+                    //load the video
+                	$this->view->video = $this->videosTable->getVideoById($this->videoId);
+                    
                     //log video page load if course_id and section exist
+
+                    if ($this->courseId != NULL && $this->section != NULL) {
+                    	
+                    	//log the device type - computer, phone, tablet
+                    	$this->devicesTable->logDeviceType();
+                    	
+                    	//log video page load
+                    	$this->videostatsTable->logVideoPageLoad($this->videoId, $this->courseId, $this->section);
+
                     if ($this->class_nbr != NULL && $this->section != NULL) {
                     	$this->videostatsTable->logVideoPageLoad($this->videoId, $this->class_nbr, $this->section);
+
                     }
                     
                 }
@@ -164,7 +173,7 @@ class IndexController extends Zend_Controller_Action
     public function addvideosAction()
     {
         // action body
-                        $this->videosTable->addVideosFromXls();
+        $this->videosTable->addVideosFromXls();
     }
 
     public function tests1Action()
@@ -230,79 +239,9 @@ class IndexController extends Zend_Controller_Action
     public function courselistAction()
     {
         //get all courses for course list
-                        $this->view->courses = $this->coursesTable->getCourses();
+        $this->view->courses = $this->coursesTable->getCourses();
     }
 
-    public function detectAction()
-    {
-        $this->devicesTable->addDevice();
-            	   	
-
-            	
-            	//log device type in devices table
-                // what type of device?
-                //$deviceType = $this->_helper->mobileDetect();
-                
-            	/*
-                require_once APPLICATION_PATH . '/../library/vendors/Mobile-Detect-2.7.0/Mobile_Detect.php';
-                
-        	    $detect = new Mobile_Detect;
-        	    //are we dealing with mobile, tablet, or computer?
-        	    $deviceType = ($detect->isMobile() ? ($detect->isTablet() ? 'tablet' : 'phone') : 'computer');        
-                
-                
-            	$this->view->deviceType = $deviceType;
-        	    
-        	    switch ($deviceType) {
-        	    	case 'phone':
-        	    	//if it's a phone, what OS?
-        	    	if ($detect->isiOS()) {
-        	    		$this->view->os = 'iOS';
-        	    	} elseif ($detect->isAndroidOS()) {
-        	    		$this->view->os = 'Android OS';
-        	    	} elseif ($detect->isBlackBerryOS()) {
-        	    		$this->view->os = 'Blackberry OS';
-        	    	} elseif ($detect->isWindowsMobileOS()) {
-        	    		$this->view->os = 'Windows Mobile OS';
-        	    	} elseif ($detect->isWindowsPhoneOS()) {
-        	    		$this->view->os = 'Windows Phone OS';
-        	    	} else {
-        	    		$this->view->os = 'Unknown OS';
-        	    	}
-        	    	break;
-        	    	case 'tablet':
-        	    	//$this->view->deviceType = $deviceType;
-        	    	break;
-        	    	case 'computer':
-        	    	//$this->view->deviceType = $deviceType;
-        	    	$msie = strpos($_SERVER["HTTP_USER_AGENT"], 'MSIE') ? true : false;
-        			$firefox = strpos($_SERVER["HTTP_USER_AGENT"], 'Firefox') ? true : false;
-        			$safari = strpos($_SERVER["HTTP_USER_AGENT"], 'Safari') ? true : false;
-        			$chrome = strpos($_SERVER["HTTP_USER_AGENT"], 'Chrome') ? true : false;
-        			
-        	    	if ($firefox) {
-        				$this->view->browser = 'This is Firefox';
-        			}
-        			 
-        			// Safari or Chrome. Both use the same engine - webkit
-        			if ($chrome) {
-        				$this->view->browser = 'This is Chrome';	
-        			}
-        	
-        	    	// Safari or Chrome. Both use the same engine - webkit
-        			if ($safari) {
-        				$this->view->browser = 'This is Safari';	
-        			}
-        			// IE
-        			if ($msie) {
-        				$this->view->browser = 'This is IE';
-        			}
-        	    	break;		    	
-        	    	//default: $this->view->deviceType = 'computer';
-        	    	//break;
-        	    }
-        	    */
-    }
 
     public function devicestatsAction()
     {
@@ -320,7 +259,7 @@ class IndexController extends Zend_Controller_Action
 		$gc->setWidth( 600 )
 		   ->setHeight( 300 )
 		   ->setTitle( 'Video Page Loads by Device Type' )
-		   ->setLabels('Computer','Phone','Tablet');
+		   ->setLabels('Computer','Phone','Tablet')
 		   ;
 		   
 		   
@@ -329,6 +268,7 @@ class IndexController extends Zend_Controller_Action
 
 		$this->view->chart = $gc;
 		
+		//browser stats - browsers by computer
 		$computerIeCount = $this->devicesTable->getCountByDeviceTypeAndBrowser($deviceType = 'computer', $browser = 'IE');
 		$this->view->computerIeCount = $computerIeCount;
 
@@ -342,7 +282,42 @@ class IndexController extends Zend_Controller_Action
 		$this->view->computerSafariCount = $computerSafariCount;
 
 		$computerUnknownCount = $this->devicesTable->getCountByDeviceTypeAndBrowser($deviceType = 'computer', $browser = 'unknown');
-		$this->view->computerUnknownCount = $computerUnknownCount;		
+		$this->view->computerUnknownCount = $computerUnknownCount;	
+
+		
+		
+		//browser stats - browsers by phone
+		$phoneIeCount = $this->devicesTable->getCountByDeviceTypeAndBrowser($deviceType = 'phone', $browser = 'IE');
+		$this->view->phoneIeCount = $phoneIeCount;
+
+		$phoneFirefoxCount = $this->devicesTable->getCountByDeviceTypeAndBrowser($deviceType = 'phone', $browser = 'Firefox');
+		$this->view->phoneFirefoxCount = $phoneFirefoxCount;
+
+		$phoneChromeCount = $this->devicesTable->getCountByDeviceTypeAndBrowser($deviceType = 'phone', $browser = 'Chrome');
+		$this->view->phoneChromeCount = $phoneChromeCount;
+
+		$phoneSafariCount = $this->devicesTable->getCountByDeviceTypeAndBrowser($deviceType = 'phone', $browser = 'Safari');
+		$this->view->phoneSafariCount = $phoneSafariCount;
+
+		$phoneUnknownCount = $this->devicesTable->getCountByDeviceTypeAndBrowser($deviceType = 'phone', $browser = 'unknown');
+		$this->view->phoneUnknownCount = $phoneUnknownCount;	
+		
+
+		//browser stats - browsers by tablet
+		$tabletIeCount = $this->devicesTable->getCountByDeviceTypeAndBrowser($deviceType = 'tablet', $browser = 'IE');
+		$this->view->tabletIeCount = $tabletIeCount;
+
+		$tabletFirefoxCount = $this->devicesTable->getCountByDeviceTypeAndBrowser($deviceType = 'tablet', $browser = 'Firefox');
+		$this->view->tabletFirefoxCount = $tabletFirefoxCount;
+
+		$tabletChromeCount = $this->devicesTable->getCountByDeviceTypeAndBrowser($deviceType = 'tablet', $browser = 'Chrome');
+		$this->view->tabletChromeCount = $tabletChromeCount;
+
+		$tabletSafariCount = $this->devicesTable->getCountByDeviceTypeAndBrowser($deviceType = 'tablet', $browser = 'Safari');
+		$this->view->tabletSafariCount = $tabletSafariCount;
+
+		$tabletUnknownCount = $this->devicesTable->getCountByDeviceTypeAndBrowser($deviceType = 'tablet', $browser = 'unknown');
+		$this->view->tabletUnknownCount = $tabletUnknownCount;		
     }
 
 

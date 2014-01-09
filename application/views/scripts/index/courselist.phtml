@@ -1,10 +1,20 @@
+<br/><br/>
+<div class="mainRegion whiteBg span-24 last">
+<h1>Streaming Course Videos</h1>
+
+<div>
 <?php
-if ($this->courses) {
-  echo '<h3>Courses</h3>';     
-  echo '<ul>';
-  echo '<li><p><a href="/index/mgmt">MGMT</a></p></li>';
-  echo '<li><p><a href="/index/eds">EDS</a></p></li>';
-  echo $this->partialLoop('index/_courseListBrief.phtml', $this->courses);
-  echo '</ul>';
+	if ($this->courses) {
+  		echo '<h3>Courses</h3>';     
+  		echo '<ul>';
+  		echo '<li><p><a href="/index/mgmt">MGMT</a></p></li>';
+  		echo '<li><p><a href="/index/eds">EDS</a></p></li>';
+  		echo $this->partialLoop('index/_courseListBrief.phtml', $this->courses);
+  		echo '</ul>';
   
- }
+	} ?>
+</div>
+
+
+
+</div>
