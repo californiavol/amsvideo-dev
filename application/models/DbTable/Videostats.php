@@ -27,7 +27,28 @@ class Application_Model_DbTable_Videostats extends Zend_Db_Table_Abstract
 			'section_id' => $sid
 		);
 		
-		$this->insert($data);	
+		//check to see if an intial log has taken place
+		$exists = $this->fetchRow($this->select()->where('video_id = ?', $vid)->where('course_id = ?', $cid)->where('section_id = ?', $sid));
+		if (!$exists) {
+			$this->insert($data);
+		} else {
+			//update the page load count
+			$count = $exists->count;
+			$newcount = $count + 1;
+			
+			$data = array(
+				'video_id'   => $vid,
+				'course_id'  => $cid,
+				'section_id' => $sid,
+				'count'      => $newcount
+			);
+			
+			$where = $this->getAdapter()->quoteInto('video_id = ?', $vid);
+			
+			$this->update($data, $where);
+		}
+		
+			
 	}
 
 

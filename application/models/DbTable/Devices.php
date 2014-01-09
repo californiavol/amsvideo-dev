@@ -16,14 +16,13 @@ class Application_Model_DbTable_Devices extends Zend_Db_Table_Abstract
 	    $this->_detect = $detect;    	
     }
     
-    public function addDevice()
+    public function logDeviceType()
     {
     	$deviceType = $this->getDeviceType();
     	$ipAddress  = $this->getIpAddress();
     	$browser    = $this->detectComputerBrowser();
     	$data = array(
 			'deviceType' => $deviceType,
-			'os'         => 'os',
 			'browser'    => $browser,
 			'ip'         => $ipAddress
 		);

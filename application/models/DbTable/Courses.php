@@ -5,6 +5,14 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
 
     protected $_name = 'courses';
     
+
+    public function init()
+    {
+		$logger = Zend_Registry::get('log');
+		$this->logger = $logger;
+		//$this->logger->log('Informational message', Zend_Log::INFO);
+    }   
+
     public function parseCsv()
     {
     	$this->_parseCsv();
@@ -14,6 +22,7 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
     {
     	$this->_insertCsv2Db();
     }
+
     
     public function getCourses()
     {
@@ -34,24 +43,30 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
     public function getCourseById($id)
     {
     	if ($id == NULL) {
-	  return;
-	}
+	  		return;
+		}
 		
-	$row = $this->fetchRow($this->select()->where('course_id = ?', $id));
-	return $row;	
+		$row = $this->fetchRow($this->select()->where('course_id = ?', $id));
+		return $row;	
     }
     
+    
+
+    
+
+    
+
     private function _parseCsv()
     {
     	require_once APPLICATION_PATH . '/../library/vendors/Datasource.php';
     	
-    	$videosCsv = APPLICATION_PATH . '/../data/csv/sac_cm_courses.csv';
+    	$coursesCsv = APPLICATION_PATH . '/../data/csv/sac_cm_courses.csv';
     	
-    	if (!file_exists($videosCsv)) {
+    	if (!file_exists($coursesCsv)) {
     		die();
     	}
     	
-    	$inputFile = $videosCsv;
+    	$inputFile = $coursesCsv;
     	
     	$csv = new File_CSV_DataSource;
 		$csv->load($inputFile);
@@ -89,6 +104,7 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
     		$this->insert($data); 
     	}
     }
+
     
     public function addCoursesFromXls()
     {

@@ -22,12 +22,14 @@ class AdminController extends Zend_Controller_Action
      */
     public function indexAction()
     {
+
             
     }
     
     public function courselistAction()
     {
     	$this->view->courses = $this->coursesTable->getCourses();
+
     }
     
     public function insertcoursesAction()

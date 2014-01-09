@@ -7,7 +7,9 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
     
     public function init()
     {
-
+		$logger = Zend_Registry::get('log');
+		$this->logger = $logger;
+		//$this->logger->log('Informational message', Zend_Log::INFO);
     }    
     
  	private function _parseCsv()
@@ -55,6 +57,12 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
     
 
 
+    public function parseCsv2Xls()
+    {
+    	return $this->_parseCsv2Xls();
+    }  
+    
+    
     public function getVideos()
     {
     	
@@ -102,14 +110,15 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 		
        	  $today = new Zend_Date();
 	  $row = $this->fetchRow($this->select()
-				 ->where('course_id = ?', $id)
+				 ->where('course_id = ?', '201066')
 				 ->order('start_dt ASC')
 				 ->limit(1)
 				 );
     	
 	  return $row;
-	}    
-    
+	}  
+
+
 
 	private function _addVideos()
 	{
@@ -160,7 +169,7 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 	    {         
 	      $vals = array();
 	      for ($col=1;$col<=$xlsData->colcount();$col++) {         
-		$vals[] = $xlsData->value($row,$col);
+			$vals[] = $xlsData->value($row,$col);
 		
 	      }
 	              
