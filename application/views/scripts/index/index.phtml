@@ -1,47 +1,39 @@
-<?php if ($this->course) {
-    echo '<div class="span-24 last headingRegion"><h1>'.$this->course->course_name. ' Videos</h1>'; 
-  } else {
-    echo '<div class="span-24 last headingRegion"><h1>Sac State Streaming Video</h1></div>';
-  }?>
+<div class="container">
+	<div class="row">
+		<?php if ($this->course) {
+			echo '<h1>'.$this->course->course_name. '</h1>'; 
+			} else {
+			  	echo '<h1>Sac State Streaming Video</h1>';
+		}?>
+	</div>
 
-<div class="row">
-   <div class="span-17 .ss-videoplayer-container" id="osmfcontainer">
-	<?php if ($this->video) {
-		echo $this->partial('index/_osmfplayer.phtml', $this->video);
-	} else {
-		echo $this->partial('index/_osmfplayerFallback.phtml');
-	}?>
-		
-   </div>
-    
- <div class="span-7 last ss-coursevideos-list" id="course_video_container">
-    <?php if ($this->course) {
-    echo '<h3>'.$this->course->course_number. ' Videos</h3>';    
-    echo '<ul>';
-    echo $this->partialLoop('index/_courseVideoLoop.phtml', $this->coursevideos);
-    echo '</ul>';
-    
-  } else {
-    echo '<h3>Course Videos</h3>';
-  }?>
 
-   </div>
+	<div class="row ss-videoplayer backdrop">
+   		<div class="col-md-7" id="osmfcontainer">
+	
+		  	<?php if ($this->video) {
+				echo $this->partial('index/_osmfplayer.phtml', $this->video);
+			} else {
+				echo $this->partial('index/_osmfplayerFallback.phtml');
+			}?>
+	
+			<h3><?php echo $this->course->course_name; ?></h3>
+			<p><?php echo $this->course->course_number; ?> Section: <?php echo $this->course->class_section; ?> Instructor: <?php echo $this->course->instructor; ?>
+			<?php echo $this->course->semester; ?> <?php echo $this->course->year; ?></p>
+			<p ><?php echo $this->course->course_description; ?></p>
+   		</div>
+
+    
+ 		<div class="col-md-5 ss-coursevideos-list" id="course_video_container">
+		    <?php if ($this->course) {
+		    	echo '<ul>';
+		    	echo '<li>Most Recent Video: 09/004/14</li>'; 
+		    	echo $this->partialLoop('index/_courseVideoLoop.phtml', $this->coursevideos);
+		    	echo '</ul>';
+		    
+			  } else {
+			    echo '<h3>Course Videos</h3>';
+			  }	?>
+   		</div>
+	</div>
 </div>
-
-<div class="span-24 last">	
-  <div class="" style="background-color:#262626; color:#fff; font-size:1.2em;">
-  
-  	<h3><?php echo $this->course->course_name; ?></h3>
-	<p><?php echo $this->course->course_number; ?> Section: <?php echo $this->course->class_section; ?> Instructor: <?php echo $this->course->instructor; ?>
-	<?php echo $this->course->semester; ?> <?php echo $this->course->year; ?></p>
-	<p ><?php echo $this->course->course_description; ?></p>
-
-  </div>
-</div>  
-
-
-<div class="span-24 last">	
-  <div class="pagenav-container">
-	<?php echo $this->partial('index/_nav.phtml'); ?>	
-  </div>
-</div>      

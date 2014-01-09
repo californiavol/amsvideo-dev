@@ -41,6 +41,12 @@
     margin-right:auto;
     
 }
+#sacstate_video {
+	display:block;
+	position:relative;
+	width: 640px;
+	height: 480px;
+}
 .ss-videoplayer {
     display:block;
     position:relative;
@@ -64,25 +70,27 @@
     position:relative;
     margin-left:auto;
     margin-right:auto;
-
     padding:1em;
-    background:url('http://www.csus.edu/cached/Colleges/2.0/assets/images/gray-noise-background.jpg') no-repeat;   
-    border:0.5em solid #262626;
+    /* background:url('http://www.csus.edu/cached/Colleges/2.0/assets/images/gray-noise-background.jpg') no-repeat;  */
+    background-color: #262626;
+    border:0.5em solid #161616;
 
 }
 
 .ss-videoplayer.backdrop.large {
-    background:url('/video/assets/images/backdrop-large.png') no-repeat;   
+   /* background:url('/video/assets/images/backdrop-large.png') no-repeat; */  
 }
 
-.ss-videoplayer h1,
+.ss-videoplayer h1 {
+    font-family: "trajan pro", georgia, sans-serif;
+    text-transform:uppercase;
+}
 .ss-videoplayer h2,
 .ss-videoplayer h3,
 .ss-videoplayer h4,
 .ss-videoplayer h5,
 .ss-videoplayer h6 {
-    font-family: "trajan pro", georgia, sans-serif;
-    text-transform:uppercase;
+	font-family: "Myriad pro", georgia, sans-serif;
 }
 
 .ss-videoplayer p {}
@@ -128,7 +136,7 @@
 /********************************/
 /** course videos list **/
 .ss-coursevideos-list {display:block; position:relative; }
-.ss-coursevideos-list ul {padding-left:0;margin-left:0; overflow-y:scroll; overflow-x:hidden; height:480px;}
+.ss-coursevideos-list ul {padding-left:0;margin-left:0; overflow-y:scroll; overflow-x:hidden; height:500px;}
 .ss-coursevideos-list ul li {background-color:#262626;color:#fff; padding:1em; border-bottom:1px inset #444;}
 
 .ss-coursevideos-list ul li h4 {color:#fff; font-size:1.2em; padding-bottom:0; margin-bottom:0;}
