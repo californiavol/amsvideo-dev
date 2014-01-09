@@ -1,8 +1,10 @@
 <li class="ss-coursevideos-metadata">
 	<h4>
- 		<a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'video', 'cid' => $this->course_id, 'sid' => $this->section, 'vid' => $this->id)); ?>">
-     		Video of 
-       </a>
+		Available: <?php echo $this->escape($this->days); ?> <?php echo $this->escape($this->start_dt); ?>
 	</h4>
-	<p>Available: <?php echo $this->escape($this->days); ?> <?php echo $this->escape($this->start_dt); ?></p>
+	<p>
+	 	<a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'video', 'cid' => $this->course_id, 'sid' => $this->section, 'vid' => $this->id)); ?>">
+     		Video 1 of 45
+       </a>
+	</p>
 </li>
