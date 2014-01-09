@@ -1,27 +1,26 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
 <head>
-<meta content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible"/>
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sacramento State Course Videos</title>
 
 <!-- css -->
 <link href="http://getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
 <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css" />
 
-<link href="<?php //echo $this->baseUrl(); ?>/assets/css/video-styles.css" media="all" rel="stylesheet" type="text/css"/>
-<!-- page level css 
-
-<link href="<?php //echo $this->baseUrl(); ?>/assets/css/bootstrap/main.css" media="all" rel="stylesheet" type="text/css"/>
- end css -->
-
+<link href="<?php echo $this->baseUrl(); ?>/assets/css/video-styles.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="<?php echo $this->baseUrl(); ?>/assets/css/bootstrap/main.css" media="all" rel="stylesheet" type="text/css"/>
 
 
 <!-- javascript -->
-<!-- Enable IE to recognize html5 elements -->
-<!--[if lt IE 9]>
-<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
@@ -37,7 +36,8 @@
 <div class="sr-only" id="skip"><a href="#mainContent">Skip to Main Content</a></div>
 
 
- <!-- Fixed navbar -->
+ <!-- navbar -->
+ <div id="ss_banner_nav">
       <div class="navbar navbar-default" role="navigation">
         <div class="container">
           <div class="navbar-header">
@@ -47,10 +47,10 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></a> <a href="http://www.csus.edu/" title="Sacramento State Homepage"><img alt="Sacramento State logo" src="http://www.csus.edu/homep/monet/Images/header/logo-banner.png"/></a>
+            <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></a> <a href="http://www.csus.edu/" title="Sacramento State Homepage"><img alt="Sacramento State logo" src="/assets/images/logo-banner.png"/></a>
           </div>
           <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav pull-right">
             	<li><a href="#">About</a></li>
 				<li><a href="#about">Academics</a></li>
 				<li><a href="#contact">Admissions</a></li>
@@ -74,6 +74,7 @@
             </ul>
           </div><!--/.nav-collapse -->
         </div>
+      </div>
       </div>
 
 
