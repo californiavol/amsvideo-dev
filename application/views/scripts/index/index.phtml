@@ -16,8 +16,7 @@
     
  <div class="span-7 last ss-coursevideos-list" id="course_video_container">
     <?php if ($this->course) {
-    echo '<h3>'.$this->course->course_number. ' Videos</h3>';  
-    echo '<p>' .$this->recentvideo->filename. '</p>';   
+    echo '<h3>'.$this->course->course_number. ' Videos</h3>';    
     echo '<ul>';
     echo $this->partialLoop('index/_courseVideoLoop.phtml', $this->coursevideos);
     echo '</ul>';

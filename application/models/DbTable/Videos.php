@@ -118,28 +118,7 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 	  return $row;
 	}  
 
-	private function _parseCsv()
-	{
-		
-		//files we will work with
-	    $videosCsv  = APPLICATION_PATH . '/../data/csv/sac_cm_videos.csv';
-	    
-		//check to see if csv file exists
-	    if (!file_exists($videosCsv)) {
-	    	return $videosCsv. ' does not exist';
-	    }
-	    
-	    
-		require_once APPLICATION_PATH . '/../library/vendors/DataSource.php';
-		
-		$csv = new File_CSV_DataSource;
-		
-		$csv->load($videosCsv);
-		$csvarray = $csv->connect();
-		
-		return $csvarray;	
-	}
-    
+
 
 	private function _addVideos()
 	{
