@@ -45,6 +45,7 @@ class IndexController extends Zend_Controller_Action
         $this->view->course = $this->coursesTable->getCourseByClassNbr($this->class_nbr);
     	$this->view->coursevideos = $this->videosTable->getVideosByClassNbr($this->class_nbr);
     	
+    	
 		/*        		
  			if ($this->courseId) {
                    	//get all courses for course list
