@@ -1,8 +1,11 @@
 @CHARSET "UTF-8";
 
 body {
-	  background: #011e14 url('http://www.csus.edu/Monet/Images/global/background.gif') repeat-x top;	
+	background: #011e14 url('http://www.csus.edu/Monet/Images/global/background.gif') repeat-x top;	
+	color:#fff;
 }
+
+a {color:#f0e1b0;}
 
 
 #ss_banner_nav .navbar-default {
@@ -19,7 +22,13 @@ body {
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {  
-
+	#sacstate_video {
+		display:block;
+		position:relative;
+		width: 100%;
+		height: 460px;
+		
+	}
 }
 
 /* Medium devices (desktops, 992px and up) */

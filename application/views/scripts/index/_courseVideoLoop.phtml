@@ -4,7 +4,7 @@
 	</h4>
 	<p>
 	 	<a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'video', 'cid' => $this->course_id, 'sid' => $this->section, 'vid' => $this->id)); ?>">
-     		Video 1 of 45
+     		Video <?php echo $this->partialCounter; ?> of <?php echo 'Total counter : ' . count($this->coursevideos); ?>
        </a>
 	</p>
 </li>

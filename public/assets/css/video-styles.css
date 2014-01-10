@@ -41,12 +41,7 @@
     margin-right:auto;
     
 }
-#sacstate_video {
-	display:block;
-	position:relative;
-	width: 640px;
-	height: 480px;
-}
+
 .ss-videoplayer {
     display:block;
     position:relative;
@@ -84,6 +79,7 @@
 .ss-videoplayer h1 {
     font-family: "trajan pro", georgia, sans-serif;
     text-transform:uppercase;
+	color:#fff;
 }
 .ss-videoplayer h2,
 .ss-videoplayer h3,
@@ -91,9 +87,10 @@
 .ss-videoplayer h5,
 .ss-videoplayer h6 {
 	font-family: "Myriad pro", georgia, sans-serif;
+	color:#fff;
 }
 
-.ss-videoplayer p {}
+.ss-videoplayer p {color:#fff;}
 
 .ss-videoplayer a {}
 
