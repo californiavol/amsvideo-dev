@@ -5,17 +5,39 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
 
     protected $_name = 'courses';
     
+
     public function init()
     {
 		$logger = Zend_Registry::get('log');
 		$this->logger = $logger;
 		//$this->logger->log('Informational message', Zend_Log::INFO);
     }   
+
+    public function parseCsv()
+    {
+    	$this->_parseCsv();
+    }
+    
+    public function insertCsv() 
+    {
+    	$this->_insertCsv2Db();
+    }
+
     
     public function getCourses()
     {
         $rows = $this->fetchAll();
         return $rows;    	
+    }
+    
+    public function getCourseByClassNbr($classNbr)
+    {
+ 		if ($classNbr == NULL) {
+	  		return;
+		}
+		
+		$row = $this->fetchRow($this->select()->where('class_nbr = ?', $classNbr));
+		return $row;   	
     }
     
     public function getCourseById($id)
@@ -29,70 +51,60 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
     }
     
     
-    public function insertCsv()
-    {
-    	$data = $this->_parseCsv();
-    	return $data;
-    }
+
     
+
+    
+
     private function _parseCsv()
     {
-    	 $coursesCsv = APPLICATION_PATH . '/../data/csv/sac_cm_courses.csv';	
-    	 
-    	 if (file_exists($coursesCsv)) {
-	    	$exception = new Zend_Exception('Courses CSV did not parse');
-	    	$this->logger->err($exception);
-	     }
-	    
-	    
-		require_once APPLICATION_PATH . '/../library/vendors/DataSource.php';
-		
-		$csv = new File_CSV_DataSource;
-		
-		$csv->load($coursesCsv);
+    	require_once APPLICATION_PATH . '/../library/vendors/Datasource.php';
+    	
+    	$coursesCsv = APPLICATION_PATH . '/../data/csv/sac_cm_courses.csv';
+    	
+    	if (!file_exists($coursesCsv)) {
+    		die();
+    	}
+    	
+    	$inputFile = $coursesCsv;
+    	
+    	$csv = new File_CSV_DataSource;
+		$csv->load($inputFile);
 		$csvarray = $csv->connect();
-		
-		$rowCount = $csv->countRows();
-		
-		//var_dump($csvarray);
-		
-		$vals = array();
-		foreach ($csvarray as $vals) {
-			$data = array(
-				'start_dt'    => $vals['START_DT'],
-				'days'        => $vals['DAYS'],
-				
-			);  
-			var_dump($data);
-		}
-		
-		
-    	/*
-		for ($row=1; $row<=$rowCount; $row++) 
-		{         
-	  		$vals = array();
-	  		
-	  		for ($col=1;$col<=$csv->colcount();$col++) {         
-	    		$vals[] = $csv->value($row,$col);
-	  		}
-	  
-			$data = array(
-				'start_dt'    => $vals[0],
-				'days'        => $vals[1],
-				'studio'      => $vals[2],
-				'start_time'  => $vals[3],
-				'duration'    => $vals[4],
-				'course_name' => $vals[5],
-				'section'     => $vals[6],
-				'course_id'   => $vals[7],
-			);  
-
-			var_dump($data);                  
-	  		//$this->insert($data); 
-		} */
-		  
+		return $csvarray;    	
     }
     
+    private function _insertCsv2Db()
+    {
+    	$csvData = $this->_parseCsv();
+    	
+    	$val = array();
+    	foreach ($csvData as $val) {
+    		$data = array(
+    			'start_dt' => $val['START_DT'],
+    			'days' => $val['DAYS'],
+    			'studio' => $val['STUDIO'],
+    			'start_time' => $val['START TIME'],
+    			'duration' => $val['DURATION'],
+    			'name' => $val['NAME'],
+    			'class_section' => $val['CLASS_SECTION'],
+    			'crse_id' => $val['CRSE_ID'],
+    			'course_name' => $val['COURSE_NAME'],
+    			'course_number' => $val['COURSE_NUMBER'],
+    			'section' => $val['SECTION'],
+    			'course_description' => $val['COURSE_DESCRIPTION'],
+    			'instructor' => $val['INSTRUCTOR'],
+    			'semester' => $val['SEMESTER'],
+    			'year' => $val['YEAR'],
+    			'class_nbr' => $val['CLASS_NBR'],
+    			'combined_id' => $val['COMBINED_ID'],
+    			'combined_class_nbr' => $val['COMBINED_CLASS_NBR'],
+    		);
+    		//var_dump($data);	
+    		$this->insert($data); 
+    	}
+    }
+
     
     public function addCoursesFromXls()
     {

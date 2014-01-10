@@ -1,154 +1,54 @@
 @CHARSET "UTF-8";
 
-@media (min-width:769px) { 
-    
-    .banner {
-        display:block;
-        height:120px;
-    }
+body {
+	background: #011e14 url('http://www.csus.edu/Monet/Images/global/background.gif') repeat-x top;	
+	color:#fff;
+}
 
-    /*** twitter bootstrap overwrites ***/
-    
-    .container-fluid {
-        width:960px;
-        margin-left:auto;
-        margin-right:auto;
-    }
-    
-    
-    .banner .btn {
-         display:inline-block;
-        *display:inline;
-        *zoom:1;
-        padding:0;
-        margin-bottom:0;
-        font-size:1em;
-        line-height:29px;
-        text-align:center;
-        vertical-align:middle;
-        cursor:pointer;
-        text-shadow:0;
-        background-color:transparent;
-        background-image:url('http://www.csus.edu/Monet/Images/header/quick_links.gif');
-        background-repeat:repeat-x;
-        filter:none;
-        border-color:none;
-        border-color:none;
-        *background-color:transparent;
-        filter:none;
-        border:none;
-        *border:0;
-        border-bottom-color:transparent;
-        -webkit-border-radius:0px;
-        -moz-border-radius:0px;
-        border-radius:0px;
-        *margin-left:none;
-        -webkit-box-shadow:none;
-        -moz-box-shadow:none;
-        box-shadow:none;
-        width:98px;
-        color:#EDDEAC;
-        margin-top:0px;
-        text-shadow:none;
-        padding-left:1px;
-        padding-right:8px;
-    }
-    
-    .banner .btn-navbar {
-        display:none;
-    }
-    
-    .banner .btn .arrow-down {
-        background: transparent url('http://www.csus.edu/Monet/Images/content/gb_arrow_down.gif') no-repeat 90px;
-        display:block;  
-    }
-    
-    .banner .dropdown-menu {
-        margin-left:-90px;
-    }
-    
-    .banner .navbar .nav {
-        background:url('http://www.csus.edu/Monet/Images/header/menu-gradient2.png') repeat-y  center;
-        font-family: Georgia, sans-serif;
-        text-transform:uppercase;
-        font-size:0.8em;
-        margin-left:0;
-        margin-top:-42px;
-        margin-bottom:0;
-        margin-right:0;
-        padding:0;
-        height:29px;
-    }
-    
-    .navbar .nav {
-        position:relative;
-        left:0;
-        display:block;
-        float:left;
-        margin:0 0 0 0;
-    }
+a {color:#f0e1b0;}
 
-    .navbar .nav>li>a {
-        float:none;
-        padding:5px 5px 5px;
-        color:#fff;
-        text-decoration:none;
- 
-    }
-    
-    .navbar .nav>li>a:focus, .navbar .nav>li>a:hover {
-        background-color:transparent;
-        color:#f0e1b0;
-        text-decoration:none;
-    }
-    
-    .navbar .nav>.active>a, .navbar .nav>.active>a:hover, .navbar .nav>.active>a:focus {
-        color:#f0e1b0;
-        text-decoration:underline;
-        background-color:transparent;
-        -webkit-box-shadow:inset 0 3px 8px rgba(0, 0, 0, 0.125);
-        -moz-box-shadow:inset 0 3px 8px rgba(0, 0, 0, 0.125);
-        box-shadow:inset 0 3px 8px rgba(0, 0, 0, 0.125);
-    }
+
+#ss_banner_nav .navbar-default {
+	background-color:#001e14;
+	border-color:#001e14;
+}
+
+
+
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {  
+	#sacstate_video {
+		display:block;
+		position:relative;
+		width: 100%;
+		height: 460px;
+		
+	}
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+
+
 }
 
 @media (max-width:421px) {
-    h2 {
-        border-top: medium none;
-        font-family: helvetica;
-        font-size: 1.1em;
-        line-height: 2;
-      
-    }
-    
-    h2.green  {
-        background-color:#01402d;
-        background:url('http://www.csus.edu/cached/Colleges/1.0/images/regions/main/mainregion.h2.bg.slice.1x29.png') repeat-x;
-        margin-bottom: 0.2em;
-    }
 
-
-    h2.gold  {
-        background-color:#aa974b;
-        background:url('http://www.csus.edu/cached/Colleges/2.0/assets/images/content-module/header-gold-slice.png') repeat-x;
-    }
-
-    h2.orange  {
-        background-color:#c2814c;
-        background:url('http://www.csus.edu/cached/Colleges/2.0/assets/images/content-module/header-orange-slice.png') repeat-x;
-    }
-
-    h2.blue  {
-        background-color:#3e647e;
-        background:url('http://www.csus.edu/cached/Colleges/2.0/assets/images/content-module/header-blue-slice.png') repeat-x;
-    }
-
-    h2.brown  {
-        background-color:#6d5848;
-        background:url('http://www.csus.edu/cached/Colleges/2.0/assets/images/content-module/header-brown-slice.png') repeat-x;
-    }
-
-    h2.black  {
-        background-color:#000;
-    }
+	#sacstate_video {
+		display:block;
+		position:relative;
+		width: 100%;
+		height: 160px;
+		
+	}
 }
