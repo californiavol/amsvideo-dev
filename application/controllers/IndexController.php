@@ -34,16 +34,29 @@ class IndexController extends Zend_Controller_Action
 
     public function indexAction()
     {
-    	//is there a class_nbr
-    	if (!$this->class_nbr) {
-    		echo 'no class nbr';
+
+        if ($this->class_nbr && !$this->videoId) {
+    		echo 'course id but no video id';
     	}
+    	
+    	
+    	if ($this->class_nbr && $this->videoId) {
+    		echo 'course and video ids';
+    	}
+    	
+    	
     	
     	// if no video specified then show most recent video along with course video list
     	
     	//get individual course if courseId param set
         $this->view->course = $this->coursesTable->getCourseByClassNbr($this->class_nbr);
-    	$this->view->coursevideos = $this->videosTable->getVideosByClassNbr($this->class_nbr);
+    	//get videos associated with course
+        $this->view->coursevideos = $this->videosTable->getVideosByClassNbr($this->class_nbr);
+        
+    	
+
+    	
+    	
     	
     	
 		/*        		
