@@ -12,17 +12,6 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
 		$this->logger = $logger;
 		//$this->logger->log('Informational message', Zend_Log::INFO);
     }   
-
-    public function parseCsv()
-    {
-    	$this->_parseCsv();
-    }
-    
-    public function insertCsv() 
-    {
-    	$this->_insertCsv2Db();
-    }
-
     
     public function getCourses()
     {
@@ -40,17 +29,20 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
 		return $row;   	
     }
     
-    public function getCourseById($id)
+
+    
+    public function parseCsv()
     {
-    	if ($id == NULL) {
-	  		return;
-		}
-		
-		$row = $this->fetchRow($this->select()->where('course_id = ?', $id));
-		return $row;	
+    	$this->_parseCsv();
     }
     
-    
+    public function insertCsv() 
+    {
+    	//parse the csv
+    	$data = $this->_parseCsv();
+    	//insert into db
+    	$this->_insertCsv2Db($data);
+    }    
 
     
 
@@ -86,9 +78,12 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
 		return $csvarray;    	
     }
     
-    private function _insertCsv2Db()
+    private function _insertCsv2Db($data = null)
     {
-    	$csvData = $this->_parseCsv();
+    	$csvData = $data;
+    	
+	  	//empty the courses table
+	  	$this->getAdapter()->query('TRUNCATE TABLE courses');    	
     	
     	$val = array();
     	foreach ($csvData as $val) {
