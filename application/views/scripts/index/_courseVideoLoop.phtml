@@ -1,10 +1,9 @@
 <li class="ss-coursevideos-metadata">
-	<h4>
-		Available: <?php echo $this->escape($this->days); ?> <?php echo $this->escape($this->start_dt); ?>
-	</h4>
 	<p>
-	 	<a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'video', 'cid' => $this->course_id, 'sid' => $this->section, 'vid' => $this->id)); ?>">
-     		Video <?php echo $this->partialCounter; ?> of <?php echo 'Total counter : ' . count($this->coursevideos); ?>
+	 	
+	 	<a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'index', 'cid' => $this->class_nbr, 'vid' => $this->id)); ?>">
+     		<?php echo $this->escape($this->days); ?> <?php echo $this->escape($this->start_dt); ?>
        </a>
+       Video <?php echo $this->partialCounter; ?>
 	</p>
 </li>
