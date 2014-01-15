@@ -62,6 +62,18 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
     	
     	$coursesCsv = APPLICATION_PATH . '/../data/csv/sac_cm_courses.csv';
     	
+    	
+    	/*
+    	 * // outputs e.g.  somefile.txt was last modified: December 29 2002 22:16:23.
+
+			$filename = 'somefile.txt';
+			if (file_exists($filename)) {
+			    echo "$filename was last modified: " . date ("F d Y H:i:s.", filemtime($filename));
+			}
+    	 * 
+    	 * */
+    	
+    	
     	if (!file_exists($coursesCsv)) {
     		die();
     	}
