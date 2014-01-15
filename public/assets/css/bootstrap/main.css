@@ -13,7 +13,19 @@ a {color:#f0e1b0;}
 	border-color:#001e14;
 }
 
+#ss_banner_nav .navbar-default .navbar-text {
+  color: #f0e1b0;
+}
 
+#ss_banner_nav .navbar-default .navbar-nav > li > a {
+  color: #f0e1b0;
+}
+
+#ss_banner_nav .navbar-default .navbar-nav > li > a:hover,
+#ss_banner_nav .navbar-default .navbar-nav > li > a:focus {
+  color: #fff;
+  background-color: transparent;
+}
 
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
