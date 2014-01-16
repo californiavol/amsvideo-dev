@@ -12,6 +12,41 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 		//$this->logger->log('Informational message', Zend_Log::INFO);
     }    
     
+    
+    public function getVideosByClassNbr($id)
+    {
+		$rows = $this->fetchAll($this->select()->where('class_nbr = ?', $id));
+		return $rows;
+    }
+    
+    
+    public function getVideoById($id)
+    {
+        if ($id == NULL) {
+	  		return;
+        }
+    	$row = $this->fetchRow($this->select()->where('id = ?', $id));
+		return $row;   	
+    }
+    
+
+    
+	public function getMostRecentVideo($id)
+	{
+	  	if ($id == NULL) {
+			return;
+	  	}
+		
+    	$today = new Zend_Date();
+	  	$row = $this->fetchRow($this->select()
+				 ->where('course_id = ?', '201066')
+				 ->order('start_dt ASC')
+				 ->limit(1)
+				 );
+    	
+	  	return $row;
+	}  
+	
  	private function _parseCsv()
     {
     	require_once APPLICATION_PATH . '/../library/vendors/Datasource.php';
@@ -39,11 +74,15 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
     {
     	$csvData = $this->_parseCsv();
     	
+	  //empty the videos table
+	  $this->getAdapter()->query('TRUNCATE TABLE videos');
+    	
+    	
     	$val = array();
     	foreach ($csvData as $val) {
     		$data = array(
-    			'start_dt'  => $val['START_DT'],
-    			'days'      => $val['DAYS'],
+    			'start_dt'  => strtolower($val['START_DT']),
+    			'days'      => strtolower($val['DAYS']),
     			'studio'    => $val['STUDIO'],
     			'course_id' => $val['COURSE_ID'],    			
     			'class_nbr' => $val['CLASS_NBR'],
@@ -52,71 +91,7 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
     		//var_dump($data);	
     		$this->insert($data); 
     	}
-    }
-    
-    
-
-
-    public function parseCsv2Xls()
-    {
-    	return $this->_parseCsv2Xls();
-    }  
-    
-    
-    public function getVideos()
-    {
-    	
-    }
-    
-    public function getVideoById($id)
-    {
-        if ($id == NULL) {
-	  		return;
-        }
-    	$row = $this->fetchRow($this->select()->where('id = ?', $id));
-		return $row;   	
-    }
-    
-
-    
-    public function getVideosByClassNbr($id)
-    {
-		$rows = $this->fetchAll($this->select()->where('class_nbr = ?', $id));
-		return $rows;
-    }
-    
-    public function getVideosByCourseIdSectionId($course_id, $section)
-    {
-      $rows = $this->fetchAll($this->select()->where('course_id = ?', $course_id)->where('section = ?', $section));
-      return $rows;
-    }
-
-    public function getMostRecentCourseVideoAllCourses()
-    {
-    	$today = new Zend_Date();
-
-	$rows = $this->fetchAll($this->select()
-				->group('course_id')
-				->order('start_dt ASC')		
-				);
-	return $rows;    	
-    }
-    
-	public function getMostRecentVideo($id)
-	{
-	  if ($id == NULL) {
-		return;
-	  }
-		
-       	  $today = new Zend_Date();
-	  $row = $this->fetchRow($this->select()
-				 ->where('course_id = ?', '201066')
-				 ->order('start_dt ASC')
-				 ->limit(1)
-				 );
-    	
-	  return $row;
-	}  
+    }	
 
 
 
