@@ -12,52 +12,44 @@ class IndexController extends Zend_Controller_Action
     public function init()
     {
         /* Initialize action controller here */
-                        if ($this->getRequest()->getParam('cid')) {
-                        	$this->class_nbr = $this->getRequest()->getParam('cid');
-                        }
+        if ($this->getRequest()->getParam('cid')) {
+           	$this->class_nbr = $this->getRequest()->getParam('cid');
+        }
                                         
-                        if ($this->getRequest()->getParam('vid')) {
-                        	$this->videoId = $this->getRequest()->getParam('vid');
-                        }
+        if ($this->getRequest()->getParam('vid')) {
+           	$this->videoId = $this->getRequest()->getParam('vid');
+        }
                                         		
-                		if ($this->getRequest()->getParam('sid')) {
-                			$this->section = $this->getRequest()->getParam('sid');
-                		}
+  		if ($this->getRequest()->getParam('sid')) {
+   			$this->section = $this->getRequest()->getParam('sid');
+   		}
                                         
-                        //get db tables                                                                                                              
-                        $this->coursesTable    = new Application_Model_DbTable_Courses();       		                                                                                  
-                        $this->videosTable     = new Application_Model_DbTable_Videos();
-                        $this->devicesTable    = new Application_Model_DbTable_Devices();
-                        $this->videostatsTable = new Application_Model_DbTable_Videostats();
+        //get db tables                                                                                                              
+        $this->coursesTable    = new Application_Model_DbTable_Courses();       		                                                                                  
+        $this->videosTable     = new Application_Model_DbTable_Videos();
+        $this->devicesTable    = new Application_Model_DbTable_Devices();
+        $this->videostatsTable = new Application_Model_DbTable_Videostats();
 
     }
 
     public function indexAction()
-    {
+    {    	
 
-        if ($this->class_nbr && !$this->videoId) {
-    		echo 'course id but no video id';
+    	if ($this->class_nbr && !$this->videoId) {
+	    	//get individual course if class_nbr param set
+    	    $this->view->course = $this->coursesTable->getCourseByClassNbr($this->class_nbr);
+    		$this->view->coursevideos = $this->videosTable->getVideosByClassNbr($this->class_nbr);    	
+    	} elseif ($this->class_nbr && $this->videoId) {
+    		
+    	    $this->view->course = $this->coursesTable->getCourseByClassNbr($this->class_nbr);
+    		$this->view->coursevideos = $this->videosTable->getVideosByClassNbr($this->class_nbr);  
+    		//get individual video
+    		$this->view->video = $this->videosTable->getVideoById($this->videoId);
+    		
+    	} else {
+    		//redirect to courselist
+    		$this->redirect('/admin/courselist');
     	}
-    	
-    	
-    	if ($this->class_nbr && $this->videoId) {
-    		echo 'course and video ids';
-    	}
-    	
-    	
-    	
-    	// if no video specified then show most recent video along with course video list
-    	
-    	//get individual course if courseId param set
-        $this->view->course = $this->coursesTable->getCourseByClassNbr($this->class_nbr);
-    	//get videos associated with course
-        $this->view->coursevideos = $this->videosTable->getVideosByClassNbr($this->class_nbr);
-        
-    	
-
-    	
-    	
-    	
     	
 		/*        		
  			if ($this->courseId) {
@@ -99,7 +91,6 @@ class IndexController extends Zend_Controller_Action
                 }
                 */
     }
-    
 
 
     public function coursepageAction()
