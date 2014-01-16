@@ -27,6 +27,20 @@ a {color:#f0e1b0;}
   background-color: transparent;
 }
 
+#main .jumbotron {background-color:#f0e1b0; color:#00573d;}
+
+#main h2  {
+    padding:0.2em;
+    border-top: medium none;
+    font-family: Georigia;
+    text-transform:uppercase;
+    font-size: 1.3em;
+    line-height: normal;
+    background-color:#3e647e;
+    background:url('http://www.csus.edu/cached/Colleges/2.0/assets/images/content-module/header-blue-slice.png') repeat-x;
+
+}
+
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
 
