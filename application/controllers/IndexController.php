@@ -33,8 +33,7 @@ class IndexController extends Zend_Controller_Action
     }
 
     public function indexAction()
-    {
-    	
+    {    	
 
     	if ($this->class_nbr && !$this->videoId) {
 	    	//get individual course if class_nbr param set
