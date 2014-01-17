@@ -15,6 +15,7 @@ class Admin_IndexController extends Zend_Controller_Action
 	    if (Zend_Registry::getInstance()->get('auth')->hasIdentity()) {
 	        $this->_redirect('/');
 	    }
+	    
 	 
 	    $request = $this->getRequest();
 	    $users = $this->usersTable;
@@ -118,6 +119,8 @@ class Admin_IndexController extends Zend_Controller_Action
 	 
 	                // EVERYTHING IS OK, LET'S SEND EMAIL WITH A VERIFICATION STRING
 	                // THE VERIFICATIONS STRING IS AN SHA1 HASH OF THE EMAIL
+	               	$tr = new Zend_Mail_Transport_Smtp('smtp.csus.edu');
+	    			Zend_Mail::setDefaultTransport($tr);
 	                $mail = new Zend_Mail();
 	                $mail->setFrom('charles.brownroberts@csus.edu', 'Web Services');
 	                $mail->setSubject('Thank you for registering');

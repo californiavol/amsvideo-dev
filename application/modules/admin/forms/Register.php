@@ -110,6 +110,16 @@ class Admin_Form_Register extends Zend_Form
             ),
             'class' => 'input-password'
         ));
+        
+        $role = $this->createElement('select', 'role');
+        
+        $role->setDecorators($this->elementDecorators);
+        $role->setLabel('Select a role');
+        $role->addMultiOption('user', 'User');
+        $role->addMultiOption('admin', 'Admin');
+        
+        
+        
  
         $submit = new Zend_Form_Element_Submit('register', array(
             'decorators' => $this->buttonDecorators,
@@ -125,6 +135,7 @@ class Admin_Form_Register extends Zend_Form
             $username,
             $password,
             $passwordAgain,
+            $role,
             $submit
         ));
     }
