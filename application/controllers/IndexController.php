@@ -35,7 +35,6 @@ class IndexController extends Zend_Controller_Action
     public function indexAction()
     {
 
-    	
 
     	if ($this->class_nbr && !$this->videoId) {
 	    	//get individual course if class_nbr param set
@@ -94,12 +93,11 @@ class IndexController extends Zend_Controller_Action
                 */
     }
 
-
     public function coursepageAction()
     {
     	$this->view->coursevideos = $this->videosTable->getVideosByClassNbr($this->class_nbr);
     }
-    
+
     public function edsAction()
     {
         if ($this->courseId) {
@@ -249,7 +247,6 @@ class IndexController extends Zend_Controller_Action
         $this->view->courses = $this->coursesTable->getCourses();
     }
 
-
     public function devicestatsAction()
     {
         $computerCount = $this->devicesTable->getCountByDeviceType('computer');
@@ -328,7 +325,11 @@ class IndexController extends Zend_Controller_Action
     }
 
 
+
+
 }
+
+
 
 
 

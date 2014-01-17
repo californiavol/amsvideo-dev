@@ -4,9 +4,10 @@ class AdminController extends Zend_Controller_Action
 {
 
     public $courseId = '100796';
-    public $videoId = NULL;
-	
-	public function init()
+
+    public $videoId = null;
+
+    public function init()
     {
         /* Initialize action controller here */
     	
@@ -15,35 +16,34 @@ class AdminController extends Zend_Controller_Action
     	
     	$this->coursesTable = new Application_Model_DbTable_Courses();
     }
-	
+
     /**
-     * 
      * TODO remove hard-coded course_id
+     *
      */
     public function indexAction()
     {
 
             
     }
-    
+
     public function courselistAction()
     {
     	
     	$this->view->courses = $this->coursesTable->getCourses();
 
     }
-    
+
     public function insertcoursesAction()
     {
     	$this->coursesTable->insertCsv();
     }
-    
+
     public function insertvideosAction()
     {
     	$this->videosTable->insertCsv();
     }
-    
-    
+
     public function cleancacheAction()
     {
         // action body
@@ -56,7 +56,9 @@ class AdminController extends Zend_Controller_Action
         }
         
     }
-    
 
-//close class
+
+
+
 }
+
