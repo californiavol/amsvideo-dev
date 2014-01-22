@@ -6,17 +6,17 @@
 <div id="strobeplayer">
   
   <object id="sacstate_video" >
-   <param name="movie" value='http://www2.csus.edu/video/assets/players/StrobeMediaPlayback.swf?src=http://video2.csus.edu/hds-vod/prj/disted/ams_web_archive/2013/<?php echo $this->course_number;?>/<?php echo $this->course_number;?>_<?php echo $this->filename;?>M.f4m&poster=http://www2.csus.edu/video/assets/players/10.1/images/billboard-default.png&bufferingOverlay=false&optimizeInitialIndex=true&minContinuousPlayback=30&bufferTime=12&initialBufferTime=8&expandedBufferTime=10' />
+   <param name="movie" value='http://www2.csus.edu/video/assets/players/StrobeMediaPlayback.swf?src=http://video2.csus.edu/hds-vod/prj/disted/ams_web_archive/<?php echo $this->course['year']; ?>/<?php echo $this->course['name'];?>/<?php echo $this->course['name'];?>_<?php echo $this->video['start_dt']; ?>_<?php echo $this->video['class_nbr']; ?>M.f4m&poster=http://www2.csus.edu/video/assets/players/10.1/images/billboard-default.png&bufferingOverlay=false&optimizeInitialIndex=true&minContinuousPlayback=30&bufferTime=12&initialBufferTime=8&expandedBufferTime=10' />
 <param name="allowFullScreen" value="true"/>
     <!--[if !IE]>-->
-    <object type="application/x-shockwave-flash" data="http://www2.csus.edu/video/assets/players/StrobeMediaPlayback.swf?src=http://video2.csus.edu/vod/prj/disted/ams_web_archive/2013/<?php echo $this->course_number;?>/<?php echo $this->course_number;?>_<?php echo $this->filename;?>P.f4m&poster=http://www2.csus.edu/video/assets/players/10.1/images/billboard-default.png&bufferingOverlay=false&optimizeInitialIndex=true&minContinuousPlayback=30&bufferTime=12&initialBufferTime=8&expandedBufferTime=10" width="640" height="480">
+    <object type="application/x-shockwave-flash" data="http://www2.csus.edu/video/assets/players/StrobeMediaPlayback.swf?src=http://video2.csus.edu/vod/prj/disted/ams_web_archive/<?php echo $this->course['year']; ?>/<?php echo $this->course['name'];?>/<?php echo $this->course['name'];?>_<?php echo $this->video['start_dt']; ?>_<?php echo $this->video['class_nbr']; ?>P.f4m&poster=http://www2.csus.edu/video/assets/players/10.1/images/billboard-default.png&bufferingOverlay=false&optimizeInitialIndex=true&minContinuousPlayback=30&bufferTime=12&initialBufferTime=8&expandedBufferTime=10" width="640" height="480">
 <param name="allowFullScreen" value="true"/>     
  <!--<![endif]-->
       
       <div>
         <p>
           <video controls poster="http://www.csus.edu/cached/Colleges/2.0/assets/media/billboard/billboard-default.png">
-            <source src="http://video2.csus.edu/hls-vod/prj/disted/ams_web_archive/2013/<?php echo $this->course_number;?>/<?php echo $this->course_number;?>_<?php echo $this->filename;?>M.m3u8">
+            <source src="http://video2.csus.edu/hls-vod/prj/disted/ams_web_archive/<?php echo $this->course['year']; ?>/<?php echo $this->course['name'];?>/<?php echo $this->course['name'];?>_<?php echo $this->video['start_dt']; ?>_<?php echo $this->video['class_nbr']; ?>M.m3u8">
             Your browser does not support Flash Player 10.1 or the HTML5 video element. 
    
           </video>
