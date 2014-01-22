@@ -12,7 +12,7 @@
    		<div class="col-md-8" id="osmfcontainer">
 	
 		  	<?php if ($this->video) {
-				echo $this->partial('index/_osmfplayer.phtml', $this->video);
+				echo $this->partial('index/_osmfplayer.phtml', 'default', array('course' => $this->course, 'video' => $this->video));
 			} else {
 				echo $this->partial('index/_osmfplayerFallback.phtml');
 			}?>
