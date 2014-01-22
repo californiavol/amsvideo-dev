@@ -80,8 +80,14 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
     	
     	$val = array();
     	foreach ($csvData as $val) {
+    		
+    		
+    		$date = DateTime::createFromFormat('j-M-Y', $val['START_DT']);
+			$start_dt =  $date->format('Y_m_d');
+    				
+    		
     		$data = array(
-    			'start_dt'  => strtolower($val['START_DT']),
+    			'start_dt'  => strtolower($start_dt),
     			'days'      => strtolower($val['DAYS']),
     			'studio'    => $val['STUDIO'],
     			'course_id' => $val['COURSE_ID'],    			
