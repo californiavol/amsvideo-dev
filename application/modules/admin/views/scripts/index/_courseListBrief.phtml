@@ -8,8 +8,9 @@
 		<?php echo $this->escape($this->course_name);  ?>
 	</td>
 	<td>
-		<a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'index', 'cid' => $this->class_nbr, 'vid' => NULL)); ?>">
-   			<?php echo $this->url(array('controller' => 'index', 'action' => 'index', 'cid' => $this->class_nbr, 'vid' => NULL)); ?>
+		<a href="<?php echo $this->url(array('module' => 'default', 'controller' => 'index', 'action' => 'index', 'cid' => $this->class_nbr, 'vid' => NULL)); ?>">
+   			<?php echo $this->url(array('module' => 'default', 'controller' => 'index', 'action' => 'index', 'cid' => $this->class_nbr, 'vid' => NULL)); ?>
+
     	</a>
 	</td>
 </tr>
