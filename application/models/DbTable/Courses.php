@@ -29,8 +29,20 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
 		return $row;   	
     }
     
-
-    
+	public function getCurrentSemester()
+	{
+		$row = $this->fetchRow($this->select()->limit(1));
+		$semester = $row->semester;
+		return $semester; 		
+	}
+	
+	public function getCurrentYear()
+	{
+		$row = $this->fetchRow($this->select()->limit(1));
+		$year = $row->year;
+		return $year; 		
+	}
+	
     public function parseCsv()
     {
     	$this->_parseCsv();
@@ -42,11 +54,7 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
     	$data = $this->_parseCsv();
     	//insert into db
     	$this->_insertCsv2Db($data);
-    }    
-
-    
-
-    
+    }      
 
     private function _parseCsv()
     {
@@ -113,48 +121,8 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
     }
 
     
-    public function addCoursesFromXls()
-    {
-    	return $this->_addCourses();
-    }
 
-    private function _addCourses()
-    {
-      //load the excel parser
-      error_reporting(E_ALL ^ E_NOTICE);
-      require_once APPLICATION_PATH . '/../library/vendors/excel_reader2.php';
-      
-      $xlsPath = APPLICATION_PATH . '/../data/courses.xls';
-      
-      $xlsData = new Spreadsheet_Excel_Reader($xlsPath);
-      //return $xlsData->dump(true,true);
-      for ($row=2; $row<=$xlsData->rowcount(); $row++) 
-	{         
-	  $vals = array();
-	  for ($col=1;$col<=$xlsData->colcount();$col++) {         
-	    $vals[] = $xlsData->value($row,$col);
-	    
-	  }
-	  
-	  $data = array(
-			'start_dt'    => $vals[0],
-			'days'        => $vals[1],
-			'studio'      => $vals[2],
-			'start_time'  => $vals[3],
-			'duration'    => $vals[4],
-			'course_name' => $vals[5],
-			'section'     => $vals[6],
-			'course_id'   => $vals[7],
-			);  
-
-	  // var_dump($data);                  
-	  $this->insert($data); 
-	}
-
-
-    }
 
 
 
 }
-

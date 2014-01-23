@@ -49,7 +49,7 @@ class IndexController extends Zend_Controller_Action
     		
     	} else {
     		//redirect to courselist
-    		$this->redirect('/admin/courselist');
+    		$this->redirect('/default/index/welcome');
     	}
     	
 		/*        		
@@ -91,6 +91,11 @@ class IndexController extends Zend_Controller_Action
                     
                 }
                 */
+    }
+    
+    public function welcomeAction()
+    {
+    	$this->view->msg = 'welcome';
     }
 
     public function coursepageAction()
@@ -175,16 +180,6 @@ class IndexController extends Zend_Controller_Action
         // action body
     }
 
-    public function addvideosAction()
-    {
-        // action body
-        $this->videosTable->addVideosFromXls();
-    }
-
-    public function tests1Action()
-    {
-        // action body
-    }
 
     public function strobeplayerAction()
     {
