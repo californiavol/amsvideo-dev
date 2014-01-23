@@ -13,7 +13,8 @@ class App_Controller_Plugin_Auth extends Zend_Controller_Plugin_Abstract
             // USUALLY THERE WILL BE MORE ACCESS RESOURCES
             $acl->addResource(new Zend_Acl_Resource('index'));
             $acl->addResource(new Zend_Acl_Resource('error'));
- 			$acl->addResource(new Zend_Acl_Resource('administrator'));
+ 			
+            
             // ACCESS ROLES
             $acl->addRole(new Zend_Acl_Role('guest'));
             $acl->addRole(new Zend_Acl_Role('user'));
