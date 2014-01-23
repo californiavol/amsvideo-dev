@@ -59,19 +59,7 @@ class Admin_Form_Register extends Zend_Form
             'class' => 'input-text'
         ));
  
-        $emailAgain = new Zend_Form_Element_Text('emailAgain', array(
-            'decorators' => $this->elementDecorators,
-            'label' => 'Email again',
-            'required' => true,
-            'filters' => array(
-                'StringTrim'
-            ),
-            'validators' => array(
-                'EmailAddress'
-            ),
-            'class' => 'input-text'
-        ));
- 
+
         $username = new Zend_Form_Element_Text('username', array(
             'decorators' => $this->elementDecorators,
             'label' => 'Username',
@@ -98,18 +86,6 @@ class Admin_Form_Register extends Zend_Form
             'class' => 'input-password'
         ));
  
-        $passwordAgain = new Zend_Form_Element_Password('passwordAgain', array(
-            'decorators' => $this->elementDecorators,
-            'label' => 'Password again',
-            'required' => true,
-            'filters' => array(
-                'StringTrim'
-            ),
-            'validators' => array(
-                array('StringLength', false, array(6, 50))
-            ),
-            'class' => 'input-password'
-        ));
         
         $role = $this->createElement('select', 'role');
         
@@ -131,10 +107,8 @@ class Admin_Form_Register extends Zend_Form
             $firstName,
             $lastName,
             $email,
-            $emailAgain,
             $username,
             $password,
-            $passwordAgain,
             $role,
             $submit
         ));
