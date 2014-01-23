@@ -11,9 +11,9 @@ class App_Controller_Plugin_Auth extends Zend_Controller_Plugin_Abstract
  
             // ACCESS RESOURCES (CONTROLLERS)
             // USUALLY THERE WILL BE MORE ACCESS RESOURCES
-            $acl->add(new Zend_Acl_Resource('index'));
-            $acl->add(new Zend_Acl_Resource('error'));
- 			$acl->add(new Zend_Acl_Resource('admin'));
+            $acl->addResource(new Zend_Acl_Resource('index'));
+            $acl->addResource(new Zend_Acl_Resource('error'));
+ 			$acl->addResource(new Zend_Acl_Resource('administrator'));
             // ACCESS ROLES
             $acl->addRole(new Zend_Acl_Role('guest'));
             $acl->addRole(new Zend_Acl_Role('user'));
@@ -24,14 +24,14 @@ class App_Controller_Plugin_Auth extends Zend_Controller_Plugin_Abstract
             $acl->allow('user'); // ALLOW USERS EVERYWHERE
             $acl->allow('administrator'); // ALLOW ADMINISTRATORS EVERYWHERE
  
-            //$role = ($auth->getIdentity() && $auth->getIdentity()->status = 'approved') ? $auth->getIdentity()->role : 'guest';
-            $role = 'guest';
+            $role = ($auth->getIdentity() && $auth->getIdentity()->status = 'approved') ? $auth->getIdentity()->role : 'guest';
+
             $controller = $request->getControllerName();
             $action = $request->getActionName();
  
             if (!$acl->isAllowed($role, $controller, $action)) {
-                $redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('Redirector');
-                $redirector->gotoUrlAndExit('error/denied');
+            	$redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('Redirector');
+                $redirector->gotoUrlAndExit('/default/index');
             }
  
         }
@@ -40,8 +40,8 @@ class App_Controller_Plugin_Auth extends Zend_Controller_Plugin_Abstract
  
             // ACCESS RESOURCES (CONTROLLERS)
             // USUALLY THERE WILL BE MORE ACCESS RESOURCES
-            $acl->add(new Zend_Acl_Resource('index'));
-            $acl->add(new Zend_Acl_Resource('error'));
+            $acl->addResource(new Zend_Acl_Resource('index'));
+            $acl->addResource(new Zend_Acl_Resource('error'));
  
             // ACCESS ROLES
             $acl->addRole(new Zend_Acl_Role('guest'));
@@ -59,7 +59,7 @@ class App_Controller_Plugin_Auth extends Zend_Controller_Plugin_Abstract
  
             if (!$acl->isAllowed($role, $controller, $action)) {
                 $redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('Redirector');
-                $redirector->gotoUrlAndExit('error/denied');
+                $redirector->gotoUrlAndExit('/admin/login');
             }
  
         }
@@ -68,8 +68,11 @@ class App_Controller_Plugin_Auth extends Zend_Controller_Plugin_Abstract
  
             // ACCESS RESOURCES (CONTROLLERS)
             // USUALLY THERE WILL BE MORE ACCESS RESOURCES
-            $acl->add(new Zend_Acl_Resource('index'));
-            $acl->add(new Zend_Acl_Resource('error'));
+            $acl->addResource(new Zend_Acl_Resource('index'));
+            $acl->addResource(new Zend_Acl_Resource('error'));
+            $acl->addResource(new Zend_Acl_Resource('login'));
+            $acl->addResource(new Zend_Acl_Resource('register'));
+            $acl->addResource(new Zend_Acl_Resource('courselist'));
  
             // ACCESS ROLES
             $acl->addRole(new Zend_Acl_Role('guest'));
@@ -77,17 +80,17 @@ class App_Controller_Plugin_Auth extends Zend_Controller_Plugin_Abstract
             $acl->addRole(new Zend_Acl_Role('administrator'));
  
             // ACCESS RULES
-            $acl->allow('guest'); // ALLOW GUESTS EVERYWHERE
+            $acl->allow('guest', 'index',array('login', 'register')); // allow guests to login
             $acl->allow('administrator'); // ALLOW ADMINISTRATORS EVERYWHERE
  
-            //$role = ($auth->getIdentity() && $auth->getIdentity()->status = 'approved') ? $auth->getIdentity()->role : 'guest';
-            $role = 'guest';
+            $role = ($auth->getIdentity() && $auth->getIdentity()->status = 'approved') ? $auth->getIdentity()->role : 'guest';
+            
             $controller = $request->getControllerName();
             $action = $request->getActionName();
  
             if (!$acl->isAllowed($role, $controller, $action)) {
                 $redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('Redirector');
-                $redirector->gotoUrlAndExit('error/denied');
+                $redirector->gotoUrlAndExit('/admin/index/login');
             }
  
         }

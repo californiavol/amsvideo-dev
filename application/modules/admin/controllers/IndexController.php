@@ -7,18 +7,62 @@ class Admin_IndexController extends Zend_Controller_Action
     {
         /* Initialize action controller here */
     	$this->usersTable = new Admin_Model_DbTable_Users();
+    	
+    	$this->videosTable = new Application_Model_DbTable_Videos();
+    	
+    	$this->coursesTable = new Application_Model_DbTable_Courses();
     }
-
+    
     public function indexAction()
     {
-	// REDIRECT LOGGED IN USERS
+    	$this->view->msg = 'success';
+    }
+    
+    public function courselistAction()
+    {
+    	
+    	$this->view->courses = $this->coursesTable->getCourses();
+
+    }
+    
+    public function insertcoursesAction()
+    {
+    	$this->coursesTable->insertCsv();
+    }
+
+    public function insertvideosAction()
+    {
+    	$this->videosTable->insertCsv();
+    }
+
+    public function cleancacheAction()
+    {
+        // action body
+        $cache = Zend_Registry::get('cache');
+        
+        if($cache->clean(Zend_Cache::CLEANING_MODE_ALL)) {
+        	$this->view->cleancache = 'Cache has been cleaned.';
+        } else {
+			$this->view->cleancache = 'Cache was not cleaned!';	    	
+        }
+        
+    }
+    
+
+    public function loginAction()
+    {
+		// REDIRECT LOGGED IN USERS
 	    if (Zend_Registry::getInstance()->get('auth')->hasIdentity()) {
-	        $this->_redirect('/');
+	    	echo 'has identity';
+	        //$this->_redirect($this->url(array('module' => 'admin', 'controller' => 'index', 'action' => 'index')));
+	    } else {
+	    	echo 'no identity';
 	    }
-	    
 	 
 	    $request = $this->getRequest();
 	    $users = $this->usersTable;
+	    
+	   
 	                            
 	    $form = new Admin_Form_Login();                         
 	    
@@ -28,7 +72,8 @@ class Admin_IndexController extends Zend_Controller_Action
 	        if (isset($_POST['login']) && $form->isValid($_POST)) {
 	 
 	            // PREPARE A DATABASE ADAPTER FOR ZEND_AUTH
-	            $adapter = new Zend_Auth_Adapter_DbTable($this->_getDb());
+	            $adapter = new Zend_Auth_Adapter_DbTable($users->getAdapter());
+	            
 	            $adapter->setTableName('users');
 	            $adapter->setIdentityColumn('username');
 	            $adapter->setCredentialColumn('password_hash');
@@ -37,7 +82,7 @@ class Admin_IndexController extends Zend_Controller_Action
 	            $adapter->setCredential($form->getValue('password'));
 	 
 	            // TRY TO AUTHENTICATE A USER
-	            $auth = Zend_Registry::get('auth');
+	            $auth = Zend_Registry::get('auth');           
 	            $result = $auth->authenticate($adapter);
 	 
 	            // IS THE USER VALID ONE?
@@ -69,7 +114,7 @@ class Admin_IndexController extends Zend_Controller_Action
 	                        // STORE USER OBJECT IN THE SESSION
 	                        $authStorage = $auth->getStorage();
 	                        $authStorage->write($user);
-	                        $this->_redirect('/admin');
+	                        $this->_redirect('/admin/index/index');
 	                    }
 	                    break;
 	 
@@ -103,61 +148,38 @@ class Admin_IndexController extends Zend_Controller_Action
 	 
 	            $data = $form->getValues();
 	 
-	            if ($users->getSingleWithEmail($data['email']) != null) {
-	                // IF THE EMAIL ALREADY EXISTS IN THE DATABASE
-	                $this->view->error = 'Email already taken';
-	            } else if ($users->getSingleWithUsername($data['username']) != null) {
-	                // IF THE USERNAME ALREADY EXISTS IN THE DATABASE
-	                $this->view->error = 'Username already taken';
-	            } else if ($data['email'] != $data['emailAgain']) {
-	                // IF BOTH EMAILS DO NOT MATCH
-	                $this->view->error = 'Both emails must be same';
-	            } else if ($data['password'] != $data['passwordAgain']) {
-	                // IF BOTH PASSWORDS DO NOT MATCH
-	                $this->view->error = 'Both passwords must be same';
-	            } else {
-	 
-	                // EVERYTHING IS OK, LET'S SEND EMAIL WITH A VERIFICATION STRING
-	                // THE VERIFICATIONS STRING IS AN SHA1 HASH OF THE EMAIL
-	               	$tr = new Zend_Mail_Transport_Smtp('smtp.csus.edu');
-	    			Zend_Mail::setDefaultTransport($tr);
-	                $mail = new Zend_Mail();
-	                $mail->setFrom('charles.brownroberts@csus.edu', 'Web Services');
-	                $mail->setSubject('Thank you for registering');
-	                $mail->setBodyText('Dear Sir or Madam,
-	 
-	Thank You for registering at yourwebsite.com. In order for your account to be
-	activated please click on the following URI:
-	 
-	http://amsvideo-dev/admin/login/email-verification?STR=' . SHA1($data['email'])
-	. '
-	Best Regards,
-	Web Services staff');
-	                $mail->addTo($data['email'],
-	                             $data['first_name'] . ' ' . $data['last_name']);
-	 
-	                if (!$mail->send()) {
-	                    // EMAIL SENDING FAILED
-	                    $this->view->error = 'Failed to send email to the address you provided';
-	                } else {
-	 
-	                    // EMAIL SENT SUCCESSFULLY, LET'S ADD THE USER TO THE DATABASE
-	                    unset($data['emailAgain'], $data['passwordAgain'],
-	                          $data['register']);
-	                    $data['salt'] = $this->_helper->RandomString(40);
-	                    $data['role'] = 'user';
-	                    $data['status'] = 'pending';
-	                    $users->add($data);
-	                    $this->view->success = 'Successfully registered';
-	 
-	                }
-	 
-	            }
+	           	$data['salt'] = $this->generateRandomString(40);
+	            $data['status'] = 'approved';
+	            $users->add($data);
 	 
 	        }
 	    }
 	 
 	    $this->view->form = $form;
+    }
+    
+	public function generateRandomString ($length = 32, $chars = '1234567890abcdef')
+    {
+		// LENGTH OF CHARACTER LIST
+        $charsLength = (strlen($chars) - 1);
+ 
+        // START OUR STRING
+        $string = $chars{rand(0, $charsLength)};
+ 
+        // GENERATE RANDOM STRING
+        for ($i = 1; $i < $length; $i = strlen($string)) {
+            // GRAB A RANDOM CHARACTER FROM OUR LIST
+            $r = $chars{rand(0, $charsLength)};
+            // MAKE SURE THE SAME TWO CHARACTERS DON'T APPEAR NEXT TO EACH OTHER
+            if ($r != $string{$i - 1}) {
+                $string .=  $r;
+            } else {
+                $i--;
+            }
+        }
+ 
+        // RETURN THE STRING
+        return $string;
     }
 
     public function emailVerificationAction()
@@ -189,6 +211,13 @@ class Admin_IndexController extends Zend_Controller_Action
 	    }
     }
 
+	public function logoutAction()
+	{
+		$authAdapter = Zend_Auth::getInstance();
+		$authAdapter->clearIdentity();
+			
+	}
+    
     public function addCoursesAction()
     {
         // action body
