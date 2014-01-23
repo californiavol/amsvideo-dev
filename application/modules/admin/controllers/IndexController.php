@@ -16,6 +16,8 @@ class Admin_IndexController extends Zend_Controller_Action
     public function indexAction()
     {
     	$this->view->msg = 'success';
+    	$this->view->currentSemester = $this->coursesTable->getCurrentSemester();
+    	$this->view->currentYear = $this->coursesTable->getCurrentYear();
     }
     
     public function courselistAction()
