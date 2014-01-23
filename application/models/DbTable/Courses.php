@@ -8,8 +8,8 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
 
     public function init()
     {
-		$logger = Zend_Registry::get('log');
-		$this->logger = $logger;
+		//$logger = Zend_Registry::get('log');
+		//$this->logger = $logger;
 		//$this->logger->log('Informational message', Zend_Log::INFO);
     }   
     
