@@ -44,7 +44,16 @@ a {color:#f0e1b0;}
 
 }
 
+#contentinfo  {
+    background: #f0e1b0;
+    margin-top: 20px;
+	padding-top:20px;
+    height: 185px;
+    border-top: 10px solid #333;
+	color:#000;
+}
 
+#contentinfo a {color:#00573d;}
 
 
 /* Extra small devices (phones, less than 768px) */
@@ -83,4 +92,15 @@ a {color:#f0e1b0;}
 		height: 220px;
 		
 	}
+	
+	#contentinfo  {
+    	background: #f0e1b0;
+    	margin-top: 20px;
+		padding-top:20px;
+    	height: 185px;
+    	border-top: 10px solid #333;
+		color:#000;
+		text-align:center;
+	}
+
 }
