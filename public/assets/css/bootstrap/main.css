@@ -32,17 +32,37 @@ a {color:#f0e1b0;}
 
 #main .jumbotron {background-color:#f0e1b0; color:#00573d;}
 
-#main h2  {
-    padding:0.2em;
-    border-top: medium none;
-    font-family: Georigia;
+
+
+h2, h3 {
+    background-color:#01402d;
+    color:#FFF;
+    font-family:"Trajan Pro", Georgia;
+	font-size:1em;
     text-transform:uppercase;
-    font-size: 1.3em;
-    line-height: normal;
-    background-color:#3e647e;
-    background:url('http://www.csus.edu/cached/Colleges/2.0/assets/images/content-module/header-blue-slice.png') repeat-x;
+    line-height:normal;
+    padding:0.2em;
+    vertical-align:middle;
+    background-image: url('http://www.csus.edu/cached/Colleges/1.0/images/regions/main/mainregion.h2.bg.slice.1x29.png');
+    background-repeat: repeat-x;
+    background-color:transparent;
+    border-top:1px solid #f0e1b0;
+    margin-bottom:0.1em;
+    display:block;
+    clear:both;
+}
+h2:before,
+h3:before {
+    position:relative;
+    top:1px;
+    content:url('http://www.csus.edu/cached/Colleges/1.0/images/icons/doubleS_13x19.png');
+    padding-right:6px;
+    padding-left:4px;   
 
 }
+
+
+
 
 #contentinfo  {
     background: #f0e1b0;
