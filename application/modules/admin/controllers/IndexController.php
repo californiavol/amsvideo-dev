@@ -6,6 +6,10 @@ class Admin_IndexController extends Zend_Controller_Action
     public function init()
     {
         /* Initialize action controller here */
+    	
+    	//set different layout
+    	$this->_helper->layout->setLayout('admin-layout');
+    	
     	$this->usersTable = new Admin_Model_DbTable_Users();
     	
     	$this->videosTable = new Application_Model_DbTable_Videos();
