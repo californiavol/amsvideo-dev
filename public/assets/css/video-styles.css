@@ -137,4 +137,4 @@
 .ss-coursevideos-list ul li {background-color:#262626;color:#fff; padding:1em; border-bottom:1px inset #444;}
 
 .ss-coursevideos-list ul li h4 {color:#fff; font-size:1.2em; padding-bottom:0; margin-bottom:0;}
-.ss-coursevideos-list ul li p {color:#fff; font-size:1.1em;padding-left:0; padding-right:1em; padding-bottom:0; line-height:normal; margin-bottom:0.2em;}
+.ss-coursevideos-list ul li p {color:#fff; font-size:1.1em;padding-left:0; padding-right:1em; padding-bottom:0; line-height:normal; margin-bottom:0.2em; text-transform:capitalize;}
