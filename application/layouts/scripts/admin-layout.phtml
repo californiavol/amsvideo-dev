@@ -80,7 +80,16 @@
 
   <!-- #main: page content goes here-->  
   <div id="main" role="main"> <a id="mainContent"></a> <!-- accessibility, skip to main content target --> 
-  	<?php echo $this->layout()->content; ?> 
+  	
+  	
+  	<div class="container">
+    	<div class="row">
+        	<?php echo $this->layout()->content; ?> 
+        	
+      	</div>
+	</div>
+  	
+  	
   </div>
   <!-- end #main --> 
   
