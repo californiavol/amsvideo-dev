@@ -92,6 +92,50 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
     	
     	$val = array();
     	foreach ($csvData as $val) {
+    		
+    		//START_DT $val['START_DT'] 1/27/14
+    	  	$start_date = $val['START_DT'];
+	      	$date_part = explode('/', $start_date);
+	      	
+	      	$year = $date_part[2];
+	      	$month = $date_part[0];
+	      	$day = $date_part[1];
+    	
+    	
+			//START_TIME 'START_TIME' 19:30:00
+			$start_time = $val['START TIME'];
+			$start_time_part = explode(':', $start_time);
+	      	
+	      	$hour   = $start_time_part[0]; 
+	      	$minute = $start_time_part[1];
+	      	$second = $start_time_part[2];
+	      	
+			$datearray = array('hour'   => $hour,
+			                   'minute' => $minute,
+			                   'second' => $second);	      	
+	      	$start_time_time = new Zend_Date();
+	      	
+	      	
+	      	//DURATION 'DURATION' 0:50
+	      	$duration = $val['DURATION'];
+	      	$duration_part = explode(':', $duration);
+	      	
+	      	$hour   = $duration_part[0]; 
+	      	$minute = $duration_part[1];
+	      	
+	      	
+			$datearray = array('hour'   => $hour,
+			                   'minute' => $minute,
+			                   'second' => 00);
+			$duration_time = new Zend_Date($datearray);  
+
+			//$available_time = new Zend_Date();
+			//$available_time = $available_time->add('02:50:00', new Zend_Date());
+			//$available_time = DateTime::createFromFormat('H:mm:ss',$available_time);
+			
+    		$available_time = date('H:i:s', strtotime($start_time)+strtotime($duration_time));
+    		$available_time = date('H:i:s', strtotime($available_time)+10800);
+    		
     		$data = array(
     			'start_dt' => $val['START_DT'],
     			'days' => $val['DAYS'],
@@ -111,6 +155,7 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
     			'class_nbr' => $val['CLASS_NBR'],
     			'combined_id' => $val['COMBINED_ID'],
     			'combined_class_nbr' => $val['COMBINED_CLASS_NBR'],
+    		    'available_time' => $available_time,
     		);
     		//var_dump($data);	
     		$this->insert($data);	
