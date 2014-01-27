@@ -19,6 +19,13 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
         return $rows;    	
     }
     
+    public function getCourseCount()
+    {
+        $rows = $this->fetchAll();
+        $rowCount = count($rows);
+        return $rowCount;      	
+    }
+    
     public function getCourseByClassNbr($classNbr)
     {
  		if ($classNbr == NULL) {
@@ -53,7 +60,9 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
     	//parse the csv
     	$data = $this->_parseCsv();
     	//insert into db
-    	$this->_insertCsv2Db($data);
+    	if($this->_insertCsv2Db($data)) {
+    		return true;
+    	}
     }      
 
     private function _parseCsv()
@@ -61,18 +70,6 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
     	require_once APPLICATION_PATH . '/../library/vendors/Datasource.php';
     	
     	$coursesCsv = APPLICATION_PATH . '/../data/csv/sac_cm_courses.csv';
-    	
-    	
-    	/*
-    	 * // outputs e.g.  somefile.txt was last modified: December 29 2002 22:16:23.
-
-			$filename = 'somefile.txt';
-			if (file_exists($filename)) {
-			    echo "$filename was last modified: " . date ("F d Y H:i:s.", filemtime($filename));
-			}
-    	 * 
-    	 * */
-    	
     	
     	if (!file_exists($coursesCsv)) {
     		die();
@@ -116,7 +113,7 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
     			'combined_class_nbr' => $val['COMBINED_CLASS_NBR'],
     		);
     		//var_dump($data);	
-    		$this->insert($data); 
+    		$this->insert($data);	
     	}
     }
 
