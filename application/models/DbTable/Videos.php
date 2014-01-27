@@ -19,6 +19,13 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 		return $rows;
     }
     
+    public function getVideoCount()
+    {
+        $rows = $this->fetchAll();
+        $rowCount = count($rows);
+        return $rowCount;      	
+    }
+    
     
     public function getVideoById($id)
     {

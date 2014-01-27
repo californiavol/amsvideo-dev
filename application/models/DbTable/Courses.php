@@ -19,6 +19,13 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
         return $rows;    	
     }
     
+    public function getCourseCount()
+    {
+        $rows = $this->fetchAll();
+        $rowCount = count($rows);
+        return $rowCount;      	
+    }
+    
     public function getCourseByClassNbr($classNbr)
     {
  		if ($classNbr == NULL) {
@@ -53,7 +60,9 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
     	//parse the csv
     	$data = $this->_parseCsv();
     	//insert into db
-    	$this->_insertCsv2Db($data);
+    	if($this->_insertCsv2Db($data)) {
+    		return true;
+    	}
     }      
 
     private function _parseCsv()
@@ -61,18 +70,6 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
     	require_once APPLICATION_PATH . '/../library/vendors/Datasource.php';
     	
     	$coursesCsv = APPLICATION_PATH . '/../data/csv/sac_cm_courses.csv';
-    	
-    	
-    	/*
-    	 * // outputs e.g.  somefile.txt was last modified: December 29 2002 22:16:23.
-
-			$filename = 'somefile.txt';
-			if (file_exists($filename)) {
-			    echo "$filename was last modified: " . date ("F d Y H:i:s.", filemtime($filename));
-			}
-    	 * 
-    	 * */
-    	
     	
     	if (!file_exists($coursesCsv)) {
     		die();
@@ -95,6 +92,50 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
     	
     	$val = array();
     	foreach ($csvData as $val) {
+    		
+    		//START_DT $val['START_DT'] 1/27/14
+    	  	$start_date = $val['START_DT'];
+	      	$date_part = explode('/', $start_date);
+	      	
+	      	$year = $date_part[2];
+	      	$month = $date_part[0];
+	      	$day = $date_part[1];
+    	
+    	
+			//START_TIME 'START_TIME' 19:30:00
+			$start_time = $val['START TIME'];
+			$start_time_part = explode(':', $start_time);
+	      	
+	      	$hour   = $start_time_part[0]; 
+	      	$minute = $start_time_part[1];
+	      	$second = $start_time_part[2];
+	      	
+			$datearray = array('hour'   => $hour,
+			                   'minute' => $minute,
+			                   'second' => $second);	      	
+	      	$start_time_time = new Zend_Date();
+	      	
+	      	
+	      	//DURATION 'DURATION' 0:50
+	      	$duration = $val['DURATION'];
+	      	$duration_part = explode(':', $duration);
+	      	
+	      	$hour   = $duration_part[0]; 
+	      	$minute = $duration_part[1];
+	      	
+	      	
+			$datearray = array('hour'   => $hour,
+			                   'minute' => $minute,
+			                   'second' => 00);
+			$duration_time = new Zend_Date($datearray);  
+
+			//$available_time = new Zend_Date();
+			//$available_time = $available_time->add('02:50:00', new Zend_Date());
+			//$available_time = DateTime::createFromFormat('H:mm:ss',$available_time);
+			
+    		$available_time = date('H:i:s', strtotime($start_time)+strtotime($duration_time));
+    		$available_time = date('H:i:s', strtotime($available_time)+10800);
+    		
     		$data = array(
     			'start_dt' => $val['START_DT'],
     			'days' => $val['DAYS'],
@@ -114,9 +155,10 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
     			'class_nbr' => $val['CLASS_NBR'],
     			'combined_id' => $val['COMBINED_ID'],
     			'combined_class_nbr' => $val['COMBINED_CLASS_NBR'],
+    		    'available_time' => $available_time,
     		);
     		//var_dump($data);	
-    		$this->insert($data); 
+    		$this->insert($data);	
     	}
     }
 

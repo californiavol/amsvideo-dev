@@ -6,18 +6,26 @@ class Admin_IndexController extends Zend_Controller_Action
     public function init()
     {
         /* Initialize action controller here */
+    	
+    	//set different layout
+    	//$this->_helper->layout->setLayout('admin-layout');
+    	
+    	//get flashmessenger
+    	$this->flashMsg = $this->_helper->flashMessenger;
+    	
+    	//get db tables
     	$this->usersTable = new Admin_Model_DbTable_Users();
-    	
     	$this->videosTable = new Application_Model_DbTable_Videos();
-    	
     	$this->coursesTable = new Application_Model_DbTable_Courses();
     }
     
     public function indexAction()
     {
-    	$this->view->msg = 'success';
+    	
     	$this->view->currentSemester = $this->coursesTable->getCurrentSemester();
     	$this->view->currentYear = $this->coursesTable->getCurrentYear();
+    	$this->view->courseCount = $this->coursesTable->getCourseCount();
+    	$this->view->videoCount = $this->videosTable->getVideoCount();
     }
     
     public function courselistAction()
@@ -29,7 +37,10 @@ class Admin_IndexController extends Zend_Controller_Action
     
     public function insertcoursesAction()
     {
-    	$this->coursesTable->insertCsv();
+    	if ($this->coursesTable->insertCsv()) {
+    		$this->redirect('/admin/index/courselist');
+    	}
+    	
     }
 
     public function insertvideosAction()
@@ -132,12 +143,7 @@ class Admin_IndexController extends Zend_Controller_Action
     }
 
     public function registerAction()
-    {
-        // REDIRECT LOGGED IN USERS
-	    if (Zend_Registry::getInstance()->get('auth')->hasIdentity()) {
-	        $this->_redirect('/');
-	    }
-	 
+    {	 
 	    $request = $this->getRequest();
 		$users = $this->usersTable;
 	 
