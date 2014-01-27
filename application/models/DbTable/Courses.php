@@ -59,6 +59,7 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
     {
     	//parse the csv
     	$data = $this->_parseCsv();
+    	
     	//insert into db
     	if($this->_insertCsv2Db($data)) {
     		return true;
