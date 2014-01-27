@@ -30,10 +30,18 @@ a {color:#f0e1b0;}
   background-color: transparent;
 }
 
-#main .jumbotron {background-color:#f0e1b0; color:#00573d;}
+#main .jumbotron { 
+	color:#00573d;
+	background:url(/assets/images/MarqueeBackdropLIGHT.png) no-repeat;
+	
+	
+}
 
+#main .jumbotron-wrapper {
+	background-color:#f0e1b0;
+}
 
-
+#main .jumbotron h1 {font-size:1.6em;}
 h2, h3 {
     background-color:#01402d;
     color:#FFF;
@@ -160,6 +168,64 @@ h3:before {
 }
 
 #contentinfo a {color:#00573d;}
+
+
+
+
+/* calendar widget */
+
+.w-calendar{
+    display:block;
+    position:relative;
+    margin-top:1em;
+    background:url('http://www.csus.edu/Monet/1.0/Images/content/greenGradient_bg.gif') repeat-x scroll left top transparent;
+}
+.w-calendar h4 {
+    color:#fff;
+    margin-top:0.1em;
+    margin-bottom:0;
+    padding-top:.5em;
+    font-size:1em;
+    text-indent:0.5em;
+}
+.w-calendar footer {
+    text-align:center;
+    padding:0.3em;
+    color:#FFF;
+    font-family:"Trajan Pro", Georgia;
+    text-transform:uppercase;
+}
+.w-calendar ul {
+    border-bottom:1px solid #1A4C3C;  
+    margin:0;
+    padding:0;
+}
+
+.w-calendar ul li {
+    list-style-type:none;   
+    border-top:1px dotted #1A4C3C; 
+    margin:0;
+    padding:0;        
+}
+.w-calendar ul li p {
+    background:transparent;
+    text-align:left;
+    font-size:1.1em;
+    padding:0.2em;
+    margin:0.5em;
+}
+
+.w-calendar a:link,
+.w-calendar a:visited {
+    text-decoration:none;
+    color:#f0e1b0;  
+}
+.w-calendar a:hover,
+.w-calendar a:active {
+    text-decoration:underline;
+    color:#f0e1b0;
+}
+
 
 
 /* Extra small devices (phones, less than 768px) */
