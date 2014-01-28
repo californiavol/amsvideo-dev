@@ -7,7 +7,7 @@ defined('APPLICATION_PATH')
 
 // Define application environment
 defined('APPLICATION_ENV')
-  || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
+  || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'development'));
 
 // Ensure library/ is on include_path
 set_include_path(implode(PATH_SEPARATOR, array(
@@ -18,6 +18,9 @@ set_include_path(implode(PATH_SEPARATOR, array(
 //echo get_include_path();
 
 
+					       
+					       
+					       
 /** Zend_Application */
 require_once 'Zend/Application.php';
 
@@ -30,3 +33,4 @@ $application = new Zend_Application(
 //var_dump($application);
 $application->bootstrap()
   ->run();
+

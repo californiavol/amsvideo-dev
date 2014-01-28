@@ -10,19 +10,14 @@
 
 	<div class="row ss-videoplayer backdrop">
    		<div class="col-md-8" id="osmfcontainer">
-	
-		  <h3>Live Video Streams</h3>
-    	<?php echo $this->partial('index/_livestreamnav.phtml'); ?>
+		  <?php echo $this->partial('index/_osmfplayerLive1.phtml'); ?>
+    	
    		</div>
 
     
  		<div class="col-md-4 ss-coursevideos-list" id="course_video_container">
 	 		
-		  <?php if ($this->course) {
-			echo '<h1>'.$this->course->course_name. '</h1>'; 
-			} else {
-			  	echo '<h1>Sac State Streaming Video</h1>';
-		}?>
+		<?php echo $this->partial('index/_livestreamnav.phtml'); ?>
    		</div>
 	</div>
 </div>
