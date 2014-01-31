@@ -39,7 +39,9 @@ class IndexController extends Zend_Controller_Action
     	if ($this->class_nbr && !$this->videoId) {
 	    	//get individual course if class_nbr param set
     	    $this->view->course = $this->coursesTable->getCourseByClassNbr($this->class_nbr);
-    		$this->view->coursevideos = $this->videosTable->getVideosByClassNbr($this->class_nbr);    	
+    		$this->view->coursevideos = $this->videosTable->getVideosByClassNbr($this->class_nbr);
+			//$this->view->coursevideos = $this->videosTable->getCourseVideos($this->class_nbr);
+    		
     	} elseif ($this->class_nbr && $this->videoId) {
     		
     	    $this->view->course = $this->coursesTable->getCourseByClassNbr($this->class_nbr);
