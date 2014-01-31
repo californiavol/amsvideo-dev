@@ -36,7 +36,16 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 		return $row;   	
     }
     
-
+	public function getCourseVideos($class_nbr)
+	{
+		$select = $this->select();
+		$select->setIntegrityCheck(false);
+		$select->where('class_nbr = ?', $class_nbr)
+				->join('courses', 'videos.class_nbr = courses.class_nbr');
+				
+		$rows = $this->fetchAll($select);
+		return $rows;
+	}
     
 	public function getMostRecentVideo($id)
 	{
@@ -86,16 +95,23 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 
     $val = array();
     foreach ($csvData as $val) {
+    	
+    	//Use START_DT 'START_DT' 27-jan-2014 to create filename_partial
+		$date = DateTime::createFromFormat('j-M-Y', $val['START_DT']);
+        $filename_partial =  $date->format('Y_m_d');
+	      	
+	      	
                                                                              
-      $data = array(
+      	$data = array(
                     'start_dt'  => strtolower($val['START_DT']),
                     'days'      => strtolower($val['DAYS']),
                     'studio'    => $val['STUDIO'],
                     'course_id' => $val['COURSE_ID'],
-                    'class_nbr' => $val['CLASS_NBR']
+                    'class_nbr' => $val['CLASS_NBR'],
+      				'filename_partial' => $filename_partial
                     );
-      //var_dump($data);                                                                                                       
-      $this->insert($data);
+      	//var_dump($data);                                                                                                       
+      	$this->insert($data);
     }
   }
 	

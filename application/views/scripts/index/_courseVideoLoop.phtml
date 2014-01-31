@@ -2,7 +2,8 @@
 	<p>
 
 	 	<a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'index', 'cid' => $this->class_nbr, 'vid' => $this->id)); ?>">
-     		<?php echo $this->escape($this->days); ?> <?php echo $this->escape($this->start_dt); ?>	
+     		<?php echo $this->escape($this->days); ?> <?php echo $this->escape($this->start_dt); ?>	Start time: <?php echo $this->escape($this->start_time); ?>	
+     		
         </a>
        
        <br/>

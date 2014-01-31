@@ -36,6 +36,18 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
 		return $row;   	
     }
     
+	public function getCourseVideos($class_nbr)
+	{
+		$select = $this->select();
+		$select->setIntegrityCheck(false);
+		$select->where('class_nbr = ?', $class_nbr)
+				->join('videos', 'courses.class_nbr = videos.class_nbr')
+				->where('videos.class_nbr = ?', $class_nbr);
+				
+		$rows = $this->fetchAll($select);
+		return $rows;
+	}
+    
 	public function getCurrentSemester()
 	{
 		$row = $this->fetchRow($this->select()->limit(1));
