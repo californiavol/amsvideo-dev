@@ -36,7 +36,16 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 		return $row;   	
     }
     
-
+	public function getCourseVideos($class_nbr)
+	{
+		$select = $this->select();
+		$select->setIntegrityCheck(false);
+		$select->where('class_nbr = ?', $class_nbr)
+				->join('courses', 'videos.class_nbr = courses.class_nbr');
+				
+		$rows = $this->fetchAll($select);
+		return $rows;
+	}
     
 	public function getMostRecentVideo($id)
 	{
@@ -55,56 +64,57 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 	}  
 	
  	private function _parseCsv()
-    {
-    	require_once APPLICATION_PATH . '/../library/vendors/Datasource.php';
-    	
-    	$videosCsv = APPLICATION_PATH . '/../data/csv/sac_cm_videos.csv';
-    	
-    	if (!file_exists($videosCsv)) {
-    		die();
-    	}
-    	
-    	$inputFile = $videosCsv;
-    	
-    	$csv = new File_CSV_DataSource;
-		$csv->load($inputFile);
-		$csvarray = $csv->connect();
-		return $csvarray;    	
-    }
-    
-    public function insertCsv() 
-    {
-    	$this->_insertCsv2Db();
-    }
-    
- 	private function _insertCsv2Db()
-    {
-    	$csvData = $this->_parseCsv();
-    	
-	  //empty the videos table
-	  $this->getAdapter()->query('TRUNCATE TABLE videos');
-    	
-    	
-    	$val = array();
-    	foreach ($csvData as $val) {
-    		
-    		
-    		$date = DateTime::createFromFormat('j-M-Y', $val['START_DT']);
-			$start_dt =  $date->format('Y_m_d');
-    				
-    		
-    		$data = array(
-    			'start_dt'  => strtolower($start_dt),
-    			'days'      => strtolower($val['DAYS']),
-    			'studio'    => $val['STUDIO'],
-    			'course_id' => $val['COURSE_ID'],    			
-    			'class_nbr' => $val['CLASS_NBR'],
+  {
+    require_once  APPLICATION_PATH . '/../library/vendors/DataSource.php';
 
-    		);
-    		//var_dump($data);	
-    		$this->insert($data); 
-    	}
-    }	
+    $inputFile = APPLICATION_PATH . '/../data/csv/sac_cm_videos.csv';
+    $csv = new File_CSV_DataSource;
+    $csv->load($inputFile);
+    $csvArray = $csv->connect();
+
+    return $csvArray;
+  }
+
+  public function insertCsv()
+  {
+    //parse the csv                                                                                                            
+    $data = $this->_parseCsv();
+
+    //insert into db                                                                                                           
+    if($this->_insertCsv2Db($data)) {
+      return true;
+    }
+  }
+
+  private function _insertCsv2Db($data = array())
+  {
+    $csvData = $data;
+
+    //empty the videos table                                                                                                   
+    $this->getAdapter()->query('TRUNCATE TABLE videos');
+
+    $val = array();
+    foreach ($csvData as $val) {
+    	
+    	//Use START_DT 'START_DT' 27-jan-2014 to create filename_partial
+		$date = DateTime::createFromFormat('j-M-Y', $val['START_DT']);
+        $filename_partial =  $date->format('Y_m_d');
+	      	
+	      	
+                                                                             
+      	$data = array(
+                    'start_dt'  => strtolower($val['START_DT']),
+                    'days'      => strtolower($val['DAYS']),
+                    'studio'    => $val['STUDIO'],
+                    'course_id' => $val['COURSE_ID'],
+                    'class_nbr' => $val['CLASS_NBR'],
+      				'filename_partial' => $filename_partial
+                    );
+      	//var_dump($data);                                                                                                       
+      	$this->insert($data);
+    }
+  }
+	
 
 
 

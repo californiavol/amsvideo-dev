@@ -226,7 +226,7 @@ class Admin_IndexController extends Zend_Controller_Action
 			
 	}
     
-    public function addCoursesAction()
+    public function addcoursesAction()
     {
         // action body
     }

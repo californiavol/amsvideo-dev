@@ -7,7 +7,7 @@
 <title>Sacramento State Course Videos</title>
 
 <!-- css -->
-<link href="http://getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
 <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css" />
 
 <link href="<?php echo $this->baseUrl(); ?>/assets/css/video-styles.css" media="all" rel="stylesheet" type="text/css"/>
@@ -25,7 +25,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
-<script src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <!-- end javascript -->
 
 </head>
@@ -81,35 +81,26 @@
 
   <!-- #main: page content goes here-->  
   <div id="main" role="main"> <a id="mainContent"></a> <!-- accessibility, skip to main content target --> 
-  	<?php echo $this->layout()->content; ?> 
+   	<div class="container">
+    	<div class="row">
+        	<?php echo $this->layout()->content; ?> 
+      	</div>
+	</div> 	
   </div>
   <!-- end #main --> 
   
-	<!-- Example row of columns -->
-   	<div class="container">
-    	<div class="row">
-        	<div class="col-md-8">
-		  	
-        	</div>
-        	<div class="col-md-4">
-         
-       		</div>
-      	</div>
-	</div>
-  
-  
-  
 
-<!-- #contentinfo :contentinfo is landmark region for the footer -->
+
+
 <div class="container">
 
 	<hr/>
 	<div class="row">
 		<?php echo $this->partial('index/_nav.phtml', 'default'); ?>
 	</div>
-	
 	<hr/>
 	
+	<!-- #contentinfo :contentinfo is landmark region for the footer -->	
 	<div class="row">
         <div class="contentinfo" id="contentinfo" role="contentinfo">
           <div class="col-md-1 address" id="address">
@@ -151,7 +142,7 @@
 </div>
 
 <!-- js at the bottom of page for faster load times --> 
-<script src="/video/assets/js/osmf.js" type="text/javascript"></script> 
+<script src="<?php echo $this->baseUrl(); ?>/assets/js/osmf.js" type="text/javascript"></script> 
 
 
 <!-- google anayltics --> 
