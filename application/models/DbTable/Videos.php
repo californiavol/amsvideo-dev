@@ -138,10 +138,10 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 	      	
 	      		 $year  = $date_part['2'];
 	      		 
-	      		 $month = date('m',strtotime($date_part['1']));	      		 
+	      		 $month = '1'; //date('m',strtotime($date_part['1']));	      		 
 	      		 //$day = '27';
 	      		 
-	      		 $day   = $date_part['0'];
+	      		$day   = $date_part['0'];
 
         		 
         		 //START_TIME 'START_TIME' 19:30:00
@@ -153,20 +153,18 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 	      		 $second = $start_time_part['2'];
 				 
 	      		
-	      		$datetimeStr = $year.'-'.$month.'-'.$day.'&nbsp;'.$hour.':'.$minute.':'.$second;
+	      		$datetimeStr = $year.'-'.$month.'-'.$day.' '.$row['start_time'];
 	      		//var_dump($datetimeStr);
-	      		$timezone = new DateTimeZone("PST");
+	      		//$timezone = new DateTimeZone("PST");
 	      		
-	      		$date = DateTime::createFromFormat('Y-m-d H:i:s', $datetimeStr, $timezone);
-	      		
-	      	
-	      		$date = $date->format('Y-m-d H:i:s');
+	      		//$date = DateTime::createFromFormat('Y-m-d H:i:s', $datetimeStr, $timezone);
+	      		//$date = $date->format('Y-m-d H:i:s');
 	      		//$dateTime = date_create($datetimeStr);
 	      		//$date = date_format($dateTime, 'm-d-Y H:i:s');
 	      		
 	  
 	      		$videosData = array(
-					  'live_start_datetime' => $date,
+					  'live_start_datetime' => $datetimeStr,
 	
 					  );
 		      
