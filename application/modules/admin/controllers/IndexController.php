@@ -32,13 +32,15 @@ class Admin_IndexController extends Zend_Controller_Action
     {
     	
     	$this->view->courses = $this->coursesTable->getCourses();
+    	
+    	$this->view->dt = $this->videosTable->convertDate();
 
     }
     
     public function insertcoursesAction()
     {
     	if ($this->coursesTable->insertCsv()) {
-    		$this->redirect('/admin/index/courselist');
+    		$this->_helper->redirector('courselist');
     	}
     	
     }

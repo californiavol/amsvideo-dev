@@ -1,2 +1,11 @@
-<?php
-echo $this->msg;
+
+<div class="container">
+	<div class="row">
+		<?php if ($this->course) {
+			echo '<h1>'.$this->course->course_name. '</h1>'; 
+			} else {
+			  	echo '<h1>Sac State Streaming Video</h1>';
+		}?>
+		<p><?php echo $this->msg; ?></p>
+	</div>
+</div>
