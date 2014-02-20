@@ -160,6 +160,7 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
     		//var_dump($data);	
     		$this->insert($data);	
     	}
+    	return true;
     }
 
     

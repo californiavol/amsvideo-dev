@@ -92,6 +92,9 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 
     //empty the videos table                                                                                                   
     $this->getAdapter()->query('TRUNCATE TABLE videos');
+    
+    //get the courses table
+    $coursesTable = new Application_Model_DbTable_Courses();
 
     //insert parsed cvs into videos table
     $val = array();
@@ -100,16 +103,28 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
     	//Use START_DT 'START_DT' 27-jan-2014 to create filename_partial
 		$date = DateTime::createFromFormat('j-M-Y', $val['START_DT']);
         $filename_partial =  $date->format('Y_m_d');
-	      	
-	      	
+        
+        //get row from courses table by class_nbr
+  		$row = $coursesTable->fetchRow($coursesTable->select()
+				 ->where('class_nbr = ?', $val['CLASS_NBR'])
+				 ->limit(1)
+				 );      
+         	
+				 
+        $live_start_datetime = date('Y-m-d H:i:s', strtotime($val['START_DT'].' '.$row['start_time']));
+        $live_end_datetime = date('Y-m-d H:i:s', strtotime($val['START_DT'].' '.$row['available_time'])-10800);
+        $recorded_available_datetime = date('Y-m-d H:i:s', strtotime($val['START_DT'].' '.$row['available_time']));
                                                                              
       	$data = array(
-                    'start_dt'  => strtolower($val['START_DT']),
-                    'days'      => strtolower($val['DAYS']),
+                    'start_dt'  => $val['START_DT'],
+      				'days'      => strtolower($val['DAYS']),
                     'studio'    => $val['STUDIO'],
                     'course_id' => $val['COURSE_ID'],
                     'class_nbr' => $val['CLASS_NBR'],
-      				'filename_partial' => $filename_partial
+      				'filename_partial' => $filename_partial,
+      				'live_start_datetime' => $live_start_datetime,
+      				'live_end_datetime' => $live_end_datetime,
+      				'recorded_available_datetime' => $recorded_available_datetime,
                     );
       	//var_dump($data);                                                                                                       
       	$this->insert($data);
@@ -173,6 +188,12 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 	    }
     
     
+  }
+  
+  public function convertDate($datetimeStr = null)
+  {
+  	$date = date("Y-m-d H:i:s", strtotime($datetimeStr));
+  	return $date;
   }
 	
 
