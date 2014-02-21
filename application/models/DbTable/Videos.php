@@ -10,7 +10,21 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 		//$logger = Zend_Registry::get('log');
 		//$this->logger = $logger;
 		//$this->logger->log('Informational message', Zend_Log::INFO);
-    }    
+    }  
+
+    public function getAllVideos()
+    {
+    	//$result = $this->fetchAll();
+    	//$result->toArray();
+    	
+    	$select = $this->select();
+		$select->setIntegrityCheck(false);
+		//$select->joinRight('courses', 'videos.class_nbr = courses.class_nbr');
+				
+		$result = $this->fetchAll($select);
+    	
+	    return $result;
+    }
     
     
     public function getVideosByClassNbr($id)
@@ -146,19 +160,14 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 				 ->limit(1)
 				 );
 				 
-				 //$dateTime = $d['start_dt'].' '.$row['start_time'];
 				 //split the start_dt to create month day year
 				 $start_date = $d['start_dt'];
 	      		 $date_part  = explode('-', $start_date);
 	      	
-	      		 $year  = $date_part['2'];
-	      		 
-	      		 $month = '1'; //date('m',strtotime($date_part['1']));	      		 
-	      		 //$day = '27';
-	      		 
-	      		$day   = $date_part['0'];
+	      		 $year  = $date_part[2];
+	      		 $month = date('m',strtotime($date_part[1]));	      		 
+	      		 $day   = $date_part[0];
 
-        		 
         		 //START_TIME 'START_TIME' 19:30:00
 				 $start_time = $row['start_time'];
 				 $start_time_part = explode(':', $start_time);
@@ -166,17 +175,8 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 	      		 $hour   = $start_time_part['0']; 
       			 $minute = $start_time_part['1'];
 	      		 $second = $start_time_part['2'];
-				 
-	      		
+				 	      		
 	      		$datetimeStr = $year.'-'.$month.'-'.$day.' '.$row['start_time'];
-	      		//var_dump($datetimeStr);
-	      		//$timezone = new DateTimeZone("PST");
-	      		
-	      		//$date = DateTime::createFromFormat('Y-m-d H:i:s', $datetimeStr, $timezone);
-	      		//$date = $date->format('Y-m-d H:i:s');
-	      		//$dateTime = date_create($datetimeStr);
-	      		//$date = date_format($dateTime, 'm-d-Y H:i:s');
-	      		
 	  
 	      		$videosData = array(
 					  'live_start_datetime' => $datetimeStr,
@@ -186,7 +186,7 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 		      $where = $this->getAdapter()->quoteInto('class_nbr = ?', $row['class_nbr']);
 		      $this->update($videosData, $where);
 	    }
-    
+    return true;
     
   }
   
