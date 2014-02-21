@@ -1,12 +1,7 @@
 <div class="container">
 	<div class="row">
-		<h1>Video Course List</h1>
+		<h1>Streaming Video Courses List</h1>
 		<table class="table">
-		<tr>
-			<td>
-			  Datetime: <?php echo $this->dt; ?>
-			</td>
-		</tr>
 			<?php echo $this->partialLoop('index/_courseListBrief.phtml', $this->courses); ?>
 		</table>
 		

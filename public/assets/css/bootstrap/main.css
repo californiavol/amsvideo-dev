@@ -11,6 +11,16 @@ h1 {font-size: 24px;}
 a {color:#f0e1b0;}
 
 
+.ss-header {
+	background-color:#f0e1b0;
+}
+
+.ss-footer {
+	background-color:#f0e1b0;
+}
+
+
+
 #ss_banner_nav .navbar-default {
 	background-color:#001e14;
 	border-color:#001e14;
