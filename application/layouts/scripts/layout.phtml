@@ -38,64 +38,69 @@
 <div class="sr-only" id="skip"><a href="#mainContent">Skip to Main Content</a></div>
 
 
-<!-- navbar -->
-<div id="ss_banner_nav">
-  <div class="navbar navbar-default" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-        <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></a> <a href="http://www.csus.edu/" title="Sacramento State Homepage"><img alt="Sacramento State logo" src="http://www.csus.edu/Monet/Images/header/logo-banner.png"></a> </div>
-      <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav pull-right">
-          <li><a href="http://www.csus.edu/about/index.html">About</a></li>
-          <li><a href="http://www.csus.edu/academics/index.html">Academics</a></li>
-          <li><a href="http://www.csus.edu/admissions">Admissions</a></li>
-          <li><a href="http://www.hornetsports.com/">Athletics</a></li>
-          <li><a href="http://www.csus.edu/giving">Make A Gift</a></li>
-          <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quick Links <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="http://www.csus.edu/about/calendars/">Calendars</a></li>
-              <li><a href="http://www.csus.edu/campusmap">Campus Map</a></li>
-              <li><a href="http://aaweb.csus.edu/catalog/default.html">Catalog</a></li>
-              <li><a href="http://www.collegeportraits.org/CA/CSUS">College Portrait</a></li>
-              <li><a href="http://www.csus.edu/Academics/index.html">Colleges &amp; Depts</a></li>
-              <li><a href="http://www.csus.edu/Technology/index.html">Computing &amp; Technology</a></li>
-              <li><a href="http://www.csus.edu/about/employment/">Jobs</a></li>
-              <li><a href="http://library.csus.edu/">Library</a></li>
-              <li><a href="http://online.csus.edu/">Online Courses (SacCT)</a></li>
-              <li><a href="https://www.saclink.csus.edu/">SacLink</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+
+<header class="ss-header">
+	<div class="container">
+		<!-- navbar -->
+		<div id="ss_banner_nav">
+		  <div class="navbar navbar-default" role="navigation">
+		   
+			<div class="navbar-header">
+			  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> 
+			  	<span class="sr-only">Toggle navigation</span> 
+			    <span class="icon-bar"></span> 
+			    <span class="icon-bar"></span> 
+			    <span class="icon-bar"></span> 
+			  </button>
+			  <a href="http://www.csus.edu/" title="Sacramento State Homepage"><img alt="Sacramento State logo" src="http://www.csus.edu/Monet/Images/header/logo-banner.png"></a> 
+			</div>
+		      <div class="collapse navbar-collapse">
+		        <ul class="nav navbar-nav pull-right">
+		          <li><a href="http://www.csus.edu/about/index.html">About</a></li>
+		          <li><a href="http://www.csus.edu/academics/index.html">Academics</a></li>
+		          <li><a href="http://www.csus.edu/admissions">Admissions</a></li>
+		          <li><a href="http://www.hornetsports.com/">Athletics</a></li>
+		          <li><a href="http://www.csus.edu/giving">Make A Gift</a></li>
+		          <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quick Links <b class="caret"></b></a>
+		            <ul class="dropdown-menu">
+		              <li><a href="http://www.csus.edu/about/calendars/">Calendars</a></li>
+		              <li><a href="http://www.csus.edu/campusmap">Campus Map</a></li>
+		              <li><a href="http://aaweb.csus.edu/catalog/default.html">Catalog</a></li>
+		              <li><a href="http://www.collegeportraits.org/CA/CSUS">College Portrait</a></li>
+		              <li><a href="http://www.csus.edu/Academics/index.html">Colleges &amp; Depts</a></li>
+		              <li><a href="http://www.csus.edu/Technology/index.html">Computing &amp; Technology</a></li>
+		              <li><a href="http://www.csus.edu/about/employment/">Jobs</a></li>
+		              <li><a href="http://library.csus.edu/">Library</a></li>
+		              <li><a href="http://online.csus.edu/">Online Courses (SacCT)</a></li>
+		              <li><a href="https://www.saclink.csus.edu/">SacLink</a></li>
+		            </ul>
+		          </li>
+		        </ul>
+		      </div>
+		   
+		  </div>
+		</div>
+	</div>
+</header>
+
+<div class="main" id="main" role="main">
+	<div class="container">
+	  <a id="mainContent"></a> <!-- accessibility, skip to main content target --> 
+		<?php echo $this->layout()->content; ?>
+	</div>
 </div>
 
 
-  <!-- #main: page content goes here-->  
-  <div id="main" role="main"> <a id="mainContent"></a> <!-- accessibility, skip to main content target --> 
-   	<div class="container">
-    	<div class="row">
-        	<?php echo $this->layout()->content; ?> 
-      	</div>
-	</div> 	
-  </div>
-  <!-- end #main --> 
-  
-
-
-
-<div class="container">
-
-	<hr/>
-	<div class="row">
+<footer class="ss-footer">
+	<div class="container">
+		<hr/>
+	
 		<?php echo $this->partial('index/_nav.phtml', 'default'); ?>
-	</div>
+	
 	<hr/>
 	
 	<!-- #contentinfo :contentinfo is landmark region for the footer -->	
-	<div class="row">
+	
         <div class="contentinfo" id="contentinfo" role="contentinfo">
           <div class="col-md-1 address" id="address">
           	<div class="footer-logo"><a href="http://www.csus.edu"><img alt="Sac State Home"  src="http://www.csus.edu/Monet/Images/global/footer_logo.png" /></a></div>
@@ -130,10 +135,18 @@
             </div>
           </div>
 
-    </div><!-- end #contentinfo_container --> 
+    <!-- end #contentinfo_container --> 
 
 	</div>
-</div>
+	</div>
+</footer>
+
+
+
+
+
+
+
 
 <!-- js at the bottom of page for faster load times --> 
 <script src="<?php echo $this->baseUrl(); ?>/assets/js/osmf.js" type="text/javascript"></script> 

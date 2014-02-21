@@ -18,7 +18,7 @@ class Admin_IndexController extends Zend_Controller_Action
     	$this->videosTable = new Application_Model_DbTable_Videos();
     	$this->coursesTable = new Application_Model_DbTable_Courses();
     }
-    
+
     public function indexAction()
     {
     	
@@ -27,7 +27,7 @@ class Admin_IndexController extends Zend_Controller_Action
     	$this->view->courseCount = $this->coursesTable->getCourseCount();
     	$this->view->videoCount = $this->videosTable->getVideoCount();
     }
-    
+
     public function courselistAction()
     {
     	
@@ -36,7 +36,7 @@ class Admin_IndexController extends Zend_Controller_Action
     	$this->view->dt = $this->videosTable->convertDate();
 
     }
-    
+
     public function insertcoursesAction()
     {
     	if ($this->coursesTable->insertCsv()) {
@@ -47,7 +47,9 @@ class Admin_IndexController extends Zend_Controller_Action
 
     public function insertvideosAction()
     {
-    	$this->videosTable->insertCsv();
+       	if ($this->videosTable->insertCsv()) {
+    		$this->_helper->redirector('listvideos');
+    	}
     }
 
     public function cleancacheAction()
@@ -62,7 +64,6 @@ class Admin_IndexController extends Zend_Controller_Action
         }
         
     }
-    
 
     public function loginAction()
     {
@@ -145,7 +146,7 @@ class Admin_IndexController extends Zend_Controller_Action
     }
 
     public function registerAction()
-    {	 
+    {
 	    $request = $this->getRequest();
 		$users = $this->usersTable;
 	 
@@ -167,8 +168,8 @@ class Admin_IndexController extends Zend_Controller_Action
 	 
 	    $this->view->form = $form;
     }
-    
-	public function generateRandomString ($length = 32, $chars = '1234567890abcdef')
+
+    public function generateRandomString($length = 32, $chars = '1234567890abcdef')
     {
 		// LENGTH OF CHARACTER LIST
         $charsLength = (strlen($chars) - 1);
@@ -221,20 +222,38 @@ class Admin_IndexController extends Zend_Controller_Action
 	    }
     }
 
-	public function logoutAction()
-	{
+    public function logoutAction()
+    {
 		$authAdapter = Zend_Auth::getInstance();
 		$authAdapter->clearIdentity();
 			
-	}
-    
+    }
+
     public function addcoursesAction()
     {
         // action body
     }
 
+    public function listvideosAction()
+    {
+        // action body
+        $result = $this->videosTable->getAllVideos();
+        
+        $page= $this->_getParam('page', 1);
+	    $paginator = Zend_Paginator::factory($result);
+	    $paginator->setItemCountPerPage(10);
+	    $paginator->setCurrentPageNumber($page);
+    	$this->view->paginator=$paginator;
+    	
+    	
+    	//get video count
+    	$this->view->count = $this->videosTable->getVideoCount();
+    }
+
 
 }
+
+
 
 
 
