@@ -87,17 +87,18 @@
 	<div class="container">
 	  <a id="mainContent"></a> <!-- accessibility, skip to main content target --> 
 		<?php echo $this->layout()->content; ?>
+		
+		<hr/>
+		<?php echo $this->partial('index/_nav.phtml', 'default'); ?>
+	    <hr/>
+		
 	</div>
 </div>
 
 
 <footer class="ss-footer">
 	<div class="container">
-		<hr/>
-	
-		<?php echo $this->partial('index/_nav.phtml', 'default'); ?>
-	
-	<hr/>
+		
 	
 	<!-- #contentinfo :contentinfo is landmark region for the footer -->	
 	
@@ -106,7 +107,7 @@
           	<div class="footer-logo"><a href="http://www.csus.edu"><img alt="Sac State Home"  src="http://www.csus.edu/Monet/Images/global/footer_logo.png" /></a></div>
           </div>
           
-          <div class="col-md-5 address" id="address">
+          <div class="col-md-3 address" id="address">
             <div itemtype="http://schema.org/EducationalOrganization">
             	<p>
             		<span itemprop="name">California State University, Sacramento</span><br/>
@@ -116,7 +117,7 @@
                 </p>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-8">
             <div class="footer-icons">
               <ul class="nav nav-pills nav-stacked nav-justified">
                 <li><a href="http://www.facebook.com/sacstate" id="facebook_link"><img alt="facebook icon" height="32" src="http://www.csus.edu/homep//Monet/Images/icons/facebook.png" width="32"/></a></li>

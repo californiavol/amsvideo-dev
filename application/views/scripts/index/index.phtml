@@ -25,6 +25,14 @@
 
     
  		<div class="col-md-4 ss-coursevideos-list" id="course_video_container">
+ 			<div class="info-block">
+ 				<em>Most Recent Video</em>
+ 				<p><?php echo $this->recentVideo['recorded_available_datetime']; ?></p>
+ 			</div>
+ 			<div class="info-block">
+ 				<em>Live Streams at:</em>
+ 				<p><a href="#"><?php echo $this->recentVideo['days']; ?></a></p>
+ 			</div>
 	 		
 		    <?php if ($this->course) {
 		    	echo '<ul>';

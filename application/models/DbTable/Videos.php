@@ -19,7 +19,7 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
     	
     	$select = $this->select();
 		$select->setIntegrityCheck(false);
-		//$select->joinRight('courses', 'videos.class_nbr = courses.class_nbr');
+		$select->joinFull('courses', 'courses.class_nbr = videos.class_nbr');
 				
 		$result = $this->fetchAll($select);
     	
@@ -67,10 +67,13 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 			return;
 	  	}
 		
-    	$today = new Zend_Date();
-	  	$row = $this->fetchRow($this->select()
-				 ->where('course_id = ?', '201066')
-				 ->order('start_dt ASC')
+    	$today = date("Y-m-d H:i:s");      
+    	//var_dump($today);
+	  	
+    	$row = $this->fetchRow($this->select()
+				 ->where('class_nbr = ?', $id)
+				 ->where('recorded_available_datetime <= ?', $today)
+				 ->order('recorded_available_datetime DESC')
 				 ->limit(1)
 				 );
     	
