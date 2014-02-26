@@ -13,10 +13,7 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
     }  
 
     public function getAllVideos()
-    {
-    	//$result = $this->fetchAll();
-    	//$result->toArray();
-    	
+    {    	
     	$select = $this->select();
 		$select->setIntegrityCheck(false);
 		$select->joinFull('courses', 'courses.class_nbr = videos.class_nbr');
@@ -80,7 +77,7 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 	  	return $row;
 	}  
 	
- 	private function _parseCsv()
+  private function _parseCsv()
   {
     require_once  APPLICATION_PATH . '/../library/vendors/DataSource.php';
 
@@ -137,10 +134,10 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
       				'days'      => strtolower($val['DAYS']),
                     'studio'    => $val['STUDIO'],
                     'course_id' => $val['COURSE_ID'],
-                    'class_nbr' => $val['CLASS_NBR'],
-      				'filename_partial' => $filename_partial,
-      				'live_start_datetime' => $live_start_datetime,
-      				'live_end_datetime' => $live_end_datetime,
+                    'class_nbr' => $val['CLASS_NBR '],
+      				'filename_partial'            => $filename_partial,
+      				'live_start_datetime'         => $live_start_datetime,
+      				'live_end_datetime'           => $live_end_datetime,
       				'recorded_available_datetime' => $recorded_available_datetime,
                     );
       	//var_dump($data);                                                                                                       
@@ -288,7 +285,7 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 				  'semester'   =>  $d['semester'],
 				  'year'   =>  $d['year'],
 				  'course_name'   =>  $d['course_name'],
-				  'course_number'   =>  $d['course_number'],
+				  'course_number' =>  $d['course_number'],
 				  'description'   =>  $d['description'],
 				  );
 	      
