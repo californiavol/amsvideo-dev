@@ -86,11 +86,13 @@
 <div class="main" id="main" role="main">
 	<div class="container">
 	  <a id="mainContent"></a> <!-- accessibility, skip to main content target --> 
-		<?php echo $this->layout()->content; ?>
+		<div id="layout_content">
+			<?php echo $this->layout()->content; ?>
+		</div>
 		
-		<hr/>
-		<?php echo $this->partial('index/_nav.phtml', 'default'); ?>
-	    <hr/>
+		<div id="secondary_nav">
+			<?php echo $this->partial('index/_nav.phtml', 'default'); ?>
+	    </div>
 		
 	</div>
 </div>
@@ -119,15 +121,15 @@
           </div>
           <div class="col-md-8">
             <div class="footer-icons">
-              <ul class="nav nav-pills nav-stacked nav-justified">
+              <ul class="nav nav-pills">
                 <li><a href="http://www.facebook.com/sacstate" id="facebook_link"><img alt="facebook icon" height="32" src="http://www.csus.edu/homep//Monet/Images/icons/facebook.png" width="32"/></a></li>
                 <li><a href="http://twitter.com/sacstate" id="twitter_link"><img alt="twitter icon" height="31" src="http://www.csus.edu/homep//Monet/Images/icons/twitter.png" width="32"/></a></li>
                 <li><a href="http://www.youtube.com/SacStateVideo" id="youtube_link"><img alt="youtube icon" height="31" src="http://www.csus.edu/homep//Monet/Images/icons/youtube.png" width="32"/></a></li>
                 <li><a href="http://www.flickr.com/photos/sacstate" id="flickr_link"><img alt="Flickr icon" height="31" src="http://www.csus.edu/homep//Monet/Images/icons/flickr.jpg" width="32"/></a></li>
               </ul>
             </div>
-            <div class="">
-              <ul class="nav nav-pills nav-stacked nav-justified">
+            <div class="footer-links">
+              <ul class="nav nav-pills">
                 <li><a href="http://www.csus.edu/contact/Comments.html">Comments &amp; Questions</a></li>
                 <li><a href="http://www.csus.edu/About/AtoZ.html">A to Z Index</a></li>
                 <li class="last"><a href="http://www.csus.edu/About/accessibility.html">Accessibility</a></li>
