@@ -147,51 +147,6 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
       	$this->insert($data);
     }
     
-    
-    /*
-  	//update videos table with data from courses table
-    
-    //fetch newly inserted data
-    $newData = $this->fetchAll();
-    
-    //get courses table
-    $coursesTable = new Application_Model_DbTable_Courses();
-    
-    $videosData = array();
-		foreach ($newData as $d)
-	    	{
-	      		$row = $coursesTable->fetchRow($coursesTable->select()
-				 ->where('class_nbr = ?', $d['class_nbr'])
-				 ->limit(1)
-				 );
-				 
-				 //split the start_dt to create month day year
-				 $start_date = $d['start_dt'];
-	      		 $date_part  = explode('-', $start_date);
-	      	
-	      		 $year  = $date_part[2];
-	      		 $month = date('m',strtotime($date_part[1]));	      		 
-	      		 $day   = $date_part[0];
-
-        		 //START_TIME 'START_TIME' 19:30:00
-				 $start_time = $row['start_time'];
-				 $start_time_part = explode(':', $start_time);
-	      	
-	      		 $hour   = $start_time_part['0']; 
-      			 $minute = $start_time_part['1'];
-	      		 $second = $start_time_part['2'];
-				 	      		
-	      		$datetimeStr = $year.'-'.$month.'-'.$day.' '.$row['start_time'];
-	  
-	      		$videosData = array(
-					  'live_start_datetime' => $datetimeStr,
-	
-					  );
-		      
-		      $where = $this->getAdapter()->quoteInto('class_nbr = ?', $row['class_nbr']);
-		      $this->update($videosData, $where);
-	    }
-	    */
     return true;
     
   }
