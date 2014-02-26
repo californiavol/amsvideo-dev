@@ -13,13 +13,10 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
     }  
 
     public function getAllVideos()
-    {
-    	//$result = $this->fetchAll();
-    	//$result->toArray();
-    	
+    {    	
     	$select = $this->select();
 		$select->setIntegrityCheck(false);
-		//$select->joinRight('courses', 'videos.class_nbr = courses.class_nbr');
+		$select->joinFull('courses', 'courses.class_nbr = videos.class_nbr');
 				
 		$result = $this->fetchAll($select);
     	
@@ -67,17 +64,20 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 			return;
 	  	}
 		
-    	$today = new Zend_Date();
-	  	$row = $this->fetchRow($this->select()
-				 ->where('course_id = ?', '201066')
-				 ->order('start_dt ASC')
+    	$today = date("Y-m-d H:i:s");      
+    	//var_dump($today);
+	  	
+    	$row = $this->fetchRow($this->select()
+				 ->where('class_nbr = ?', $id)
+				 ->where('recorded_available_datetime <= ?', $today)
+				 ->order('recorded_available_datetime DESC')
 				 ->limit(1)
 				 );
     	
 	  	return $row;
 	}  
 	
- 	private function _parseCsv()
+  private function _parseCsv()
   {
     require_once  APPLICATION_PATH . '/../library/vendors/DataSource.php';
 
@@ -134,58 +134,16 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
       				'days'      => strtolower($val['DAYS']),
                     'studio'    => $val['STUDIO'],
                     'course_id' => $val['COURSE_ID'],
-                    'class_nbr' => $val['CLASS_NBR'],
-      				'filename_partial' => $filename_partial,
-      				'live_start_datetime' => $live_start_datetime,
-      				'live_end_datetime' => $live_end_datetime,
+                    'class_nbr' => $val['CLASS_NBR '],
+      				'filename_partial'            => $filename_partial,
+      				'live_start_datetime'         => $live_start_datetime,
+      				'live_end_datetime'           => $live_end_datetime,
       				'recorded_available_datetime' => $recorded_available_datetime,
                     );
       	//var_dump($data);                                                                                                       
       	$this->insert($data);
     }
     
-    
-    //fetch newly inserted data
-    $newData = $this->fetchAll();
-    
-    //get courses table
-    $coursesTable = new Application_Model_DbTable_Courses();
-    
-  	//update videos table with data from courses table
-    $videosData = array();
-		foreach ($newData as $d)
-	    	{
-	      		$row = $coursesTable->fetchRow($coursesTable->select()
-				 ->where('class_nbr = ?', $d['class_nbr'])
-				 ->limit(1)
-				 );
-				 
-				 //split the start_dt to create month day year
-				 $start_date = $d['start_dt'];
-	      		 $date_part  = explode('-', $start_date);
-	      	
-	      		 $year  = $date_part[2];
-	      		 $month = date('m',strtotime($date_part[1]));	      		 
-	      		 $day   = $date_part[0];
-
-        		 //START_TIME 'START_TIME' 19:30:00
-				 $start_time = $row['start_time'];
-				 $start_time_part = explode(':', $start_time);
-	      	
-	      		 $hour   = $start_time_part['0']; 
-      			 $minute = $start_time_part['1'];
-	      		 $second = $start_time_part['2'];
-				 	      		
-	      		$datetimeStr = $year.'-'.$month.'-'.$day.' '.$row['start_time'];
-	  
-	      		$videosData = array(
-					  'live_start_datetime' => $datetimeStr,
-	
-					  );
-		      
-		      $where = $this->getAdapter()->quoteInto('class_nbr = ?', $row['class_nbr']);
-		      $this->update($videosData, $where);
-	    }
     return true;
     
   }
@@ -327,7 +285,7 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 				  'semester'   =>  $d['semester'],
 				  'year'   =>  $d['year'],
 				  'course_name'   =>  $d['course_name'],
-				  'course_number'   =>  $d['course_number'],
+				  'course_number' =>  $d['course_number'],
 				  'description'   =>  $d['description'],
 				  );
 	      

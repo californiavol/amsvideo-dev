@@ -12,14 +12,36 @@ a {color:#f0e1b0;}
 
 
 .ss-header {
-	background-color:#f0e1b0;
+	
 }
 
 .ss-footer {
 	background-color:#f0e1b0;
 }
 
+.info-block {
+    display: block;
+    text-transform: capitalize;
+    color:#000;
+    letter-spacing: .1em;
+    font-size: 15px;
+    display: block;
+    background: #d1d1d1;
+    padding: 8px;
+    margin-bottom:10px;
+    border-radius: 5px;
 
+    -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    border-bottom: 1px solid rgba(18, 88, 60, 0.2);
+
+    -webkit-transition: opacity .5s;
+    -moz-transition: opacity .5s;
+    -o-transition: opacity .5s;
+    -ms-transition: opacity .5s;
+    transition: opacity .5s;
+}
 
 #ss_banner_nav .navbar-default {
 	background-color:#001e14;
@@ -255,8 +277,7 @@ a.list-group-item.active:focus .list-group-item-text {
     background: #f0e1b0;
     margin-top: 20px;
 	padding-top:20px;
-    height: 185px;
-    border-top: 10px solid #333;
+    height: 165px;
 	color:#000;
 }
 
@@ -382,9 +403,13 @@ a.list-group-item.active:focus .list-group-item-text {
     	margin-top: 20px;
 		padding-top:20px;
     	height: 185px;
-    	border-top: 10px solid #333;
 		color:#000;
 		text-align:center;
+	}
+	
+	.footer-icons {
+		margin-top:20px;
+		
 	}
 
 }
