@@ -17,14 +17,18 @@
 				echo $this->partial('index/_osmfplayerFallback.phtml');
 			}?>
 	
-			<h3><?php echo $this->course->course_name; ?></h3>
-			<p><?php echo $this->course->course_number; ?> Section: <?php echo $this->course->class_section; ?> Instructor: <?php echo $this->course->instructor; ?>
-			<?php echo $this->course->semester; ?> <?php echo $this->course->year; ?></p>
-			<p ><?php echo $this->course->course_description; ?></p>
+			<h2><?php echo $this->course->course_number; ?> Section: <?php echo $this->course->class_section; ?>
+			<?php echo $this->course->semester; ?> <?php echo $this->course->year; ?></h2>
+			<p >
+			  <em>Instructor: <?php echo $this->course->instructor; ?></em>
+			  <br/>
+			  <?php echo $this->course->course_description; ?>
+			</p>
    		</div>
 
     
  		<div class="col-md-4 ss-coursevideos-list" id="course_video_container">
+ 			<h3><?php echo $this->course->semester; ?> <?php echo $this->course->year; ?> Videos</h3>
  			<div class="info-block">
  				<em>Most Recent Video</em>
  				<p><?php echo $this->recentVideo['recorded_available_datetime']; ?></p>
@@ -33,6 +37,7 @@
  				<em>Live Streams at:</em>
  				<p><a href="#"><?php echo $this->recentVideo['days']; ?></a></p>
  			</div>
+ 			<h4>Recorded Videos</h4>
 	 		
 		    <?php if ($this->course) {
 		    	echo '<ul>';

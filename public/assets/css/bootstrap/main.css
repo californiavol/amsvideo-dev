@@ -6,8 +6,21 @@ body {
 }
 
 h1 {font-family:"Trajan Pro"}
-h1 {font-size: 24px;}
 
+h1 {
+    background-color: transparent;
+    background-image: url("http://www.csus.edu/cached/Colleges/1.0/images/icons/doubleS_13x19.png");
+    background-position: left 0;
+    background-repeat: no-repeat;
+    border-bottom: medium double #DDCB93;
+    color: #FFFFFF;
+    font-size: 1.6em;
+    font-weight: bold;
+    margin-left:18px;
+    margin-bottom: 0.5em;
+    padding: 0 0 4px;
+    text-indent: 1em;
+}
 a {color:#f0e1b0;}
 
 
@@ -22,14 +35,14 @@ a {color:#f0e1b0;}
 .info-block {
     display: block;
     text-transform: capitalize;
-    color:#000;
+    color:#444;
     letter-spacing: .1em;
-    font-size: 15px;
     display: block;
-    background: #d1d1d1;
-    padding: 8px;
+    background: #f4e6bd;
+    padding: 6px;
     margin-bottom:10px;
     border-radius: 5px;
+    
 
     -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
@@ -41,6 +54,19 @@ a {color:#f0e1b0;}
     -o-transition: opacity .5s;
     -ms-transition: opacity .5s;
     transition: opacity .5s;
+}
+
+.info-block p {
+    color:#444;
+
+}
+
+.info-block a {
+    color:#00573d;
+}
+
+#ss_banner_nav {
+	margin-top:10px;
 }
 
 #ss_banner_nav .navbar-default {
@@ -75,20 +101,21 @@ a {color:#f0e1b0;}
 
 #main .jumbotron h1 {font-size:1.6em;}
 h2, h3 {
-    background-color:#01402d;
+    display:block;
+	position:relative;
     color:#FFF;
     font-family:"Trajan Pro", Georgia;
-	font-size:1em;
+    font-size: 1em;
     text-transform:uppercase;
-    line-height:normal;
+    line-height:1.5;
     padding:0.2em;
+    margin-top:0;
     vertical-align:middle;
     background-image: url('http://www.csus.edu/cached/Colleges/1.0/images/regions/main/mainregion.h2.bg.slice.1x29.png');
     background-repeat: repeat-x;
-    background-color:transparent;
+	background-color:#01402d;
     border-top:1px solid #f0e1b0;
     margin-bottom:0.1em;
-    display:block;
     clear:both;
 }
 h2:before,
@@ -100,7 +127,10 @@ h3:before {
     padding-left:4px;   
 
 }
-
+h4 {
+    font-size:1.1em;
+    border-bottom:1px dotted;
+}
 
 .list-group {
   padding-left: 0;
@@ -275,10 +305,11 @@ a.list-group-item.active:focus .list-group-item-text {
 
 #contentinfo  {
     background: #f0e1b0;
-    margin-top: 20px;
-	padding-top:20px;
-    height: 165px;
+    margin-top: 0px;
+	padding:20px;
+    height: 175px;
 	color:#000;
+	text-align:center;
 }
 
 #contentinfo a {color:#00573d;}
@@ -375,41 +406,76 @@ a.list-group-item.active:focus .list-group-item-text {
 
 @media (max-device-width: 800px) and (orientation: portrait) { 
 
+
 }
 
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) { 
+    #contentinfo  {
+        background: #f0e1b0;
+        margin-top: 0px;
+    	padding:20px;
+        height: 175px;
+    	color:#000;
+    	text-align:left;
+    	
+    }
 
+    .footer-icons {
+        float:right;
+    }
+    
+    .footer-links {
+        float:right;
+        font-size:0.8em;
+        clear:both;
+    }    
 }
 
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) { 
+    #contentinfo  {
+        background: #f0e1b0;
+        margin-top: 0px;
+    	padding:20px;
+        height: 175px;
+    	color:#000;
+    	text-align:left;
+    }
 
-
+    
 }
 
 @media (max-width:421px) {
+    
+    h1 {
+        font-size:16px;
+    }
+    
+    h2, h3 {
+        font-size:12px;
+    }
 
 	#sacstate_video {
 		display:block;
 		position:relative;
 		width: 100%;
-		height: 160px;
-		
+		height: 160px;	
 	}
 	
-	#contentinfo  {
-    	background: #f0e1b0;
-    	margin-top: 20px;
-		padding-top:20px;
-    	height: 185px;
-		color:#000;
-		text-align:center;
-	}
+   #contentinfo a {
+		color:#f0e1b0;
+   }
 	
+   #contentinfo a:hover {
+		color:#00573d;
+   }
 	.footer-icons {
-		margin-top:20px;
-		
+		margin-top:30px;	
+	}
+	
+	.footer-links li {
+	    float:none;
 	}
 
 }
