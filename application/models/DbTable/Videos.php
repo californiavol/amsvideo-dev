@@ -148,13 +148,15 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
     }
     
     
+    /*
+  	//update videos table with data from courses table
+    
     //fetch newly inserted data
     $newData = $this->fetchAll();
     
     //get courses table
     $coursesTable = new Application_Model_DbTable_Courses();
     
-  	//update videos table with data from courses table
     $videosData = array();
 		foreach ($newData as $d)
 	    	{
@@ -189,6 +191,7 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 		      $where = $this->getAdapter()->quoteInto('class_nbr = ?', $row['class_nbr']);
 		      $this->update($videosData, $where);
 	    }
+	    */
     return true;
     
   }
