@@ -13,6 +13,7 @@
 	
 		  	<?php if ($this->video) {
 				echo $this->partial('index/_osmfplayer.phtml', 'default', array('course' => $this->course, 'video' => $this->video));
+				echo '<em>'.$this->video['start_dt'] .'</em>';
 			} else {
 				echo $this->partial('index/_osmfplayerFallback.phtml');
 			}?>
@@ -31,17 +32,26 @@
  			<h3><?php echo $this->course->semester; ?> <?php echo $this->course->year; ?> Videos</h3>
  			<div class="info-block">
  				<em>Most Recent Video</em>
- 				<p><?php echo $this->recentVideo['recorded_available_datetime']; ?></p>
+ 				<p>
+ 					<a href="<?php echo $this->url(array('module' => 'default', 'controller' => 'index', 'action' => 'index', 'cid' => $this->recentVideo['class_nbr'], 'vid' => $this->recentVideo['id'])); ?>">
+			  			<?php echo $this->recentVideo['recorded_available_datetime']; ?>
+			  		</a>
+		  		</p>
  			</div>
  			<div class="info-block">
- 				<em>Live Streams at:</em>
- 				<p><a href="#"><?php echo $this->recentVideo['days']; ?></a></p>
+ 				<em>Next Live Stream on:</em>
+ 					<p>
+						<a href="<?php echo $this->url(array('module' => 'default', 'controller' => 'index', 'action' => 'live', 'cid' => null, 'vid' => null)); ?><?php echo $this->course->studio; ?>">
+			  			<?php echo $this->recentVideo['days']; ?> <?php echo $this->course->start_time; ?>
+	  				</a>
+	  			</p>
  			</div>
  			<h4>Recorded Videos</h4>
 	 		
 		    <?php if ($this->course) {
 		    	echo '<ul>';
 		    	echo $this->partialLoop('index/_courseVideoLoop.phtml', 'default', $this->coursevideos);
+		    	//echo $this->partialLoop('index/_courseVideoLoop.phtml', 'default', array('coursevideos' => $this->coursevideos, 'linkEnabled' => $this->linkEnabled));
 		    	echo '</ul>';
 		    
 			  } else {
