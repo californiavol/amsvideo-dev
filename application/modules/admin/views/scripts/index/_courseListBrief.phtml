@@ -1,6 +1,7 @@
 <tr>
+
 	<td>
-		<a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'index', 'cid' => $this->class_nbr, 'vid' => NULL)); ?>">
+		<a href="<?php echo $this->url(array('module' => 'default', 'controller' => 'index', 'action' => 'index', 'cid' => $this->class_nbr, 'vid' => NULL)); ?>">
    			<?php echo $this->escape($this->course_number);  ?>
     	</a>
 	</td>
@@ -13,4 +14,13 @@
 
     	</a>
 	</td>
+	<td>
+		<?php echo $this->days; ?>
+	</td>
+	<td>
+		<?php echo $this->start_time; ?>
+	</td>
+	<td>
+		<?php echo $this->duration; ?>
+	</td>	
 </tr>

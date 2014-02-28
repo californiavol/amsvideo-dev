@@ -1,11 +1,31 @@
+<?php $today = date('Y-m-d H:i:s'); ?>
+<?php 
+		if ($today >= $this->recorded_available_datetime) {
+			$linkEnabled = 1;
+		} else {
+			$linkEnabled = 0;
+		}
+
+?>
 <li class="ss-coursevideos-metadata">
 	<p>
-
+		<i class="fa fa-video-camera"></i>  Video <?php echo $this->partialCounter; ?>
+		<br/>
+		
+		<?php if ($linkEnabled == 1) { ?>
 	 	<a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'index', 'cid' => $this->class_nbr, 'vid' => $this->id)); ?>">
-     		<?php echo $this->escape($this->days); ?> <?php echo $this->escape($this->start_dt); ?>	
-        </a>
-       
-       <br/>
-       Video <?php echo $this->partialCounter; ?> 
+     		<?php echo $this->escape($this->days); ?> <?php echo $this->escape($this->start_dt); ?>	     		
+        </a> 			
+		<?php } else { ?>
+			<?php echo $this->escape($this->days); ?> <?php echo $this->escape($this->start_dt); ?>		
+		
+		<?php } ?>
+     
+        <br/>
+        Available: <?php echo $this->recorded_available_datetime; ?>
+        <span class="visible-xs">
+        <br/>
+        <a href="http://video2.csus.edu/hls-vod/audio-only-aac/prj/disted/ams_web_archive/2014/ANTH0001/ANTH0001_2014_01_27_33567C.f4v.m3u8">Audio Only</a>
+        </span>
 	</p>
 </li>

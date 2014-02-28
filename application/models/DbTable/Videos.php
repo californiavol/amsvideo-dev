@@ -10,7 +10,18 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 		//$logger = Zend_Registry::get('log');
 		//$this->logger = $logger;
 		//$this->logger->log('Informational message', Zend_Log::INFO);
-    }    
+    }  
+
+    public function getAllVideos()
+    {    	
+    	$select = $this->select();
+		$select->setIntegrityCheck(false);
+		$select->joinFull('courses', 'courses.class_nbr = videos.class_nbr');
+				
+		$result = $this->fetchAll($select);
+    	
+	    return $result;
+    }
     
     
     public function getVideosByClassNbr($id)
@@ -36,7 +47,16 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 		return $row;   	
     }
     
-
+	public function getCourseVideos($class_nbr)
+	{
+		$select = $this->select();
+		$select->setIntegrityCheck(false);
+		$select->where('class_nbr = ?', $class_nbr)
+				->join('courses', 'videos.class_nbr = courses.class_nbr');
+				
+		$rows = $this->fetchAll($select);
+		return $rows;
+	}
     
 	public function getMostRecentVideo($id)
 	{
@@ -44,67 +64,96 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 			return;
 	  	}
 		
-    	$today = new Zend_Date();
-	  	$row = $this->fetchRow($this->select()
-				 ->where('course_id = ?', '201066')
-				 ->order('start_dt ASC')
+    	$today = date("Y-m-d H:i:s");      
+    	//var_dump($today);
+	  	
+    	$row = $this->fetchRow($this->select()
+				 ->where('class_nbr = ?', $id)
+				 ->where('recorded_available_datetime <= ?', $today)
+				 ->order('recorded_available_datetime DESC')
 				 ->limit(1)
 				 );
     	
 	  	return $row;
 	}  
 	
- 	private function _parseCsv()
-    {
-    	require_once APPLICATION_PATH . '/../library/vendors/Datasource.php';
-    	
-    	$videosCsv = APPLICATION_PATH . '/../data/csv/sac_cm_videos.csv';
-    	
-    	if (!file_exists($videosCsv)) {
-    		die();
-    	}
-    	
-    	$inputFile = $videosCsv;
-    	
-    	$csv = new File_CSV_DataSource;
-		$csv->load($inputFile);
-		$csvarray = $csv->connect();
-		return $csvarray;    	
-    }
-    
-    public function insertCsv() 
-    {
-    	$this->_insertCsv2Db();
-    }
-    
- 	private function _insertCsv2Db()
-    {
-    	$csvData = $this->_parseCsv();
-    	
-	  //empty the videos table
-	  $this->getAdapter()->query('TRUNCATE TABLE videos');
-    	
-    	
-    	$val = array();
-    	foreach ($csvData as $val) {
-    		
-    		
-    		$date = DateTime::createFromFormat('j-M-Y', $val['START_DT']);
-			$start_dt =  $date->format('Y_m_d');
-    				
-    		
-    		$data = array(
-    			'start_dt'  => strtolower($start_dt),
-    			'days'      => strtolower($val['DAYS']),
-    			'studio'    => $val['STUDIO'],
-    			'course_id' => $val['COURSE_ID'],    			
-    			'class_nbr' => $val['CLASS_NBR'],
+  private function _parseCsv()
+  {
+    require_once  APPLICATION_PATH . '/../library/vendors/DataSource.php';
 
-    		);
-    		//var_dump($data);	
-    		$this->insert($data); 
-    	}
-    }	
+    $inputFile = APPLICATION_PATH . '/../data/csv/sac_cm_videos.csv';
+    $csv = new File_CSV_DataSource;
+    $csv->load($inputFile);
+    $csvArray = $csv->connect();
+
+    return $csvArray;
+  }
+
+  public function insertCsv()
+  {
+    //parse the csv                                                                                                            
+    $data = $this->_parseCsv();
+
+    //insert into db                                                                                                           
+    if($this->_insertCsv2Db($data)) {
+      return true;
+    }
+  }
+
+  private function _insertCsv2Db($data = array())
+  {
+    $csvData = $data;
+
+    //empty the videos table                                                                                                   
+    $this->getAdapter()->query('TRUNCATE TABLE videos');
+    
+    //get the courses table
+    $coursesTable = new Application_Model_DbTable_Courses();
+
+    //insert parsed cvs into videos table
+    $val = array();
+    foreach ($csvData as $val) {
+    	
+    	//Use START_DT 'START_DT' 27-jan-2014 to create filename_partial
+		$date = DateTime::createFromFormat('j-M-Y', $val['START_DT']);
+        $filename_partial =  $date->format('Y_m_d');
+        
+        //get row from courses table by class_nbr
+  		$row = $coursesTable->fetchRow($coursesTable->select()
+				 ->where('class_nbr = ?', $val['CLASS_NBR'])
+				 ->limit(1)
+				 );      
+         	
+				 
+        $live_start_datetime = date('Y-m-d H:i:s', strtotime($val['START_DT'].' '.$row['start_time']));
+        $live_end_datetime = date('Y-m-d H:i:s', strtotime($val['START_DT'].' '.$row['available_time'])-10800);
+        $recorded_available_datetime = date('Y-m-d H:i:s', strtotime($val['START_DT'].' '.$row['available_time']));
+                                                                             
+      	$data = array(
+                    'start_dt'  => $val['START_DT'],
+      				'days'      => strtolower($val['DAYS']),
+                    'studio'    => $val['STUDIO'],
+                    'course_id' => $val['COURSE_ID'],
+                    'class_nbr' => $val['CLASS_NBR '],
+      				'filename_partial'            => $filename_partial,
+      				'live_start_datetime'         => $live_start_datetime,
+      				'live_end_datetime'           => $live_end_datetime,
+      				'recorded_available_datetime' => $recorded_available_datetime,
+                    );
+      	//var_dump($data);                                                                                                       
+      	$this->insert($data);
+    }
+    
+    return true;
+    
+  }
+  
+  public function convertDate($datetimeStr = null)
+  {
+  	$date = date("Y-m-d H:i:s", strtotime($datetimeStr));
+  	return $date;
+  }
+	
 
 
 
@@ -236,7 +285,7 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 				  'semester'   =>  $d['semester'],
 				  'year'   =>  $d['year'],
 				  'course_name'   =>  $d['course_name'],
-				  'course_number'   =>  $d['course_number'],
+				  'course_number' =>  $d['course_number'],
 				  'description'   =>  $d['description'],
 				  );
 	      
