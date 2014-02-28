@@ -132,10 +132,10 @@
 /********************************/
 /** course videos list **/
 .ss-coursevideos-list {display:block; position:relative; }
-.ss-coursevideos-list ul {padding-left:0;margin-left:0; overflow-y:scroll; overflow-x:hidden; height:500px;}
+.ss-coursevideos-list ul {padding-left:0;margin-left:0; overflow-y:scroll; overflow-x:hidden; height:480px;}
 .ss-coursevideos-list ul li {background-color:#262626;color:#fff; padding:1em; border-bottom:1px inset #444; transition: opacity 1s ease 0s;}
 
 .ss-coursevideos-list ul li:hover {background-color:#262626;color:#fff; padding:1em; border-bottom:1px inset #444; opacity:0.8;}
 
 .ss-coursevideos-list ul li h4 {color:#fff; font-size:1.2em; padding-bottom:0; margin-bottom:0;}
-.ss-coursevideos-list ul li p {color:#fff; font-size:1.1em;padding-left:0; padding-right:1em; padding-bottom:0; line-height:normal; margin-bottom:0.2em; text-transform:capitalize;}
+.ss-coursevideos-list ul li p {color:#fff; font-weight:normal;  font-size:1em; /* padding-left:0; */ /* padding-right:1em; */ /* padding-bottom:0; */ line-height:normal; margin-bottom:0.2em; text-transform:capitalize;}

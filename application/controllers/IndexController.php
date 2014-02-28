@@ -34,8 +34,17 @@ class IndexController extends Zend_Controller_Action
 
     public function indexAction()
     {
-		$this->view->recentVideo = $this->videosTable->getMostRecentVideo($this->class_nbr);
-
+    	$today = date("Y-m-d H:i:s"); 
+    	
+		$recentVideo = $this->videosTable->getMostRecentVideo($this->class_nbr);
+		$this->view->recentVideo = $recentVideo;
+		
+		if ($today >= $recentVideo['recorded_available_datetime']) {
+			$this->view->linkEnabled = 1;
+		} else {
+			$this->view->linkEnabled = 0;
+		}
+		
     	if ($this->class_nbr && !$this->videoId) {
 	    	//get individual course if class_nbr param set
     	    $this->view->course = $this->coursesTable->getCourseByClassNbr($this->class_nbr);
