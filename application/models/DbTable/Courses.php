@@ -15,8 +15,12 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
     
     public function getCourses()
     {
-        $rows = $this->fetchAll();
-        return $rows;    	
+        $select = $this->select()
+        		->from($this->_name)
+        		->order('name');
+ 		
+		$rows = $this->fetchAll($select);
+		return $rows;
     }
     
     public function getCourseCount()

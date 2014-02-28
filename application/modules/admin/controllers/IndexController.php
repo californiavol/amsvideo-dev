@@ -32,6 +32,7 @@ class Admin_IndexController extends Zend_Controller_Action
     {
     	
     	$this->view->courses = $this->coursesTable->getCourses();
+    	$this->view->courseCount = $this->coursesTable->getCourseCount();
     	
     	$this->view->dt = $this->videosTable->convertDate();
 
