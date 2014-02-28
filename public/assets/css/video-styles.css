@@ -63,9 +63,8 @@
 .ss-videoplayer.backdrop {
     display:block;
     position:relative;
-    margin-left:auto;
-    margin-right:auto;
-    padding:1em;
+
+    
     /* background:url('http://www.csus.edu/cached/Colleges/2.0/assets/images/gray-noise-background.jpg') no-repeat;  */
     background-color: #262626;
     border:0.5em solid #161616;
