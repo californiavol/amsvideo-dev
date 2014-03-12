@@ -90,15 +90,16 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
     	$csv = new File_CSV_DataSource;
 		$csv->load($inputFile);
 		$csvArray = $csv->connect();
-		
+		//var_dump($csvArray);
 		return $csvArray;    	
     }
     
     private function _insertCsv2Db($data = null)
     {
     	$csvData = $data;
-    	
-	  	//empty the courses table
+    	//var_dump($csvData);
+	  	
+    	//empty the courses table
 	  	$this->getAdapter()->query('TRUNCATE TABLE courses');    	
     	
     	$val = array();
@@ -161,10 +162,11 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
     			'combined_class_nbr' => $val['COMBINED_CLASS_NBR'],
     		    'available_time' => $available_time,
     		);
-    		//var_dump($data);	
+    		//var_dump($data);
     		$this->insert($data);	
+    			
     	}
-    	return true;
+    	return TRUE;
     }
 
     
