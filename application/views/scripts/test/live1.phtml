@@ -1,10 +1,23 @@
-<div class="span-24 last">
-	<div class="span-17 .ss-videoplayer-container" id="osmfcontainer">
-		<?php echo $this->partial('index/_osmfplayerLive1.phtml'); ?>
+<div class="container">
+	<div class="row">
+		<?php if ($this->course) {
+			echo '<h1>'.$this->course->course_name. '</h1>'; 
+			} else {
+			  	echo '<h1>Sac State Streaming Video</h1>';
+		}?>
 	</div>
+
+
+	<div class="row ss-videoplayer backdrop">
+   		<div class="col-md-8" id="osmfcontainer">
+		  <?php echo $this->partial('index/_osmfplayerLive1.phtml'); ?>
+    	
+   		</div>
+
     
-    <div class="span-7 last ss-coursevideos-list" id="course_video_container">
-    	<h3>Live Video Streams</h3>
-    	<?php echo $this->partial('index/_livestreamnav.phtml'); ?>
+ 		<div class="col-md-4 ss-coursevideos-list" id="course_video_container">
+	 		
+		<?php echo $this->partial('index/_livestreamnav.phtml'); ?>
+   		</div>
 	</div>
 </div>

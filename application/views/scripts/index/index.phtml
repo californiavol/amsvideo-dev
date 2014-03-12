@@ -42,14 +42,7 @@
 			  		</a>
 		  		</p>
  			</div>
- 			<div class="info-block">
- 				<em>Next Live Stream on:</em>
- 				<p>
-					<a href="<?php echo $this->url(array('module' => 'default', 'controller' => 'index', 'action' => 'live', 'cid' => null, 'vid' => null)); ?><?php echo $this->course->studio; ?>">
-		  				<?php echo date('l M d g:ia', strtotime($this->video['start_dt'])); ?>
-  					</a>
-  				</p>
- 			</div>
+ 			
  			<h4>Recorded Videos</h4>
 	 		
 		    <?php if ($this->course) {
