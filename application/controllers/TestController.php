@@ -3,64 +3,65 @@
 class TestController extends Zend_Controller_Action
 {
 
-    public $courseId = null;
+    public $class_nbr = null;
 
     public $videoId = null;
-    
-    public $section = NULL;
+
+    public $section = null;
 
     public function init()
     {
         /* Initialize action controller here */
         if ($this->getRequest()->getParam('cid')) {
-        	$this->courseId = $this->getRequest()->getParam('cid');
+           	$this->class_nbr = $this->getRequest()->getParam('cid');
         }
-                        
+                                        
         if ($this->getRequest()->getParam('vid')) {
-        	$this->videoId = $this->getRequest()->getParam('vid');
+           	$this->videoId = $this->getRequest()->getParam('vid');
         }
-                        		
-		if ($this->getRequest()->getParam('sid')) {
-			$this->section = $this->getRequest()->getParam('sid');
-		}
-                        
+                                        		
+  		if ($this->getRequest()->getParam('sid')) {
+   			$this->section = $this->getRequest()->getParam('sid');
+   		}
+                                        
         //get db tables                                                                                                              
-        $this->coursesTable = new Application_Model_DbTable_Courses();       		                                                                                  
-        $this->videosTable = new Application_Model_DbTable_Videos();
-        
-        //ajax setup
-    	$ajaxContext = $this->_helper->getHelper('AjaxContext');
-    	$ajaxContext->addActionContext('videolist', 'html')
-                ->initContext();
+        $this->coursesTable    = new Application_Model_DbTable_Courses();       		                                                                                  
+        $this->videosTable     = new Application_Model_DbTable_Videos();
+
     }
 
- public function indexAction()
+    public function indexAction()
     {
-        // action body
-        if ($this->courseId) {
-        	//get all courses for course list
-        	$this->view->courses = $this->coursesTable->getCourses();
-        	
-        	//get individual course if courseId param set
-        	$this->view->course = $this->coursesTable->getCourseById($this->courseId);;
-			
-        	//get videos by courseId
-        	//$this->view->coursevideos = $this->videosTable->getVideosByCourseId($this->courseId);
-			$this->view->coursevideos = $this->videosTable->getVideosByCourseIdSectionId($this->courseId, $this->section);	
-        	
-			//get most recent video by date and courseId
-        	$this->view->recentvideo = $this->videosTable->getMostRecentVideo($this->courseId);        
-        } 
-        
-
-        
-        if ($this->videoId) {
-        	$this->view->video = $this->videosTable->getVideoById($this->videoId);
-        } 
-        
-       
+    	$today = date("Y-m-d H:i:s"); 
+    	
+		$recentVideo = $this->videosTable->getMostRecentVideo($this->class_nbr);
+		$this->view->recentVideo = $recentVideo;
+		
+		if ($today >= $recentVideo['recorded_available_datetime']) {
+			$this->view->linkEnabled = 1;
+		} else {
+			$this->view->linkEnabled = 0;
+		}
+		
+    	if ($this->class_nbr && !$this->videoId) {
+	    	//get individual course if class_nbr param set
+    	    $this->view->course = $this->coursesTable->getCourseByClassNbr($this->class_nbr);
+    		$this->view->coursevideos = $this->videosTable->getVideosByClassNbr($this->class_nbr);
+			//$this->view->coursevideos = $this->videosTable->getCourseVideos($this->class_nbr);
+    		
+    	} elseif ($this->class_nbr && $this->videoId) {
+    		
+    	    $this->view->course = $this->coursesTable->getCourseByClassNbr($this->class_nbr);
+    		$this->view->coursevideos = $this->videosTable->getVideosByClassNbr($this->class_nbr);  
+    		//get individual video
+    		$this->view->video = $this->videosTable->getVideoById($this->videoId);
+    		
+    	} else {
+    		//redirect to courselist
+    		$this->redirect('/default/index/welcome');
+    	}
+    	
     }
-    
     
     public function live1Action()
     {
