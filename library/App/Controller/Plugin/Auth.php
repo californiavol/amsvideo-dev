@@ -74,7 +74,8 @@ class App_Controller_Plugin_Auth extends Zend_Controller_Plugin_Abstract
             $acl->addResource(new Zend_Acl_Resource('login'));
             $acl->addResource(new Zend_Acl_Resource('register'));
             $acl->addResource(new Zend_Acl_Resource('courselist'));
- 
+ 			$acl->addResource(new Zend_Acl_Resource('test'));
+            
             // ACCESS ROLES
             $acl->addRole(new Zend_Acl_Role('guest'));
             $acl->addRole(new Zend_Acl_Role('user'));
