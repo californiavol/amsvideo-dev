@@ -11,21 +11,19 @@
 	<p>
 		<i class="fa fa-video-camera"></i>  Video <?php echo $this->partialCounter; ?>
 		<br/>
-		
+		Recorded: <?php echo $this->escape($this->days); ?> <?php echo date('M d', strtotime($this->start_dt)) ; ?>
+		 <br/>
+		 
 		<?php if ($linkEnabled == 1) { ?>
 	 	<a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'index', 'cid' => $this->class_nbr, 'vid' => $this->id)); ?>">
-     		<?php echo $this->escape($this->days); ?> <?php echo $this->escape($this->start_dt); ?>	     		
+     		Available:&nbsp;&nbsp;<?php echo date('l M d g:ia', strtotime($this->recorded_available_datetime)) ; ?>	     		
         </a> 			
 		<?php } else { ?>
-			<?php echo $this->escape($this->days); ?> <?php echo $this->escape($this->start_dt); ?>		
+			Available:&nbsp;&nbsp;<?php echo date('l M d g:ia', strtotime($this->recorded_available_datetime)); ?>		
 		
 		<?php } ?>
-     
-        <br/>
-        Available: <?php echo $this->recorded_available_datetime; ?>
-        <span class="visible-xs">
-        <br/>
-        <a href="http://video2.csus.edu/hls-vod/audio-only-aac/prj/disted/ams_web_archive/2014/ANTH0001/ANTH0001_2014_01_27_33567C.f4v.m3u8">Audio Only</a>
-        </span>
+		<br/>
+		<a href="http://video2.csus.edu/hls-vod/audio-only-aac/prj/disted/ams_web_archive/<?php echo $this->course['year']; ?>/<?php echo $this->course['name'];?>/<?php echo $this->course['name'];?>_<?php echo $this->video['filename_partial']; ?>_<?php echo $this->video['class_nbr']; ?>C.f4v.m3u8">Audio Only</a>     
+
 	</p>
 </li>

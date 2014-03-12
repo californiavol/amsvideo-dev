@@ -134,7 +134,7 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
       				'days'      => strtolower($val['DAYS']),
                     'studio'    => $val['STUDIO'],
                     'course_id' => $val['COURSE_ID'],
-                    'class_nbr' => $val['CLASS_NBR '],
+                    'class_nbr' => $val['CLASS_NBR'],
       				'filename_partial'            => $filename_partial,
       				'live_start_datetime'         => $live_start_datetime,
       				'live_end_datetime'           => $live_end_datetime,

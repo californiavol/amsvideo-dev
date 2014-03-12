@@ -27,8 +27,8 @@ class IndexController extends Zend_Controller_Action
         //get db tables                                                                                                              
         $this->coursesTable    = new Application_Model_DbTable_Courses();       		                                                                                  
         $this->videosTable     = new Application_Model_DbTable_Videos();
-        $this->devicesTable    = new Application_Model_DbTable_Devices();
-        $this->videostatsTable = new Application_Model_DbTable_Videostats();
+        //$this->devicesTable    = new Application_Model_DbTable_Devices();
+        //$this->videostatsTable = new Application_Model_DbTable_Videostats();
 
     }
 

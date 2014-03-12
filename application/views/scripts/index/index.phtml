@@ -1,4 +1,4 @@
-<div class="container">
+
 	<div class="row">
 		<?php if ($this->course) {
 			echo '<h1>'.$this->course->course_name. '</h1>'; 
@@ -13,18 +13,22 @@
 	
 		  	<?php if ($this->video) {
 				echo $this->partial('index/_osmfplayer.phtml', 'default', array('course' => $this->course, 'video' => $this->video));
-				echo '<em>'.$this->video['start_dt'] .'</em>';
+				echo '<div id="ss_video_title"><em>Now playing: '. date('l M d', strtotime($this->video['start_dt'])) .'</div></em>';
 			} else {
 				echo $this->partial('index/_osmfplayerFallback.phtml');
 			}?>
-	
-			<h2><?php echo $this->course->course_number; ?> Section: <?php echo $this->course->class_section; ?>
-			<?php echo $this->course->semester; ?> <?php echo $this->course->year; ?></h2>
-			<p >
-			  <em>Instructor: <?php echo $this->course->instructor; ?></em>
-			  <br/>
-			  <?php echo $this->course->course_description; ?>
-			</p>
+			<div id="course_meta">
+				<header>
+					<h2><?php echo $this->course->course_number; ?> Section: <?php echo $this->course->class_section; ?></h2>
+				</header>
+				<p>
+				  <strong>Instructor: <?php echo $this->course->instructor; ?></strong>
+				  <br/>
+				  <em><?php echo $this->course->semester; ?> <?php echo $this->course->year; ?></em>
+				  <br/>
+				  <?php echo $this->course->course_description; ?>
+				</p>
+			</div>
    		</div>
 
     
@@ -33,19 +37,12 @@
  			<div class="info-block">
  				<em>Most Recent Video</em>
  				<p>
- 					<a href="<?php echo $this->url(array('module' => 'default', 'controller' => 'index', 'action' => 'index', 'cid' => $this->recentVideo['class_nbr'], 'vid' => $this->recentVideo['id'])); ?>">
-			  			<?php echo $this->recentVideo['recorded_available_datetime']; ?>
+ 					<a href="<?php echo $this->url(array('module' => 'default', 'controller' => 'index', 'action' => 'index', 'cid' => $this->recentVideo['class_nbr'], 'vid' => $this->recentVideo['id'])); ?>">		  			
+					  <?php echo date('l M d', strtotime($this->recentVideo['recorded_available_datetime'])); ?>
 			  		</a>
 		  		</p>
  			</div>
- 			<div class="info-block">
- 				<em>Next Live Stream on:</em>
- 					<p>
-						<a href="<?php echo $this->url(array('module' => 'default', 'controller' => 'index', 'action' => 'live', 'cid' => null, 'vid' => null)); ?><?php echo $this->course->studio; ?>">
-			  			<?php echo $this->recentVideo['days']; ?> <?php echo $this->course->start_time; ?>
-	  				</a>
-	  			</p>
- 			</div>
+ 			
  			<h4>Recorded Videos</h4>
 	 		
 		    <?php if ($this->course) {
@@ -59,4 +56,3 @@
 			  }	?>
    		</div>
 	</div>
-</div>
