@@ -1,0 +1,27 @@
+<div class="row">
+	<?php 
+		if ($this->teststream) {
+			echo '<h1>'.$this->teststream->display_name. '</h1>'; 
+		} else {
+		  	echo '<h1>Test Streams</h1>';
+		}
+	?>
+</div>
+
+
+<div class="row ss-videoplayer backdrop">
+	<div class="col-md-8" id="osmfcontainer">
+	
+	<?php echo $this->partial('test/_osmfplayerTeststream.phtml', 'admin', array('teststream' => $this->teststream)); ?>
+			
+   	</div>
+
+    <div class="col-md-4 ss-coursevideos-list" id="course_video_container">
+ 		<h2>Test Streams</h2>
+		<ul>
+			<?php echo $this->partialLoop('test/_teststreamsPartialLoop.phtml', 'admin', $this->teststreams); ?>
+		</ul>
+   	</div>
+</div>
+
+
