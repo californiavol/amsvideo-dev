@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Course Video Admin | Sacramento State</title>
+
+<!-- css -->
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+
+<link href="<?php echo $this->baseUrl(); ?>/assets/css/bootstrap/admin-main.css" media="all" rel="stylesheet" type="text/css"/>
+
+<link href="<?php echo $this->baseUrl(); ?>/assets/css/sb-admin-v2/css/plugins/timeline/timeline.css" media="all" rel="stylesheet" type="text/css"/>
+
+<!-- SB Admin CSS - Include with every page -->
+<link href="<?php echo $this->baseUrl(); ?>/assets/sb-admin-v2/css/sb-admin.css" media="all" rel="stylesheet" type="text/css"/>
+
+
+    
+
+<!-- javascript -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+<!-- end javascript -->
+
+</head>
+
+<body>
+
+<!--  #skip  Skip link as defined by webaim http://webaim.org/techniques/css/invisiblecontent/ -->
+<div class="sr-only" id="skip"><a href="#mainContent">Skip to Main Content</a></div>
+
+
+
+<header class="ss-header">
+		<!-- navbar -->
+		<div id="ss_banner_nav">
+		  <div class="navbar navbar-default" role="navigation">
+		   
+			<div class="navbar-header">
+			  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> 
+			  	<span class="sr-only">Toggle navigation</span> 
+			    <span class="icon-bar"></span> 
+			    <span class="icon-bar"></span> 
+			    <span class="icon-bar"></span> 
+			  </button>
+			  <a href="http://www.csus.edu/" title="Sacramento State Homepage"><img alt="Sacramento State logo" src="http://www.csus.edu/homep/monet/Images/header/logo-banner.png"/></a> 
+
+			</div>
+		      <div class="collapse navbar-collapse">
+		        <ul class="nav navbar-nav pull-right">
+		          <li><a href="http://www.csus.edu/about/index.html">About</a></li>
+		          <li><a href="http://www.csus.edu/academics/index.html">Academics</a></li>
+		          <li><a href="http://www.csus.edu/admissions">Admissions</a></li>
+		          <li><a href="http://www.hornetsports.com/">Athletics</a></li>
+		          <li><a href="http://www.csus.edu/giving">Make A Gift</a></li>
+		          <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quick Links <b class="caret"></b></a>
+		            <ul class="dropdown-menu">
+		              <li><a href="http://www.csus.edu/about/calendars/">Calendars</a></li>
+		              <li><a href="http://www.csus.edu/campusmap">Campus Map</a></li>
+		              <li><a href="http://aaweb.csus.edu/catalog/default.html">Catalog</a></li>
+		              <li><a href="http://www.collegeportraits.org/CA/CSUS">College Portrait</a></li>
+		              <li><a href="http://www.csus.edu/Academics/index.html">Colleges &amp; Depts</a></li>
+		              <li><a href="http://www.csus.edu/Technology/index.html">Computing &amp; Technology</a></li>
+		              <li><a href="http://www.csus.edu/about/employment/">Jobs</a></li>
+		              <li><a href="http://library.csus.edu/">Library</a></li>
+		              <li><a href="http://online.csus.edu/">Online Courses (SacCT)</a></li>
+		              <li><a href="https://www.saclink.csus.edu/">SacLink</a></li>
+		            </ul>
+		          </li>
+		        </ul>
+		      </div>
+		   
+		  </div>
+		</div>
+	
+</header>
+
+<div class="main" id="main" role="main">
+
+	
+	 <div id="wrapper">
+
+
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="<?php echo $this->baseUrl(); ?>/admin/index/index"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo $this->baseUrl(); ?>/admin/index/courselist"><i class="fa fa-list fa-fw"></i> Course list</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo $this->baseUrl(); ?>/admin/index/analytics"><i class="fa fa-bar-chart-o fa-fw"></i> Analytics</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo $this->baseUrl(); ?>/admin/index/register"><i class="fa fa-users fa-fw"></i> Users</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo $this->baseUrl(); ?>/admin/index/embed"><i class="fa fa-code fa-fw"></i> Embed Video</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo $this->baseUrl(); ?>/admin/test/teststream/tsid/4"><i class="fa fa-video-camera"></i> Test Streams</a>
+                    </li>
+                    
+                </ul>
+                <!-- /#side-menu -->
+            </div>
+            <!-- /.sidebar-collapse -->
+        </nav>
+        <!-- /.navbar-static-side -->
+
+        <div id="page-wrapper">
+	        <a id="mainContent"></a> <!-- accessibility, skip to main content target --> 
+            <div class="row">
+                <div class="col-lg-12">
+                    
+                    <div id="layout_content">
+						<?php echo $this->layout()->content; ?>
+					</div>
+                    
+                    
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+	
+	
+	
+	
+	
+	
+</div>
+
+
+<footer class="ss-footer">
+	<div class="container">
+		
+	
+	<!-- #contentinfo :contentinfo is landmark region for the footer -->	
+	
+        <div class="contentinfo" id="contentinfo" role="contentinfo">
+          <div class="col-md-1 address" id="address">
+          	<div class="footer-logo"><a href="http://www.csus.edu"><img alt="Sac State Home"  src="http://www.csus.edu/Monet/Images/global/footer_logo.png" /></a></div>
+          </div>
+          
+          <div class="col-md-3 address" id="address">
+            <div itemtype="http://schema.org/EducationalOrganization">
+            	<p>
+            		<span itemprop="name">California State University, Sacramento</span><br/>
+              		<span itemprop="streetAddress">6000 J Street</span><br/>
+                	<span itemprop="addressLocality">Sacramento</span>, <span itemprop="addressRegion">CA</span> <span itemprop="postalCode">95819</span><br/>
+                	<span itemprop="telephone">(916) 278-6011</span>
+                </p>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="footer-icons">
+              <ul class="nav nav-pills">
+                <li><a href="http://www.facebook.com/sacstate" id="facebook_link"><img alt="facebook icon"  src="http://www.csus.edu/homep//Monet/Images/icons/facebook.png" /></a></li>
+                <li><a href="http://twitter.com/sacstate" id="twitter_link"><img alt="twitter icon"  src="http://www.csus.edu/homep//Monet/Images/icons/twitter.png" /></a></li>
+                <li><a href="http://www.youtube.com/SacStateVideo" id="youtube_link"><img alt="youtube icon"  src="http://www.csus.edu/homep//Monet/Images/icons/youtube.png" /></a></li>
+                <li><a href="http://www.flickr.com/photos/sacstate" id="flickr_link"><img alt="Flickr icon"  src="http://www.csus.edu/homep//Monet/Images/icons/flickr.jpg" /></a></li>
+              </ul>
+            </div>
+            <div class="footer-links">
+              <ul class="nav nav-pills">
+                <li><a href="http://www.csus.edu/contact/Comments.html">Comments &amp; Questions</a></li>
+                <li><a href="http://www.csus.edu/About/AtoZ.html">A to Z Index</a></li>
+                <li class="last"><a href="http://www.csus.edu/About/accessibility.html">Accessibility</a></li>
+                <li class="last"><a href="http://www.collegeportraits.org/CA/CSUS">College Portrait</a></li>
+              </ul>
+            </div>
+          </div>
+
+    <!-- end #contentinfo_container --> 
+
+	</div>
+	</div>
+</footer>
+
+
+
+
+
+
+
+
+<!-- js at the bottom of page for faster load times --> 
+
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+<!-- SB Admin Scripts - Include with every page -->
+<script src="<?php echo $this->baseUrl(); ?>/assets/sb-admin-v2/js/sb-admin.js" type="text/javascript"></script> 
+
+
+<script src="<?php echo $this->baseUrl(); ?>/assets/js/osmf.js" type="text/javascript"></script> 
+<script src="<?php echo $this->baseUrl(); ?>/assets/js/oocharts.min.js" type="text/javascript"></script> 
+
+<!-- google anayltics --> 
+<script src="http://www.google-analytics.com/ga.js" type="text/javascript"></script> 
+<script type="text/javascript">
+
+//<![CDATA[
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', 'UA-798015-8']);
+
+  _gaq.push(['_trackPageview']);
+
+	(function() {
+
+    	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+
+  	})();
+
+	$(function () {
+
+  		var track = function(x,y) {
+
+	    _gaq.push(['_trackEvent', 'Sacramento State Course Videos', x, y]);
+
+  	};
+
+  var track_region = function (selector, name) { 
+
+    $(selector).live('click', function(e){
+
+      var _t = $(this);
+
+      track(name,  (_t.text() || _t.children('img:first').attr('alt')));
+
+    })
+
+  };
+
+  
+
+   track_region('#logo a', 'Logo');
+
+   track_region('#secondaryGlobalNav li a', 'Secondary Nav Link');
+
+   track_region('.subLinks li a', 'Secondary Sub Nav Link');
+
+   track_region('.globalNavigation ul li a', 'Primary Navigation Link');
+
+   track_region('#quickLinks-menu li a', 'Quicklinks Links');
+
+   track_region('#course_videos_link', 'Course Videos link');
+
+   track_region('#live_streaming_link', 'Live Streaming link');
+
+   track_region('#digital_media_link', 'Digital Media link');
+
+   track_region('#faculty_media_server_link', 'Faculty Media Server link');
+
+   track_region('#ask_a_consultant_link', 'Ask A Consultant link');
+
+   track_region('#streaming_support_link', 'Streaming Support link');
+
+   track_region('#email_service_desk_link', 'Email Service Desk link');
+
+   track_region('#facebook_link', 'Facebook link');
+
+   track_region('#twitter_link', 'Twitter link');
+
+   track_region('#youtube_link', 'YouTube link');
+
+   track_region('#flickr_link', 'flickr link');
+
+
+
+});
+
+
+
+    //]]>
+
+</script> 
+
+<!-- put nothing after this region -->
+
+</body>
+</html>
