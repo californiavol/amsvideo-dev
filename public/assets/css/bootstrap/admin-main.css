@@ -1,0 +1,581 @@
+@CHARSET "UTF-8";
+
+/* No media query since this is the default in Bootstrap */
+
+
+
+h1 {}
+
+h1 {
+	font-family:"Trajan Pro", Georgia;
+	font-size:1.4em;
+    background-image: url("http://www.csus.edu/cached/Colleges/1.0/images/icons/doubleS_13x19.png");
+    background-position: left 0;
+    background-repeat: no-repeat;
+    border-bottom: medium double #DDCB93;
+    text-indent: 1em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+a {color:#00573d;}
+
+.ss-header {
+    min-height:60px;
+    padding-left:20px;
+    padding-right:20px;
+    background-color:#001e14;
+    background-image:-moz-linear-gradient(top, #001e14, #001e14);
+    background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#001e14), to(#001e14));
+    background-image:-webkit-linear-gradient(top, #001e14, #001e14);
+    background-image:-o-linear-gradient(top, #001e14, #001e14);
+    background-image:linear-gradient(to bottom, #001e14, #001e14);
+    background-repeat:repeat-x;
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff001e14', endColorstr='#ff001e14', GradientType=0);
+    border:1px solid #021e14;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.065);
+    -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.065);
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.065);
+	*zoom:1;	
+}
+
+
+
+
+.ss-footer {
+	background-color:#f0e1b0;
+}
+
+.info-block {
+    display: block;
+    text-transform: capitalize;
+    color:#444;
+    letter-spacing: .1em;
+    display: block;
+    background: rgba(250, 250, 250, 1.5);
+    padding: 6px;
+    margin-bottom:10px;
+    border-radius: 5px;
+    
+
+    -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    border-bottom: 1px solid rgba(18, 88, 60, 0.2);
+
+    -webkit-transition: opacity .5s;
+    -moz-transition: opacity .5s;
+    -o-transition: opacity .5s;
+    -ms-transition: opacity .5s;
+    transition: opacity .5s;
+}
+
+.info-block p {
+    color:#444;
+
+}
+
+.info-block a {
+    color:#00573d;
+}
+
+#ss_banner_nav {
+	margin-top:10px;
+}
+
+#ss_banner_nav .navbar-default {
+	background-color:#001e14;
+	border-color:#001e14;
+}
+
+#ss_banner_nav .navbar-default .navbar-text {
+  color: #f0e1b0;
+}
+
+#ss_banner_nav .navbar-default .navbar-nav > li > a {
+  color: #f0e1b0;
+}
+
+#ss_banner_nav .navbar-default .navbar-nav > li > a:hover,
+#ss_banner_nav .navbar-default .navbar-nav > li > a:focus {
+  color: #fff;
+  background-color: transparent;
+}
+
+#main .jumbotron { 
+	color:#00573d;
+	background:url(/assets/images/MarqueeBackdropLIGHT.png) no-repeat;
+	
+	
+}
+
+#main .jumbotron-wrapper {
+	background-color:#f0e1b0;
+}
+
+#main .jumbotron h1 {font-size:1.6em;}
+h2, h3 {
+    display:block;
+	position:relative;
+    color:#FFF;
+    font-family:"Trajan Pro", Georgia;
+    font-size: 1em;
+    text-transform:uppercase;
+    line-height:1.5;
+    padding:0.2em;
+    margin-top:0;
+    vertical-align:middle;
+    background-image: url('http://www.csus.edu/cached/Colleges/1.0/images/regions/main/mainregion.h2.bg.slice.1x29.png');
+    background-repeat: repeat-x;
+	background-color:transparent;
+    border-top:1px solid #f0e1b0;
+    margin-bottom:0.1em;
+    clear:both;
+}
+h2:before,
+h3:before {
+    position:relative;
+    top:1px;
+    content:url('http://www.csus.edu/cached/Colleges/1.0/images/icons/doubleS_13x19.png');
+    padding-right:6px;
+    padding-left:4px;   
+
+}
+h4 {
+    font-size:1.1em;
+    border-bottom:1px dotted;
+}
+
+
+#secondary_nav {
+	margin-top:1.5em;
+	margin-bottom:1.5em;
+	margin-left:20px;
+	background-color:rgba(0,0,0, 0.5);
+	min-height:40px;
+}
+
+#ss_video_title {text-indent:4em;}
+
+
+
+
+.content-module {
+    background-color:#f0e1b0;
+    padding:0;
+    margin:0 0 1em 0;
+    clear:both;
+}
+.content-module h3 {margin-bottom:0;}
+.content-module h4,
+.content-module h5,
+.content-module h6 {
+    background:transparent;
+    text-align:left;
+    color:#000;
+    size:medium;
+    text-indent:0;
+    padding-left:0.4em;
+    font-family:'Trajan Pro', Georgia;
+    text-transform:uppercase;
+    font-weight:600;
+}
+
+.content-module p {
+    padding:0.5em;
+    color:#444;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size:1em;
+}
+
+.content-module img {padding:0.5em; margin:0.5em;}
+
+.content-module ol {list-style-type: decimal;}
+.content-module ul {list-style-type: disc;}
+.content-module ul,
+.content-module ol {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: small;
+    font-style: normal;
+    line-height: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    color: #444;
+    text-decoration: none;
+    text-align: left;
+    display: block;
+    margin: 0px;
+    padding: 0.5em;
+    list-style-position: inside;
+    list-style-image: none;    
+}
+
+.content-module li {
+    margin-bottom:0.2em;
+}
+.content-module a:link {
+    color:#01402d;
+    text-decoration:none;
+    font-size:small;
+}
+
+.content-module a:visited {
+    color:#01402d;
+    text-decoration:none;
+    font-size:small;
+}
+
+.content-module a:hover {
+    color:#01402d;
+    text-decoration:underline;
+    font-size:small;
+}
+
+.content-module a:active {
+    color:#01402d;
+    text-decoration:underline;
+    font-size:small;
+}
+
+.content-module a:focus {
+    color:#01402d;
+    text-decoration:none;
+    font-size:small;
+    outline:#01402d solid medium;
+}
+
+
+
+
+#contentinfo  {
+    background: #f0e1b0;
+    margin-top: 10px;
+	padding:20px;
+    height: 195px;
+	color:#000;
+	text-align:center;
+}
+
+#contentinfo a {color:#00573d;}
+
+
+
+
+/* calendar widget */
+
+.w-calendar{
+    display:block;
+    position:relative;
+    margin-top:1em;
+    background:url('http://www.csus.edu/Monet/1.0/Images/content/greenGradient_bg.gif') repeat-x scroll left top transparent;
+}
+.w-calendar h4 {
+    color:#fff;
+    margin-top:0.1em;
+    margin-bottom:0;
+    padding-top:.5em;
+    font-size:1em;
+    text-indent:0.5em;
+}
+.w-calendar footer {
+    text-align:center;
+    padding:0.3em;
+    color:#FFF;
+    font-family:"Trajan Pro", Georgia;
+    text-transform:uppercase;
+}
+.w-calendar ul {
+    border-bottom:1px solid #1A4C3C;  
+    margin:0;
+    padding:0;
+}
+
+.w-calendar ul li {
+    list-style-type:none;   
+    border-top:1px dotted #1A4C3C; 
+    margin:0;
+    padding:0;        
+}
+.w-calendar ul li p {
+    background:transparent;
+    text-align:left;
+    font-size:1.1em;
+    padding:0.2em;
+    margin:0.5em;
+}
+
+.w-calendar a:link,
+.w-calendar a:visited {
+    text-decoration:none;
+    color:#f0e1b0;  
+}
+.w-calendar a:hover,
+.w-calendar a:active {
+    text-decoration:underline;
+    color:#f0e1b0;
+}
+
+
+
+/* Extra small devices (phones, less than 768px) */
+
+
+@media (max-width:421px) {
+    
+    h1 {
+        font-size:16px;
+    }
+    
+    h2, h3 {
+        font-size:12px;
+    }
+
+	#sacstate_video {
+		display:block;
+		position:relative;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+   #contentinfo a {
+		color:#f0e1b0;
+   }
+	
+   #contentinfo a:hover {
+		color:#00573d;
+   }
+	
+   .footer-icons {
+		display:block;
+		position:relative;
+		width:100%;
+		margin-left:auto;
+		margin-right:auto;
+		margin-top:30px;	
+		margin-bottom:30px;
+	}
+	
+	.footer-icons nav-pills ul {
+	    width:100%;
+	    margin-left:auto;
+	    margin-right:auto;
+	    display:block;
+	    position:relative;
+	    list-style-type:none;
+	    
+	}
+	
+	.footer-icons nav-pills ul li {
+	    display:inline; 
+	    float:left; 
+    }
+	
+	.footer-links li {
+	    float:none;
+	}
+	
+	#osmfcontainer {
+		padding:0;
+	}
+
+	/********************************/
+	/** course videos list **/
+	.ss-coursevideos-list {display:block; position:relative; }
+	.ss-coursevideos-list ul {padding-left:0;margin-left:0; overflow-y:scroll; overflow-x:hidden; height:100%;}
+	.ss-coursevideos-list ul li {background-color:#262626;color:#fff; padding:1em; border-bottom:1px inset #444; transition: opacity 1s ease 0s;}
+	
+	.ss-coursevideos-list ul li:hover {background-color:#262626;color:#fff; padding:1em; border-bottom:1px inset #444; opacity:0.8;}
+	
+	.ss-coursevideos-list ul li h4 {color:#fff; font-size:1.2em; padding-bottom:0; margin-bottom:0;}
+	.ss-coursevideos-list ul li p {color:#fff; font-weight:normal;  font-size:1em; /* padding-left:0; */ /* padding-right:1em; */ /* padding-bottom:0; */ line-height:normal; margin-bottom:0.2em; text-transform:capitalize;}    
+	
+	#course_meta {
+	background-color: #262626;
+	margin: 0;
+	}
+	
+	#course_meta p {
+		padding: 1em;
+	}
+	
+
+	
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {  
+	#sacstate_video {
+		display:block;
+		position:relative;
+		width: 100%;
+		height: 480px;
+		
+	}
+
+
+    #sacstate_video_html5 {
+            display:block;
+            position:relative;
+            width: 640px;
+            height: 480px;
+
+    }
+    
+
+
+	#sacstate_videoplayer {
+	    display:block;
+	    position:relative;
+	    width:100%;
+	    margin-left:auto;
+	    margin-right:auto;
+	    
+	}
+	
+	.ss-videoplayer {
+	    display:block;
+	    position:relative;
+	
+	}
+	#sacstate_videoplayer_wrapper {
+	    margin-left:auto;
+	    margin-right:auto;
+	}
+	.ss-videoplayer-container {
+	    display:block;
+	    position:relative;
+	    width:100%;
+	    margin-left:auto;
+	    margin-right:auto;
+	
+	}
+	
+	.ss-videoplayer.backdrop {
+	    display:block;
+	    position:relative;
+	
+	    
+	    /* background:url('http://www.csus.edu/cached/Colleges/2.0/assets/images/gray-noise-background.jpg') no-repeat;  */
+	    background-color: #262626;
+	    border:0.5em solid #161616;
+	
+	}
+	
+	
+	
+	.ss-videoplayer h1 {
+	    font-family: "trajan pro", georgia, sans-serif;
+	    text-transform:uppercase;
+		color:#fff;
+	}
+	.ss-videoplayer h2,
+	.ss-videoplayer h3,
+	.ss-videoplayer h4,
+	.ss-videoplayer h5,
+	.ss-videoplayer h6 {
+		color:#fff;
+	}
+	
+	.ss-videoplayer p {color:#fff;}
+	
+	.ss-videoplayer a {}
+	
+	.ss-videoplayer ul {}
+	.ss-videoplayer ul li {}
+	
+	.ss-videoplayer-metadata-container {
+	    display:block;
+	    position:relative;
+	    width:auto;
+	    height:100%;
+	    padding:0;
+	    margin-top:1em;
+	    margin-bottom:1em;
+	    margin-left:auto;
+	    margin-right:auto;  
+	
+	}
+	
+	.ss-videoplayer-metadata-container p {
+	    font-size:1.3em;
+	    background-color:#262626;
+	    color:#fff;
+	}
+	
+	
+	
+	.ss-videogallery  {display:block; position:relative; margin-top:1em; margin-bottom:3em;overflow:hidden;}
+	.ss-videogallery p {color:#fff; background-color:#262626;font-size:1.2em;}
+	.ss-videogallery-list {display:block; position:relative; }
+	.ss-videogallery-list ul {padding-left:0;margin-left:0;overflow-y:scroll; overflow-x:hidden; height:710px;}
+	.ss-videogallery-list ul li {background-color:#262626;padding:1em; border-bottom:1px inset #444;}
+	
+	.ss-videogallery-metadata {display:block; position:relative;clear:both;}
+	.ss-videogallery-metadata img {display:inline; position:relative;   }
+	.ss-videogallery-metadata em {color:#fff; font-size:1.4em;}
+	.ss-videogallery-metadata p {color:#fff; font-size:1.2em;padding-left:0; padding-right:1em;}
+	
+	
+	/********************************/
+	/** course videos list **/
+	.ss-coursevideos-list {display:block; position:relative; }
+	.ss-coursevideos-list ul {padding-left:0;margin-left:0; overflow-y:scroll; overflow-x:hidden; height:480px;}
+	.ss-coursevideos-list ul li {background-color:#262626;color:#fff; padding:1em; border-bottom:1px inset #444; transition: opacity 1s ease 0s;}
+	
+	.ss-coursevideos-list ul li:hover {background-color:#262626;color:#fff; padding:1em; border-bottom:1px inset #444; opacity:0.8;}
+	
+	.ss-coursevideos-list ul li h4 {color:#fff; font-size:1.2em; padding-bottom:0; margin-bottom:0;}
+	.ss-coursevideos-list ul li p {color:#fff; font-weight:normal;  font-size:1em; /* padding-left:0; */ /* padding-right:1em; */ /* padding-bottom:0; */ line-height:normal; margin-bottom:0.2em; text-transform:capitalize;}    
+
+}
+
+@media (max-device-width: 1280px) and (orientation: landscape) { 
+
+}
+
+
+@media (max-device-width: 800px) and (orientation: portrait) { 
+
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+    #contentinfo  {
+        background: #f0e1b0;
+        margin-top: 0px;
+    	padding:20px;
+        height: 175px;
+    	color:#000;
+    	text-align:left;
+    	
+    }
+
+    .footer-icons {
+        float:right;
+    }
+    
+    .footer-links {
+        float:right;
+        font-size:0.8em;
+        clear:both;
+    }    
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    #contentinfo  {
+        background: #f0e1b0;
+        margin-top: 0px;
+    	padding:20px;
+        height: 175px;
+    	color:#000;
+    	text-align:left;
+    }
+
+    
+}

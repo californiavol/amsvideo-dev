@@ -7,7 +7,7 @@ class Admin_TestController extends Zend_Controller_Action
     {
         /* Initialize action controller here */
     	//set different layout
-    	//$this->_helper->layout->setLayout('admin-layout');
+    	$this->_helper->layout->setLayout('admin-layout');
 
     	//get db tables
     	$this->teststreamsTable = new Admin_Model_DbTable_Teststreams();
