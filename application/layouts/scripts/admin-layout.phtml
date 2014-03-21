@@ -103,7 +103,19 @@
                         <a href="<?php echo $this->baseUrl(); ?>/admin/index/analytics"><i class="fa fa-bar-chart-o fa-fw"></i> Analytics</a>
                     </li>
                     <li>
-                        <a href="<?php echo $this->baseUrl(); ?>/admin/index/register"><i class="fa fa-users fa-fw"></i> Users</a>
+                        <a href="#"><i class="fa fa-users fa-fw"></i> Users<span class="fa arrow"></span></a>
+                        
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/user/listusers">List Users</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/index/register">Add User</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                        
+                        
                     </li>
                     <li>
                         <a href="<?php echo $this->baseUrl(); ?>/admin/index/embed"><i class="fa fa-code fa-fw"></i> Embed Video</a>
@@ -210,6 +222,10 @@
 <!-- SB Admin Scripts - Include with every page -->
 <script src="<?php echo $this->baseUrl(); ?>/assets/sb-admin-v2/js/sb-admin.js" type="text/javascript"></script> 
 
+<!-- Page-Level Plugin Scripts - Tables -->
+<script src="<?php echo $this->baseUrl(); ?>/assets/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.js" type="text/javascript"></script> 
+<script src="<?php echo $this->baseUrl(); ?>/assets/sb-admin-v2/js/plugins/dataTables/dataTables.bootstrap.js" type="text/javascript"></script>
+<script src="<?php echo $this->baseUrl(); ?>/assets/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js" type="text/javascript"></script>
 
 <script src="<?php echo $this->baseUrl(); ?>/assets/js/osmf.js" type="text/javascript"></script> 
 <script src="<?php echo $this->baseUrl(); ?>/assets/js/oocharts.min.js" type="text/javascript"></script> 

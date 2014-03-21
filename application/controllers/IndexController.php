@@ -27,8 +27,7 @@ class IndexController extends Zend_Controller_Action
         //get db tables                                                                                                              
         $this->coursesTable    = new Application_Model_DbTable_Courses();       		                                                                                  
         $this->videosTable     = new Application_Model_DbTable_Videos();
-        //$this->devicesTable    = new Application_Model_DbTable_Devices();
-        //$this->videostatsTable = new Application_Model_DbTable_Videostats();
+
 
     }
 
@@ -112,58 +111,6 @@ class IndexController extends Zend_Controller_Action
     public function coursepageAction()
     {
     	$this->view->coursevideos = $this->videosTable->getVideosByClassNbr($this->class_nbr);
-    }
-
-    public function edsAction()
-    {
-        if ($this->courseId) {
-                		//get all courses for course list                                                                                           
-                		$this->view->courses = $this->coursesTable->getCourses();
-                
-                        //get individual course if courseId param set                                                                               
-                        $this->view->course = $this->coursesTable->getCourseById($this->courseId);;
-                
-                        //get videos by courseId and section                                                                                       
-                        $this->view->coursevideos = $this->videosTable->getVideosByCourseIdSectionId($this->courseId, $this->section);
-                
-                        //get most recent video by date and courseId                                                                                
-                        $this->view->recentvideo = $this->videosTable->getMostRecentVideo($this->courseId);
-                      } else {
-                        //this is a one-off so we're hardcoding the course_id and section                                                           
-                        $courseId = '118741';
-                        $section = '03';
-                        //get videos by courseId and section                                                                                       
-                        $this->view->coursevideos = $this->videosTable->getVideosByCourseIdSectionId($courseId, $section);
-                      }
-                      if ($this->videoId) {
-                        $this->view->video = $this->videosTable->getVideoById($this->videoId);
-                      }
-    }
-
-    public function mgmtAction()
-    {
-        if ($this->courseId) {
-                		//get all courses for course list                                                                                           
-                		$this->view->courses = $this->coursesTable->getCourses();
-                
-                        //get individual course if courseId param set                                                                               
-                        $this->view->course = $this->coursesTable->getCourseById($this->courseId);;
-                
-                        //get videos by courseId and section                                                                                       
-                        $this->view->coursevideos = $this->videosTable->getVideosByCourseIdSectionId($this->courseId, $this->section);
-                
-                        //get most recent video by date and courseId                                                                                
-                        $this->view->recentvideo = $this->videosTable->getMostRecentVideo($this->courseId);
-                      } else {
-                        //this is a one-off so we're hardcoding the course_id and section                                                           
-                        $courseId = '154706';
-                        $section = '10';
-                        //get videos by courseId and section                                                                                       
-                        $this->view->coursevideos = $this->videosTable->getVideosByCourseIdSectionId($courseId, $section);
-                      }
-                      if ($this->videoId) {
-                        $this->view->video = $this->videosTable->getVideoById($this->videoId);
-                      }
     }
 
     public function live1Action()

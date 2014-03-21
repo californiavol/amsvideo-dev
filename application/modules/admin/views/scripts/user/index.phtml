@@ -1,0 +1,12 @@
+<h1>User List <?php echo 'Count: ' . $this->paginator->getPages()->totalItemCount; ?></h1>
+		<ul>
+		<?php 
+		foreach($this->paginator as $record)
+		    {
+				echo '<li>';
+		    	echo $record['username'];
+				echo '</li>';
+		    }
+		    ?>
+		</ul>
+    <?php echo  $this->paginationControl($this->paginator, 'Sliding', 'index/partials/pagination.phtml'); ?>
