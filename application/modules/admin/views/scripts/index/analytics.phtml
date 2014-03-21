@@ -1,0 +1,89 @@
+<script type="text/javascript">
+
+	window.onload = function(){
+
+		oo.setAPIKey("14e4e9c4d3e70dc3004ed2984432d002d2ad0d06");
+
+		oo.load(function(){
+
+			var timeline = new oo.Timeline("79662254", "30d");
+
+			timeline.addMetric("ga:visits", "Visits");
+
+			timeline.addMetric("ga:newVisits", "New Visits");
+
+			timeline.draw('chart');
+
+
+            var table = new oo.Table("79662254", "30d");
+			
+            table.addMetric("ga:visits", "Visits");
+
+            
+
+            table.draw('table');
+
+			
+
+		});
+	};
+
+</script>
+
+<h1>Google Analytics</h1>		
+		
+		
+		<div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Google Analytics API
+                           
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <p>Profile ID: 79662254</p>
+                            <p>API Key: 14e4e9c4d3e70dc3004ed2984432d002d2ad0d06</p>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                    
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Visits last 30 days
+                           
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div id='chart'></div>
+
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                    
+             	<div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Total Visits Last 30 days
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="table-responsive">
+                                        <div id='table' class="table table-bordered table-hover table-striped"></div>
+                                    </div>
+                                    <!-- /.table-responsive -->
+                                </div>
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->       
+                    
+             </div>
+         </div>
+		

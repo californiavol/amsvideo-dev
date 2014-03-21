@@ -251,7 +251,18 @@ class Admin_IndexController extends Zend_Controller_Action
     	$this->view->count = $this->videosTable->getVideoCount();
     }
 
+    public function analyticsAction()
+    {
+    	
+    }
 
+    
+	public function embedAction()
+	{
+		$this->view->form = new Application_Form_Embed();
+	}
+    
+    
 }
 
 
