@@ -74,14 +74,15 @@ class App_Controller_Plugin_Auth extends Zend_Controller_Plugin_Abstract
             $acl->addResource(new Zend_Acl_Resource('login'));
             $acl->addResource(new Zend_Acl_Resource('register'));
             $acl->addResource(new Zend_Acl_Resource('courselist'));
- 
+ 			$acl->addResource(new Zend_Acl_Resource('test'));
+            
             // ACCESS ROLES
             $acl->addRole(new Zend_Acl_Role('guest'));
             $acl->addRole(new Zend_Acl_Role('user'));
             $acl->addRole(new Zend_Acl_Role('administrator'));
  
             // ACCESS RULES
-            $acl->allow('guest', 'index',array('login', 'courselist')); // allow guests to login and see courselist
+            $acl->allow('guest', array('index', 'test'),array('login', 'courselist', 'teststream')); // allow guests to login and see courselist
             $acl->allow('administrator'); // ALLOW ADMINISTRATORS EVERYWHERE
  
             $role = ($auth->getIdentity() && $auth->getIdentity()->status = 'approved') ? $auth->getIdentity()->role : 'guest';
