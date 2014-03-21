@@ -2,6 +2,7 @@
 <p><?php echo $this->currentSemester; ?> <?php echo $this->currentYear; ?> Courses: <?php echo $this->courseCount; ?> Videos: <?php echo $this->videoCount; ?></p>
 
  	<div class="row">
+ 	<div class="col-lg-8">
  	
  	 <div class="panel panel-default">
                         <div class="panel-heading">
@@ -20,6 +21,29 @@
                     </div>
                     <!-- /.panel -->
  	
+ 	</div>
+ 	<div class="col-lg-4">
+ 	
+ 	
+ 	 	 <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-save fa-fw"></i> Ingest Data
+                        </div>
+                        <div class="panel-body">
+<p>
+              			<a class="btn btn-default" href="<?php echo $this->baseUrl(); ?>/admin/index/insertcourses" role="button">Load Courses &raquo;</a>
+              		</p>
+              		<p>
+              			<a class="btn btn-default" href="<?php echo $this->baseUrl(); ?>/admin/index/insertvideos" role="button">Load Videos &raquo;</a>
+              		</p>
+              		<p>Reads the .csv files from /data/video/data/csv/ and then parses the data, and finally inserts it into a MySql database.</p>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+ 	
+ 	
+ 	</div>
 
 
      
