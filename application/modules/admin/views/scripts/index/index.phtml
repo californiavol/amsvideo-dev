@@ -4,6 +4,27 @@
             	<h1>Course Videos Admin</h1>
             	<p><?php echo $this->currentSemester; ?> <?php echo $this->currentYear; ?> Courses: <?php echo $this->courseCount; ?> Videos: <?php echo $this->videoCount; ?></p>
           	</div>
+          	<script type="text/javascript">
+
+			window.onload = function(){
+
+				oo.setAPIKey("14e4e9c4d3e70dc3004ed2984432d002d2ad0d06");
+
+				oo.load(function(){
+
+					var timeline = new oo.Timeline("79662254", "30d");
+
+					timeline.addMetric("ga:visits", "Visits");
+
+					timeline.addMetric("ga:newVisits", "New Visits");
+
+					timeline.draw('chart');
+
+				});
+			};
+
+		</script>
+		<div id='chart'></div>
           </div>
  	<div class="row">
         <div class="col-md-4">

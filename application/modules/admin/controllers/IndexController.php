@@ -8,7 +8,7 @@ class Admin_IndexController extends Zend_Controller_Action
         /* Initialize action controller here */
     	
     	//set different layout
-    	//$this->_helper->layout->setLayout('admin-layout');
+    	$this->_helper->layout->setLayout('admin-layout');
     	
     	//get flashmessenger
     	$this->flashMsg = $this->_helper->flashMessenger;
