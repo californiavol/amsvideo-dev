@@ -4,30 +4,31 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sacramento State Course Videos</title>
+<title>Course Video Admin | Sacramento State</title>
 
 <!-- css -->
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
 <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css" />
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 
-<link href="<?php echo $this->baseUrl(); ?>/assets/css/video-styles.css" media="all" rel="stylesheet" type="text/css"/>
-<link href="<?php echo $this->baseUrl(); ?>/assets/css/bootstrap/main.css" media="all" rel="stylesheet" type="text/css"/>
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<link href="<?php echo $this->baseUrl(); ?>/assets/css/bootstrap/admin-main.css" media="all" rel="stylesheet" type="text/css"/>
 
+<link href="<?php echo $this->baseUrl(); ?>/assets/css/sb-admin-v2/css/plugins/timeline/timeline.css" media="all" rel="stylesheet" type="text/css"/>
+
+<!-- SB Admin CSS - Include with every page -->
+<link href="<?php echo $this->baseUrl(); ?>/assets/sb-admin-v2/css/sb-admin.css" media="all" rel="stylesheet" type="text/css"/>
+
+
+    
 
 <!-- javascript -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <!-- end javascript -->
 
 </head>
@@ -40,7 +41,6 @@
 
 
 <header class="ss-header">
-	<div class="container">
 		<!-- navbar -->
 		<div id="ss_banner_nav">
 		  <div class="navbar navbar-default" role="navigation">
@@ -52,7 +52,8 @@
 			    <span class="icon-bar"></span> 
 			    <span class="icon-bar"></span> 
 			  </button>
-			  <a href="http://www.csus.edu/" title="Sacramento State Homepage"></a> 
+			  <a href="http://www.csus.edu/" title="Sacramento State Homepage"><img alt="Sacramento State logo" src="http://www.csus.edu/homep/monet/Images/header/logo-banner.png"/></a> 
+
 			</div>
 		      <div class="collapse navbar-collapse">
 		        <ul class="nav navbar-nav pull-right">
@@ -80,21 +81,70 @@
 		   
 		  </div>
 		</div>
-	</div>
+	
 </header>
 
 <div class="main" id="main" role="main">
-	<div class="container">
-	  <a id="mainContent"></a> <!-- accessibility, skip to main content target --> 
-		<div id="layout_content">
-			<?php echo $this->layout()->content; ?>
-		</div>
-		
-		<div id="secondary_nav">
-			<?php echo $this->partial('index/_nav.phtml', 'default'); ?>
-	    </div>
-		
-	</div>
+
+	
+	 <div id="wrapper">
+
+
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="<?php echo $this->baseUrl(); ?>/admin/index/index"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo $this->baseUrl(); ?>/admin/index/courselist"><i class="fa fa-list fa-fw"></i> Course list</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo $this->baseUrl(); ?>/admin/index/analytics"><i class="fa fa-bar-chart-o fa-fw"></i> Analytics</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo $this->baseUrl(); ?>/admin/index/register"><i class="fa fa-users fa-fw"></i> Users</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo $this->baseUrl(); ?>/admin/index/embed"><i class="fa fa-code fa-fw"></i> Embed Video</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo $this->baseUrl(); ?>/admin/test/teststream/tsid/4"><i class="fa fa-video-camera"></i> Test Streams</a>
+                    </li>
+                    
+                </ul>
+                <!-- /#side-menu -->
+            </div>
+            <!-- /.sidebar-collapse -->
+        </nav>
+        <!-- /.navbar-static-side -->
+
+        <div id="page-wrapper">
+	        <a id="mainContent"></a> <!-- accessibility, skip to main content target --> 
+            <div class="row">
+                <div class="col-lg-12">
+                    
+                    <div id="layout_content">
+						<?php echo $this->layout()->content; ?>
+					</div>
+                    
+                    
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+	
+	
+	
+	
+	
+	
 </div>
 
 
@@ -152,6 +202,15 @@
 
 
 <!-- js at the bottom of page for faster load times --> 
+
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+<!-- SB Admin Scripts - Include with every page -->
+<script src="<?php echo $this->baseUrl(); ?>/assets/sb-admin-v2/js/sb-admin.js" type="text/javascript"></script> 
+
+
 <script src="<?php echo $this->baseUrl(); ?>/assets/js/osmf.js" type="text/javascript"></script> 
 <script src="<?php echo $this->baseUrl(); ?>/assets/js/oocharts.min.js" type="text/javascript"></script> 
 

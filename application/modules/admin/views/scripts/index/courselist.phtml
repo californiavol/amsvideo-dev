@@ -1,9 +1,10 @@
 <div class="container">
 	<div class="row">
-		<h1>Streaming Video Courses List <?php echo $this->courseCount; ?></h1>
-		<table class="table">
-			<?php echo $this->partialLoop('index/_courseListBrief.phtml', $this->courses); ?>
-		</table>
-		
+		<h1>Streaming Video Course List <?php echo $this->courseCount; ?></h1>
+		<div class="table-responsive">
+        	<table class="table table-bordered table-hover table-striped">
+				<?php echo $this->partialLoop('index/_courseListBrief.phtml', $this->courses); ?>
+			</table>
+		</div>
 	</div>
 </div>

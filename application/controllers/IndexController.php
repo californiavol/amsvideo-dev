@@ -331,10 +331,6 @@ class IndexController extends Zend_Controller_Action
     }
 
 
-	public function embedAction()
-	{
-		$this->view->form = new Application_Form_Embed();
-	}
 
 }
 
