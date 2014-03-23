@@ -27,16 +27,15 @@
  	
  	 	 <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-save fa-fw"></i> Ingest Data
+                            <i class="fa fa-trash-o fa-fw"></i> Clean Cache
                         </div>
                         <div class="panel-body">
-<p>
-              			<a class="btn btn-default" href="<?php echo $this->baseUrl(); ?>/admin/index/insertcourses" role="button">Load Courses &raquo;</a>
-              		</p>
-              		<p>
-              			<a class="btn btn-default" href="<?php echo $this->baseUrl(); ?>/admin/index/insertvideos" role="button">Load Videos &raquo;</a>
-              		</p>
-              		<p>Reads the .csv files from /data/video/data/csv/ and then parses the data, and finally inserts it into a MySql database.</p>
+		              		<p>Completely delete and clear the cache.</p>
+							<p>
+              					<a class="btn btn-default" href="<?php echo $this->baseUrl(); ?>/admin/index/cleancache" role="button">Clean Cache &raquo;</a>
+              				</p>
+              		
+
                         </div>
                         <!-- /.panel-body -->
                     </div>
