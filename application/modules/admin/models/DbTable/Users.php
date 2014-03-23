@@ -36,6 +36,16 @@ class Admin_Model_DbTable_Users extends Zend_Db_Table_Abstract
         $select->where($where);
         return $this->fetchRow($select);
     }
+    
+    public function getUsers()
+    {
+    	$select = $this->select();
+		$select->setIntegrityCheck(false);
+				
+		$result = $this->fetchAll($select);
+    	
+	    return $result;    	
+    }
 
 
 }
