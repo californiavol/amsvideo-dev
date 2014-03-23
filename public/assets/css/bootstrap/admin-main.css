@@ -1,5 +1,14 @@
 @CHARSET "UTF-8";
 
+/** overwrites **/
+
+
+
+
+
+
+
+
 /* No media query since this is the default in Bootstrap */
 
 
@@ -457,9 +466,8 @@ h4 {
 	.ss-videoplayer.backdrop {
 	    display:block;
 	    position:relative;
-	
-	    
-	    /* background:url('http://www.csus.edu/cached/Colleges/2.0/assets/images/gray-noise-background.jpg') no-repeat;  */
+		padding:0.5em;
+	    background:url('http://www.csus.edu/cached/Colleges/2.0/assets/images/gray-noise-background.jpg') no-repeat;
 	    background-color: #262626;
 	    border:0.5em solid #161616;
 	
