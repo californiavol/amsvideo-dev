@@ -17,7 +17,8 @@ class Admin_DepartmentController extends Zend_Controller_Action
      */
     public function indexAction ()
     {
-        // TODO Auto-generated VideoController::indexAction() default action
+        $this->view->form = new Admin_Form_Department();
+                
         $this->view->departments = $this->_table->listitems();
         
         $this->view->count = $this->_table->getCount();
@@ -26,13 +27,15 @@ class Admin_DepartmentController extends Zend_Controller_Action
 
     public function listAction ()
     {
-		$this->view->list = $this->_table->listItems();
+
+    	$this->view->list = $this->_table->listItems();
     }
 
 
     public function addAction()
     {
         // action body
+        $this->view->form = new Admin_Form_Department();
     }
     
     public function editAction()
