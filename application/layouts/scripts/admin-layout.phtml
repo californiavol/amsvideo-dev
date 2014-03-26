@@ -100,6 +100,28 @@
                     <li>
                         <a href="<?php echo $this->baseUrl(); ?>/admin/index/courselist"><i class="fa fa-list fa-fw"></i> Course list</a>
                     </li>
+					<li>
+                        <a href="<?php echo $this->baseUrl(); ?>/admin/video/listvideos"><i class="fa fa-video-camera fa-fw"></i> Course Videos</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-video-camera fa-fw"></i> Videos<span class="fa arrow"></span></a>
+                        
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/user/listusers">By Department</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/index/register">By Playlist</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>                    
+                    <li>
+                        <a href="<?php echo $this->baseUrl(); ?>/admin/index/embed"><i class="fa fa-code fa-fw"></i> Embed Video</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo $this->baseUrl(); ?>/admin/test/teststream/tsid/4"><i class="fa fa-cogs"></i> Test Streams</a>
+                    </li>                    
                     <li>
                         <a href="<?php echo $this->baseUrl(); ?>/admin/index/analytics"><i class="fa fa-bar-chart-o fa-fw"></i> Analytics</a>
                     </li>
@@ -115,14 +137,19 @@
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
-                        
-                        
                     </li>
                     <li>
-                        <a href="<?php echo $this->baseUrl(); ?>/admin/index/embed"><i class="fa fa-code fa-fw"></i> Embed Video</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo $this->baseUrl(); ?>/admin/test/teststream/tsid/4"><i class="fa fa-video-camera"></i> Test Streams</a>
+                        <a href="#"><i class="fa fa-sitemap fa-fw"></i> Departments<span class="fa arrow"></span></a>
+                        
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/department/index">List Departments</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/department/add">Add Department</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
                     </li>
                     
                 </ul>

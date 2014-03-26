@@ -14,10 +14,11 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 
     public function getAllVideos()
     {    	
-    	$select = $this->select();
+    	$select = $this->select()		
+             			->from('videos')
+             			->joinUsing('courses', 'class_nbr');		
 		$select->setIntegrityCheck(false);
-		$select->joinFull('courses', 'courses.class_nbr = videos.class_nbr');
-				
+        		
 		$result = $this->fetchAll($select);
     	
 	    return $result;
