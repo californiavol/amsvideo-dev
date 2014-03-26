@@ -7,7 +7,9 @@ class Admin_DepartmentController extends Zend_Controller_Action
     {
         /* Initialize action controller here */
     	//set different layout
-    	$this->_helper->layout->setLayout('admin-layout');    	
+    	$this->_helper->layout->setLayout('admin-layout');   
+
+    	$this->_table = new Admin_Model_DbTable_Departments();
     }
 
 	/**
@@ -16,26 +18,29 @@ class Admin_DepartmentController extends Zend_Controller_Action
     public function indexAction ()
     {
         // TODO Auto-generated VideoController::indexAction() default action
+        $this->view->departments = $this->_table->listitems();
+        
+        $this->view->count = $this->_table->getCount();
     }
 
 
-    public function listvideosAction ()
+    public function listAction ()
     {
-		$this->view->videos = $this->videosTable->getAllVideos();
+		$this->view->list = $this->_table->listItems();
     }
 
 
-    public function addvideoAction()
+    public function addAction()
     {
         // action body
     }
     
-    public function editvideoAction()
+    public function editAction()
     {
         // action body
     }
 
-    public function deletevideoAction()
+    public function deleteAction()
     {
         // action body
     }

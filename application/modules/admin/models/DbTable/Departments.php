@@ -5,6 +5,12 @@ class Admin_Model_DbTable_Departments extends Zend_Db_Table_Abstract
 
     protected $_name = 'departments';
     
+	public function getCount()
+	{
+        $rows = $this->fetchAll();
+        $rowCount = count($rows);
+        return $rowCount;  
+	}
     
  	public function listitems()
  	{
@@ -26,9 +32,6 @@ class Admin_Model_DbTable_Departments extends Zend_Db_Table_Abstract
  		
  	} 
  	
- 	public function delete()
- 	{
- 		
- 	}  	
+
     
 }
