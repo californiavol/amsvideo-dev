@@ -1,1 +1,31 @@
 <h1>Videos</h1>
+<img src="http://img.youtube.com/vi/np80Vsg3U54/0.jpg"/>
+<img src="http://img.youtube.com/vi/np80Vsg3U54/1.jpg"/>
+<img src="http://img.youtube.com/vi/np80Vsg3U54/2.jpg"/>
+<img src="http://img.youtube.com/vi/np80Vsg3U54/3.jpg"/>
+
+
+<script type="text/javascript">
+  function youtubeFeedCallback(data) {
+    var s = '';
+    s += '<img src="' + data.entry.media$group.media$thumbnail[0].url + '" width="' + data.entry.media$group.media$thumbnail[0].width + '" height="' + data.entry.media$group.media$thumbnail[0].height + '" alt="' + data.entry.media$group.media$thumbnail[0].yt$name + '" align="right"/>';
+    s += '<b>Title:</b> ' + data.entry.title.$t + '<br/>';
+    s += '<b>Author:</b> ' + data.entry.author[0].name.$t + '<br/>';
+    s += '<b>Published:</b> ' + new Date(data.entry.published.$t).toLocaleDateString() + '<br/>';
+    s += '<b>Duration:</b> ' + Math.floor(data.entry.media$group.yt$duration.seconds / 60) + ':' + (data.entry.media$group.yt$duration.seconds % 60) + ' (' + data.entry.media$group.yt$duration.seconds + ' seconds)<br/>';
+    if (data.entry.gd$rating) {
+      s += '<b>Rating:</b> ' + data.entry.gd$rating.average.toFixed(1) + ' out of ' + data.entry.gd$rating.max + ' (' + data.entry.gd$rating.numRaters + ' ratings)<br/>';
+    }
+    s += '<b>Statistics:</b> ' + data.entry.yt$statistics.favoriteCount + ' favorite(s); ' + data.entry.yt$statistics.viewCount + ' view(s)<br/>';
+    s += '<br/>' + data.entry.media$group.media$description.$t.replace(/\n/g, '<br/>') + '<br/>';
+    s += '<br/><a href="' + data.entry.media$group.media$player.url + '" target="_blank">Watch on YouTube</a>';
+    document.write(s);
+  }
+</script>
+<script type="text/javascript" src="http://gdata.youtube.com/feeds/api/videos/np80Vsg3U54?v=2&amp;alt=json-in-script&amp;callback=youtubeFeedCallback"></script>
+
+
+
+
+
+

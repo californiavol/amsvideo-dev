@@ -37,6 +37,7 @@ class Admin_VideoController extends Zend_Controller_Action
     public function addvideoAction()
     {
         // action body
+
     }
     
     public function editvideoAction()
