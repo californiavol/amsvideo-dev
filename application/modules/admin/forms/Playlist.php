@@ -1,7 +1,8 @@
 <?php
 
-class Admin_Form_Department extends Zend_Form
+class Admin_Form_Playlist extends Zend_Form
 {
+
 	 private $elementDecorators = array(
         'ViewHelper',
         array(array('data' => 'HtmlTag'), array('tag' => 'span')),
@@ -21,12 +22,12 @@ class Admin_Form_Department extends Zend_Form
     	
     	$this->setMethod('post');
     	$this->setAttrib('class', 'form-inline');
- 		$this->setAttrib('id', 'form-add-department');
+ 		$this->setAttrib('id', 'form-add-playlist');
  		
         $this->addElement(
             'text', 'name', array(
 		        'decorators' => $this->elementDecorators,
-                'label' => 'Department/Program:',
+                'label' => 'Add New Playlist:',
         		'class' => 'form-control',
                 'required' => true,
                 'filters'    => array('StringTrim'),
@@ -45,10 +46,8 @@ class Admin_Form_Department extends Zend_Form
     
     
     }
+	
 
 
-	    
-    
-    
 }
 

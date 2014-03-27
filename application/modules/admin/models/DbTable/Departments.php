@@ -22,9 +22,9 @@ class Admin_Model_DbTable_Departments extends Zend_Db_Table_Abstract
 		return $rows; 	 		
  	} 
     
- 	public function add()
+ 	public function add(array $data)
  	{
- 		
+        return $this->insert($data);
  	} 
 
  	public function edit()
