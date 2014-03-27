@@ -21,9 +21,11 @@ class Admin_Model_DbTable_Playlists extends Zend_Db_Table_Abstract
  		
  	} 
  	
- 	public function delete()
+ 	public function delete($where = null)
  	{
- 		
+ 		if ($where == NULL) {
+ 			return FALSE;
+ 		}
  	}  	
     
 }
