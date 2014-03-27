@@ -76,6 +76,7 @@ class App_Controller_Plugin_Auth extends Zend_Controller_Plugin_Abstract
 		    $acl->addResource(new Zend_Acl_Resource('video'));
 		    $acl->addResource(new Zend_Acl_Resource('department'));
             $acl->addResource(new Zend_Acl_Resource('playlist'));
+            $acl->addResource(new Zend_Acl_Resource('stream'));
 		    $acl->addResource(new Zend_Acl_Resource('login'));
             $acl->addResource(new Zend_Acl_Resource('register'));
             $acl->addResource(new Zend_Acl_Resource('courselist'));
