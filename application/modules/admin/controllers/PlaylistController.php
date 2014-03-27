@@ -1,6 +1,6 @@
 <?php
 
-class Admin_DepartmentController extends Zend_Controller_Action
+class Admin_PlaylistController extends Zend_Controller_Action
 {
 
     public function init()
@@ -9,7 +9,11 @@ class Admin_DepartmentController extends Zend_Controller_Action
     	//set different layout
     	$this->_helper->layout->setLayout('admin-layout');   
 
-    	$this->_table = new Admin_Model_DbTable_Departments();
+    	$this->db_table = new Admin_Model_DbTable_Playlists();
+
+   	    $this->request = $this->getRequest(); 	
+	    $this->form = new Admin_Form_Playlist();    
+    
     }
 
 	/**
@@ -17,41 +21,38 @@ class Admin_DepartmentController extends Zend_Controller_Action
      */
     public function indexAction ()
     {
-   	    $request = $this->getRequest(); 	
-	    $form = new Admin_Form_Department();
+
     	
         // IF POST DATA HAS BEEN SUBMITTED
-	    if ($request->isPost()) {
+	    if ($this->request->isPost()) {
 	        // IF THE REGISTER FORM HAS BEEN SUBMITTED AND THE SUBMITTED DATA IS VALID
-	        if ($form->isValid($_POST)) {
+	        if ($this->form->isValid($_POST)) {
 	 
-	            $data = $form->getValues();
+	            $data = $this->form->getValues();
 				//var_dump($data);
-		        $this->_table->add($data);
+		        $this->db_table->add($data);
 	 
 	        }
 	    }
     	
     	
-        $this->view->form = $form;
-        
-        $this->view->departments = $this->_table->listitems();
-        
-        $this->view->count = $this->_table->getCount();
+        $this->view->form      = $this->form;
+        //$this->view->listitems = $this->db_table->listitems();
+        //$this->view->count     = $this->db_table->getCount();
     }
 
 
     public function listAction ()
     {
 
-    	$this->view->list = $this->_table->listItems();
+    	$this->view->list = $this->db_table->listItems();
     }
 
 
     public function addAction()
     {
         // action body
-        $this->view->form = new Admin_Form_Department();
+        $this->view->form = $this->form;
     }
     
     public function editAction()
@@ -63,7 +64,6 @@ class Admin_DepartmentController extends Zend_Controller_Action
     {
         // action body
     }
-
 
 }
 
