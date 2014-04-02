@@ -1,5 +1,13 @@
 <tr>
 	<td>
-		<?php echo $this->name; ?>
+		<a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'stream', 'action' => 'getstream', 'id' => $this->id)); ?>"><?php echo $this->escape($this->name);  ?></a>
+	</td>
+	<td>
+		<ul>
+			<li>RTMP Url: <?php echo $this->rtmp_url; ?></li>
+			<li>HLS Url:  <?php echo $this->hls_url; ?></li>
+			<li>HDS Url:  <?php echo $this->hds_url; ?></li>
+		</ul>
 	</td>	
 </tr>
+

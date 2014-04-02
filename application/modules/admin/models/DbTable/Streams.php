@@ -30,7 +30,14 @@ class Admin_Model_DbTable_Streams extends Zend_Db_Table_Abstract
  		if ($where == NULL) {
  			return FALSE;
  		}
- 	}  	
+ 	}  
+
+ 	
+ 	public function getStreamById($id = NULL)
+ 	{
+ 		$row = $this->fetchRow($this->select()->where('id = ?', $id));
+		return $row;  
+ 	}
  	
 }
 
