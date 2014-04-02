@@ -30,7 +30,6 @@ class Admin_StreamController extends Zend_Controller_Action
 
     public function addAction()
     {
-        
         // IF POST DATA HAS BEEN SUBMITTED
 	    if ($this->request->isPost()) {
 	        // IF THE REGISTER FORM HAS BEEN SUBMITTED AND THE SUBMITTED DATA IS VALID
@@ -39,17 +38,35 @@ class Admin_StreamController extends Zend_Controller_Action
 	            $data = $this->form->getValues();
 				//var_dump($data);
 		        $this->db_table->add($data);
-	 
 	        }
-	    }
-    	    	
-    	
+	    }	
     	
         $this->view->form = $this->form;
     }
 
+    public function editAction()
+    {
+        // action body
+    }
+
+    public function deleteAction()
+    {
+        // action body
+    }
+
+    public function listAction()
+    {
+        // action body
+    }
+
 
 }
+
+
+
+
+
+
 
 
 

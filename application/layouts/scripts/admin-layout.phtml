@@ -114,7 +114,16 @@
                                 <a href="<?php echo $this->baseUrl(); ?>/admin/playlist/index">By Playlist</a>
                             </li>
                             <li>
-                                <a href="<?php echo $this->baseUrl(); ?>/admin/stream/index">Single Videos</a>
+                                <a href="#">Single Videos <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+		                        	<li>
+		                        		<a href="<?php echo $this->baseUrl(); ?>/admin/stream/index">List All</a>
+		                    		</li>
+		                            <li>
+		                                <a href="<?php echo $this->baseUrl(); ?>/admin/stream/add">Add New Video</a>
+		                            </li>
+		                        </ul>
+		                        <!-- /.nav-third-level -->
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
