@@ -24,6 +24,7 @@ class VideoController extends Zend_Controller_Action
     {
         //disable layout so that output is in xml format set in init()
     	$this->_helper->layout->disableLayout();
+    	$this->_response->setHeader('Content-Type', 'text/xml; charset=utf-8');
     	
     	$id = $this->_getParam('cid');
     	$items = $this->db_table->getCourseVideos($id);
