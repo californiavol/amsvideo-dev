@@ -13,6 +13,10 @@ class Admin_StreamController extends Zend_Controller_Action
     	
     	$this->request = $this->getRequest(); 	
 	    $this->form = new Admin_Form_Stream();
+	    
+        $contextSwitch = $this->_helper->getHelper('contextSwitch');
+        $contextSwitch->addActionContext('rss', 'xml')
+                      ->initContext();
     }
 
     public function indexAction()
@@ -64,41 +68,48 @@ class Admin_StreamController extends Zend_Controller_Action
 
     public function rssAction()
     {
-        //set different layout
-    	$this->_helper->layout->setLayout('rss-layout');
+        //disable layout so that output is in xml format set in init()
+    	$this->_helper->layout->disableLayout();
     	
+    	$items = $this->db_table->listitems();
+    	//var_dump($items);
     	
         $feed = new Zend_Feed_Writer_Feed;
-		$feed->setTitle('Paddy\'s Blog');
-		$feed->setLink('http://www.example.com');
+		$feed->setTitle('Sacramento State Streaming Videos');
+		$feed->setLink('http://www2.csus.edu/video');
 		$feed->setFeedLink('http://www.example.com/atom', 'atom');
 		$feed->addAuthor(array(
-		    'name'  => 'Paddy',
-		    'email' => 'paddy@example.com',
-		    'uri'   => 'http://www.example.com',
+		    'name'  => 'Sacramento State',
+		    'email' => 'webmaster@csus.edu',
+		    'uri'   => 'http://www.csus.edu',
 		));
 		$feed->setDateModified(time());
-		$feed->setDescription('cool blog');
+		$feed->setDescription('Sacramento State Streaming Videos');
 		 
 		/**
 		* Add one or more entries. Note that entries must
 		* be manually added once created.
 		*/
-		$entry = $feed->createEntry();
-		$entry->setTitle('All Your Base Are Belong To Us');
-		$entry->setLink('http://www.example.com/all-your-base-are-belong-to-us');
-		$entry->addAuthor(array(
-		    'name'  => 'Paddy',
-		    'email' => 'paddy@example.com',
-		    'uri'   => 'http://www.example.com',
-		));
-		$entry->setDateModified(time());
-		$entry->setDateCreated(time());
-		$entry->setDescription('Exposing the difficultly of porting games to English.');
-		$entry->setContent(
-		    'I am not writing the article. The example is long enough as is ;).'
-		);
-		$feed->addEntry($entry);
+    	foreach ($items as $item) {
+			$entry = $feed->createEntry();
+			$entry->setTitle($item['name']);
+			$entry->setLink('http://www.example.com/all-your-base-are-belong-to-us');
+			$entry->addAuthor(array(
+			    'name'  => 'Paddy',
+			    'email' => 'paddy@example.com',
+			    'uri'   => 'http://www.example.com',
+			));
+			$entry->setDateModified(time());
+			$entry->setDateCreated(time());
+			$entry->setDescription('Exposing the difficultly of porting games to English.');
+			$entry->setContent(
+			    'I am not writing the article. The example is long enough as is ;).'
+			);
+			$feed->addEntry($entry);    		
+    	}
+		
+		
+
         
         $this->view->rssoutput = $feed->export('rss');
     }

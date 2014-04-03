@@ -18,6 +18,8 @@ class Admin_VideoController extends Zend_Controller_Action
     	//get db tables
     	$this->videosTable = new Application_Model_DbTable_Videos();
     	
+
+    	
     }
 
     /**
