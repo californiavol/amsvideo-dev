@@ -19,6 +19,9 @@ class Admin_StreamController extends Zend_Controller_Action
     {
         // action body
         $this->view->listitems = $this->db_table->listitems();
+        
+        
+        
     }
 
     public function getstreamAction()
@@ -59,8 +62,51 @@ class Admin_StreamController extends Zend_Controller_Action
         // action body
     }
 
+    public function rssAction()
+    {
+        //set different layout
+    	$this->_helper->layout->setLayout('rss-layout');
+    	
+    	
+        $feed = new Zend_Feed_Writer_Feed;
+		$feed->setTitle('Paddy\'s Blog');
+		$feed->setLink('http://www.example.com');
+		$feed->setFeedLink('http://www.example.com/atom', 'atom');
+		$feed->addAuthor(array(
+		    'name'  => 'Paddy',
+		    'email' => 'paddy@example.com',
+		    'uri'   => 'http://www.example.com',
+		));
+		$feed->setDateModified(time());
+		$feed->setDescription('cool blog');
+		 
+		/**
+		* Add one or more entries. Note that entries must
+		* be manually added once created.
+		*/
+		$entry = $feed->createEntry();
+		$entry->setTitle('All Your Base Are Belong To Us');
+		$entry->setLink('http://www.example.com/all-your-base-are-belong-to-us');
+		$entry->addAuthor(array(
+		    'name'  => 'Paddy',
+		    'email' => 'paddy@example.com',
+		    'uri'   => 'http://www.example.com',
+		));
+		$entry->setDateModified(time());
+		$entry->setDateCreated(time());
+		$entry->setDescription('Exposing the difficultly of porting games to English.');
+		$entry->setContent(
+		    'I am not writing the article. The example is long enough as is ;).'
+		);
+		$feed->addEntry($entry);
+        
+        $this->view->rssoutput = $feed->export('rss');
+    }
+
 
 }
+
+
 
 
 
