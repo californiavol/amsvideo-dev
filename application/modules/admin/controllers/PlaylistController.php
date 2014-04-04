@@ -13,7 +13,6 @@ class Admin_PlaylistController extends Zend_Controller_Action
 
    	    $this->request = $this->getRequest(); 	
 	    $this->form = new Admin_Form_Playlist();    
-    
     }
 
 	/**
@@ -37,7 +36,7 @@ class Admin_PlaylistController extends Zend_Controller_Action
     	
     	
         $this->view->form      = $this->form;
-        //$this->view->listitems = $this->db_table->listitems();
+        $this->view->listitems = $this->db_table->listitems();
         //$this->view->count     = $this->db_table->getCount();
     }
 
