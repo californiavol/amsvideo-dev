@@ -100,18 +100,30 @@
                     <li>
                         <a href="<?php echo $this->baseUrl(); ?>/admin/index/courselist"><i class="fa fa-list fa-fw"></i> Course list</a>
                     </li>
-					<li>
-                        <a href="<?php echo $this->baseUrl(); ?>/admin/video/listvideos"><i class="fa fa-video-camera fa-fw"></i> Course Videos</a>
-                    </li>
                     <li>
                         <a href="#"><i class="fa fa-video-camera fa-fw"></i> Videos<span class="fa arrow"></span></a>
                         
                         <ul class="nav nav-second-level">
+                        	<li>
+                        		<a href="<?php echo $this->baseUrl(); ?>/admin/video/listvideos">By Course</a>
+                    		</li>
                             <li>
-                                <a href="<?php echo $this->baseUrl(); ?>/admin/user/listusers">By Department</a>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/department/index">By Department</a>
                             </li>
                             <li>
-                                <a href="<?php echo $this->baseUrl(); ?>/admin/index/register">By Playlist</a>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/playlist/index">By Playlist</a>
+                            </li>
+                            <li>
+                                <a href="#">Single Videos <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+		                        	<li>
+		                        		<a href="<?php echo $this->baseUrl(); ?>/admin/stream/index">List All</a>
+		                    		</li>
+		                            <li>
+		                                <a href="<?php echo $this->baseUrl(); ?>/admin/stream/add">Add New Video</a>
+		                            </li>
+		                        </ul>
+		                        <!-- /.nav-third-level -->
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->

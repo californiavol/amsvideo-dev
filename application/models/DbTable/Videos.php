@@ -52,8 +52,10 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 	{
 		$select = $this->select();
 		$select->setIntegrityCheck(false);
-		$select->where('class_nbr = ?', $class_nbr)
-				->join('courses', 'videos.class_nbr = courses.class_nbr');
+		$select->from(array('v' => 'videos', array('id, class_nbr, live_start_datetime, recorded_available_datetime')))
+				->join(array('courses'), 'v.class_nbr = courses.class_nbr', array('course_name', 'course_number', 'instructor'))
+				->where('v.class_nbr = ?', $class_nbr)
+				;
 				
 		$rows = $this->fetchAll($select);
 		return $rows;
