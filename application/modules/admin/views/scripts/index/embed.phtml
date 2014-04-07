@@ -1,2 +1,67 @@
 <h1>Embed Video </h1>
 <?php echo $this->form; ?>
+
+
+<textarea id="embed_target" rows="12" cols="120"></textarea>
+
+
+<script>
+
+var width = '';
+var height = '';
+var rtmp_src = '';
+var hds_src = '';
+var hls_src = '';
+var poster = '';
+
+function getVars() {
+	width    = $("#width").val();
+	height   = $("#height").val();
+	rtmp_src = $("#rtmp_src").val();
+	hds_src  = $("#hds_src").val();
+	hls_src  = $("#hls_src").val();
+	poster   = $("#poster").val();
+}
+
+function embedPlayer() {
+
+	var embedCode = '<div id="strobeplayer">';
+	    embedCode += '<object id="sacstate_video">';
+		embedCode += '<param name="movie" value="http%3A%2F%2Fwww2.csus.edu%2Fvideo%2Fassets%2Fplayers%2FStrobeMediaPlayback.swf%3Fsrc='+ hds_src +'%26poster%3Dhttp%3A%2F%2Fwww2.csus.edu%2Fvideo%2Fassets%2Fplayers%2F10.1%2Fimages%2Fbillboard-default.png%26bufferingOverlay%3Dfalse%26optimizeInitialIndex%3Dtrue%26minContinuousPlayback%3D30%26bufferTime%3D12%26initialBufferTime%3D8%26expandedBufferTime%3D10" />';
+		embedCode += '<param name="allowFullScreen" value="true"/>';
+		embedCode += '<!--[if !IE]>-->';
+		embedCode += '<object type="application/x-shockwave-flash" data="http://www2.csus.edu/video/assets/players/StrobeMediaPlayback.swf?src='+ rtmp_src +'%26poster%3Dhttp%3A%2F%2Fwww2.csus.edu%2Fvideo%2Fassets%2Fplayers%2F10.1%2Fimages%2Fbillboard-default.png%26bufferingOverlay%3Dfalse%26optimizeInitialIndex%3Dtrue%26minContinuousPlayback%3D30%26bufferTime%3D12%26initialBufferTime%3D8%26expandedBufferTime%3D10" width="100%" height="460px">';
+		embedCode += '<param name="allowFullScreen" value="true"/>';
+		embedCode += '<!--<![endif]-->';
+		embedCode += '<div>';
+		embedCode += '<p>';
+		embedCode += '<video id="sacstate_video_html5" width="'+ width +'" height="'+ height +'" controls poster="'+ poster +'">';
+		embedCode += '<source src="'+ hls_src+'">';
+		embedCode += 'Your browser does not support Flash Player 10.1 or the HTML5 video element.';
+		embedCode += '</video>';
+		embedCode += '</p>';
+		embedCode += '</div>';
+		embedCode += '<!--[if !IE]>-->';
+		embedCode += '</object>';
+		embedCode += '<!--<![endif]-->';
+		embedCode += '</object>';
+		embedCode += '</div>';
+		
+
+
+	$("#embed_target").html(embedCode);	
+}
+
+function generateCode() {
+	getVars();
+	embedPlayer();
+}
+
+
+
+$( "#target" ).submit(function( event ) {
+	generateCode();
+	event.preventDefault();
+});
+</script>
+
