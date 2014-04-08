@@ -3,16 +3,15 @@
 class VideoController extends Zend_Controller_Action
 {
 
-    public function init()
+
+	
+	public function init()
     {
         /* Initialize action controller here */
     	
     	$this->db_table = new Application_Model_DbTable_Videos();
     	
-    	//set context switch for xml output in rssAction()
-    	$contextSwitch = $this->_helper->getHelper('contextSwitch');
-        $contextSwitch->addActionContext('rss', 'xml')
-                      ->initContext();
+                      
     }
 
     public function indexAction()
@@ -22,9 +21,7 @@ class VideoController extends Zend_Controller_Action
 
     public function rssAction()
     {
-        //disable layout so that output is in xml format set in init()
-    	$this->_helper->layout->disableLayout();
-    	$this->_response->setHeader('Content-Type', 'text/xml; charset=utf-8');
+        
     	
     	$id = $this->_getParam('cid');
     	$items = $this->db_table->getCourseVideos($id);
@@ -33,7 +30,7 @@ class VideoController extends Zend_Controller_Action
         $feed = new Zend_Feed_Writer_Feed;
 		$feed->setTitle('Sacramento State Streaming Videos');
 		$feed->setLink('http://www2.csus.edu/video');
-		$feed->setFeedLink('http://www.example.com/atom', 'atom');
+		//$feed->setFeedLink('http://www.example.com/atom', 'atom');
 		$feed->addAuthor(array(
 		    'name'  => 'Sacramento State',
 		    'email' => 'webmaster@csus.edu',
@@ -59,8 +56,12 @@ class VideoController extends Zend_Controller_Action
 			//$entry->setContent('I am not writing the article. The example is long enough as is ;).');
 			$feed->addEntry($entry);    		
     	}
-        
+    	
+    	
+        //var_dump($feed->export('atom'));
         $this->view->rssoutput = $feed->export('rss');
+        
+
     }
 
 
