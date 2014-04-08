@@ -11,8 +11,30 @@ class VideoController extends Zend_Controller_Action
     	
     	//set context switch for xml output in rssAction()
     	$contextSwitch = $this->_helper->getHelper('contextSwitch');
-        $contextSwitch->addActionContext('rss', 'xml')
+        $contextSwitch->addActionContext('rss', 'xml', array('headers' => array('Content-Type' => 'application/rss+xml; charset=ISO-8859-1')))
                       ->initContext();
+                      
+/*
+ *         $contextSwitch = $this->_helper->getHelper('contextSwitch');
+		$contextSwitch->setContext('rss', array(
+		    'suffix'    => 'xml',
+		    'headers'   => array(
+		    'Content-Type: application/rss+xml; charset=ISO-8859-1'
+		    )
+		))
+		->setContext('atom', array(
+		    'suffix'    => 'xml',
+		    'headers'   => array(
+		    'Content-type: application/atom+xml'
+		    )
+		))
+		->addActionContext('subscribe', array('rss','atom'))
+		->initContext();  
+ * 
+ * */            
+                      
+                      
+                      
     }
 
     public function indexAction()
@@ -22,10 +44,7 @@ class VideoController extends Zend_Controller_Action
 
     public function rssAction()
     {
-        //disable layout so that output is in xml format set in init()
-    	$this->_helper->layout->disableLayout();
-    	$this->_response->setHeader('Content-Type', 'text/xml; charset=utf-8');
-    	
+            	
     	$id = $this->_getParam('cid');
     	$items = $this->db_table->getCourseVideos($id);
     	//var_dump($items);
@@ -60,7 +79,9 @@ class VideoController extends Zend_Controller_Action
 			$feed->addEntry($entry);    		
     	}
         
+    	
         $this->view->rssoutput = $feed->export('rss');
+    
     }
 
 
