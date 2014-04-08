@@ -1,39 +1,20 @@
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-lg-12">
     <h1>Embed Video </h1>
   </div>
 </div>
 <div class="row">
-  <div class="col-md-4" id="osmfcontainer"> <?php echo $this->form; ?> </div>
-  <div class="col-md-8" id="course_video_container"> 
+  <div class="col-lg-4" id="osmfcontainer"> <?php echo $this->form; ?> </div>
+  <div class="col-lg-8" id="course_video_container"> 
     <script type="text/javascript">
    		swfobject.registerObject("sacstate_video", "10.1.0", "http://www2.csus.edu/video/assets/players/10.1/scripts/expressInstall.swf");
 	</script>
     <div id="test_player"></div>
-    <div id="strobeplayer">
-      <object id="sacstate_video">
-        <param name="movie" value="http://www2.csus.edu/video/assets/players/StrobeMediaPlayback.swf?src=http://video2.csus.edu/hds-vod/prj/disted/ams_web_archive/2014/ANTH0013/ANTH0013_2014_02_03_33577M.f4m&poster=&bufferingOverlay=false&optimizeInitialIndex=true&minContinuousPlayback=30&bufferTime=12&initialBufferTime=8&expandedBufferTime=10" />
-        <param name="allowFullScreen" value="true"/>
-        <!--[if !IE]>-->
-        <object type="application/x-shockwave-flash" data="http://www2.csus.edu/video/assets/players/StrobeMediaPlayback.swf?src=http://video2.csus.edu/vod/prj/disted/ams_web_archive/2014/ANTH0013/ANTH0013_2014_02_03_33577P.f4m&poster=&bufferingOverlay=false&optimizeInitialIndex=true&minContinuousPlayback=30&bufferTime=12&initialBufferTime=8&expandedBufferTime=10" width="640"height="480">
-          <param name="allowFullScreen" value="true"/>
-          <!--<![endif]-->
-          <div>
-            <p>
-              <video id="sacstate_video_html5" width="640" height="480" controls poster="">
-                <source src="http://video2.csus.edu/hls-vod/prj/disted/ams_web_archive/2014/ANTH0013/ANTH0013_2014_02_03_33577M.m3u8">
-                Your browser does not support Flash Player 10.1 or the HTML5 video element.</video>
-            </p>
-          </div>
-          <!--[if !IE]>-->
-        </object>
-        <!--<![endif]-->
-      </object>
-    </div>
+    
   </div>
 </div>
 <div class="row">
-  <div class="col-md-12" id="">
+  <div class="col-lg-12" id="">
     <hr>
     <textarea id="embed_target" rows="12" cols="120"></textarea>
   </div>
@@ -115,8 +96,8 @@ function embedPlayer() {
 	    embedCode += '';
 	    embedCode += '';
 
-		$("#embed_target").html(embedCode).text();	
-		
+		//$("#embed_target").html(embedCode).text();	
+		$("#test_player").html(embedCode).text();
 }
 
 function generateCode() {
