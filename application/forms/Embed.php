@@ -6,7 +6,8 @@ class Application_Form_Embed extends Zend_Form
 	
 	public function init()
 	{
- 		$this->setMethod('post');
+ 		$this->setMethod('get');
+ 		$this->setAttrib('id', 'target');
  
         $this->addElement(
             'text', 'width', array(

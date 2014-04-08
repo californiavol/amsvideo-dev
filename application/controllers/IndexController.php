@@ -62,45 +62,7 @@ class IndexController extends Zend_Controller_Action
     		$this->redirect('/default/index/welcome');
     	}
     	
-		/*        		
- 			if ($this->courseId) {
-                   	//get all courses for course list
-                   	$this->view->courses = $this->coursesTable->getCourses();
-                        	
-                   	//get individual course if courseId param set
-                   	$this->view->course = $this->coursesTable->getCourseById($this->class_nbr);;
-                			
-                   	//get videos by class_nbr
-                   	//$this->view->coursevideos = $this->videosTable->getVideosByclass_nbr($this->class_nbr);
-                	$this->view->coursevideos = $this->videosTable->getVideosByclass_nbrSectionId($this->class_nbr, $this->section);	
-                        	
-                	//get most recent video by date and class_nbr
-                    $this->view->recentvideo = $this->videosTable->getMostRecentVideo($this->class_nbr);        
-                } 
-                        
-                
-                        
-                if ($this->videoId) {
-                    //load the video
-                	$this->view->video = $this->videosTable->getVideoById($this->videoId);
-                    
-                    //log video page load if course_id and section exist
-
-                    if ($this->courseId != NULL && $this->section != NULL) {
-                    	
-                    	//log the device type - computer, phone, tablet
-                    	$this->devicesTable->logDeviceType();
-                    	
-                    	//log video page load
-                    	$this->videostatsTable->logVideoPageLoad($this->videoId, $this->courseId, $this->section);
-
-                    if ($this->class_nbr != NULL && $this->section != NULL) {
-                    	$this->videostatsTable->logVideoPageLoad($this->videoId, $this->class_nbr, $this->section);
-
-                    }
-                    
-                }
-                */
+		
     }
     
     public function welcomeAction()
@@ -186,7 +148,7 @@ class IndexController extends Zend_Controller_Action
     public function outputlinksAction()
     {
         // action body
-                $this->view->videolinks = $this->coursesTable->outputVideoLinks();
+        $this->view->videolinks = $this->coursesTable->outputVideoLinks();
     }
 
     public function livetestAction()
