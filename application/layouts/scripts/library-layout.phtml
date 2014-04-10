@@ -7,6 +7,32 @@
 <title>Course Video Admin | Sacramento State</title>
 
 <?php echo $this->partial('_admin-css.phtml'); ?>
+
+
+<style type="text/css">
+
+body {
+	background-color:#f9f9f9;
+}
+
+.main {
+	position:relative;
+	width:100%;
+	min-height: 600px;
+	background-color:#00573d;
+}
+
+@media(min-width:768px) {
+    #page-wrapper {
+        position: inherit;
+        margin: 0;
+        padding: 0 30px;
+        min-height: 600px; 
+        border-left: none;
+    }
+}
+
+</style>
     
 <?php echo $this->partial('_admin-js-header.phtml'); ?>
 
@@ -68,109 +94,7 @@
 
 
 <div class="main" id="main" role="main">	
-	 <div id="wrapper">
-
-
-        <nav class="navbar-default navbar-static-side" role="navigation">
-
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse"> 
-			  	<span class="sr-only">Toggle navigation</span> 
-			    <span class="icon-bar"></span> 
-			    <span class="icon-bar"></span> 
-			    <span class="icon-bar"></span> 
-			  </button>
-
-            <div class="sidebar-collapse">
-                <ul class="nav" id="side-menu">
-                    <li>
-                        <a href="<?php echo $this->baseUrl(); ?>/admin/index/index"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo $this->baseUrl(); ?>/admin/index/courselist"><i class="fa fa-list fa-fw"></i> Course list</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-video-camera fa-fw"></i> Videos<span class="fa arrow"></span></a>
-                        
-                        <ul class="nav nav-second-level">
-                        	<li>
-                        		<a href="<?php echo $this->baseUrl(); ?>/admin/video/listvideos">By Course</a>
-                    		</li>
-                            <li>
-                                <a href="<?php echo $this->baseUrl(); ?>/admin/department/index">By Department</a>
-                            </li>
-                            <li>
-                                <a href="<?php echo $this->baseUrl(); ?>/admin/playlist/index">By Playlist</a>
-                            </li>
-                            <li>
-                                <a href="#">Single Videos <span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-		                        	<li>
-		                        		<a href="<?php echo $this->baseUrl(); ?>/admin/stream/index">List All</a>
-		                    		</li>
-		                            <li>
-		                                <a href="<?php echo $this->baseUrl(); ?>/admin/stream/add">Add New Video</a>
-		                            </li>
-		                        </ul>
-		                        <!-- /.nav-third-level -->
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>                    
-                    <li>
-                        <a href="<?php echo $this->baseUrl(); ?>/admin/index/embed"><i class="fa fa-code fa-fw"></i> Embed Video</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo $this->baseUrl(); ?>/admin/test/teststream/tsid/4"><i class="fa fa-cogs"></i> Test Streams</a>
-                    </li>                    
-                    <li>
-                        <a href="<?php echo $this->baseUrl(); ?>/admin/index/analytics"><i class="fa fa-bar-chart-o fa-fw"></i> Analytics</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-users fa-fw"></i> Users<span class="fa arrow"></span></a>
-                        
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="<?php echo $this->baseUrl(); ?>/admin/user/listusers">List Users</a>
-                            </li>
-                            <li>
-                                <a href="<?php echo $this->baseUrl(); ?>/admin/index/register">Add User</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-sitemap fa-fw"></i> Departments<span class="fa arrow"></span></a>
-                        
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="<?php echo $this->baseUrl(); ?>/admin/department/index">List Departments</a>
-                            </li>
-                            <li>
-                                <a href="<?php echo $this->baseUrl(); ?>/admin/department/add">Add Department</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-th-list fa-fw"></i> Playlists<span class="fa arrow"></span></a>
-                        
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="<?php echo $this->baseUrl(); ?>/admin/playlist/index">List Playlists</a>
-                            </li>
-                            <li>
-                                <a href="<?php echo $this->baseUrl(); ?>/admin/playlist/add">Add Playlists</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
-                </ul>
-                <!-- /#side-menu -->
-            </div>
-            <!-- /.sidebar-collapse -->
-        </nav>
-        <!-- /.navbar-static-side -->
-
+	 
         <div id="page-wrapper">
 	        <a id="mainContent"></a> <!-- accessibility, skip to main content target --> 
             <div class="row">
@@ -189,14 +113,8 @@
         </div>
         <!-- /#page-wrapper -->
 
-    </div>
-    <!-- /#wrapper -->
-	
-	
-	
-	
-	
-	
+
+		
 </div>
 
 
