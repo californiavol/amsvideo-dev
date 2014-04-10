@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 
 .library-cover-image {
-	background: url('/assets/images/abstract-1920-480.png') no-repeat center center;
+	background: url('../../images/abstract-1920-480.png') no-repeat center center;
 	background-size: cover;
 	text-align: center;
 	padding: 10px 10px;
