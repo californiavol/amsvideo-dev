@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Course Video Admin | Sacramento State</title>
+
+<?php echo $this->partial('_admin-css.phtml'); ?>
+    
+<?php echo $this->partial('_admin-js-header.phtml'); ?>
+
+
+</head>
+
+<body>
+
+<!--  #skip  Skip link as defined by webaim http://webaim.org/techniques/css/invisiblecontent/ -->
+<div class="sr-only" id="skip"><a href="#mainContent">Skip to Main Content</a></div>
+
+
+<div id="banner" class="banner">
+<header class="ss-header">
+		<!-- navbar -->
+		<div id="ss_banner_nav">
+		  <div class="navbar navbar-default" role="navigation">
+		   
+			<div class="navbar-header">
+			  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> 
+			  	<span class="sr-only">Toggle navigation</span> 
+			    <span class="icon-bar"></span> 
+			    <span class="icon-bar"></span> 
+			    <span class="icon-bar"></span> 
+			  </button>
+			  <a href="http://www.csus.edu/" title="Sacramento State Homepage"><img alt="Sacramento State logo" src="http://www.csus.edu/homep/monet/Images/header/logo-banner.png"/></a> 
+
+			</div>
+		      <div class="collapse navbar-collapse">
+		        <ul class="nav navbar-nav pull-right">
+		          <li><a href="http://www.csus.edu/about/index.html">About</a></li>
+		          <li><a href="http://www.csus.edu/academics/index.html">Academics</a></li>
+		          <li><a href="http://www.csus.edu/admissions">Admissions</a></li>
+		          <li><a href="http://www.hornetsports.com/">Athletics</a></li>
+		          <li><a href="http://www.csus.edu/giving">Make A Gift</a></li>
+		          <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quick Links <b class="caret"></b></a>
+		            <ul class="dropdown-menu">
+		              <li><a href="http://www.csus.edu/about/calendars/">Calendars</a></li>
+		              <li><a href="http://www.csus.edu/campusmap">Campus Map</a></li>
+		              <li><a href="http://aaweb.csus.edu/catalog/default.html">Catalog</a></li>
+		              <li><a href="http://www.collegeportraits.org/CA/CSUS">College Portrait</a></li>
+		              <li><a href="http://www.csus.edu/Academics/index.html">Colleges &amp; Depts</a></li>
+		              <li><a href="http://www.csus.edu/Technology/index.html">Computing &amp; Technology</a></li>
+		              <li><a href="http://www.csus.edu/about/employment/">Jobs</a></li>
+		              <li><a href="http://library.csus.edu/">Library</a></li>
+		              <li><a href="http://online.csus.edu/">Online Courses (SacCT)</a></li>
+		              <li><a href="https://www.saclink.csus.edu/">SacLink</a></li>
+		            </ul>
+		          </li>
+		        </ul>
+		      </div>
+		   
+		  </div>
+		</div>
+	
+</header>
+</div>
+
+
+
+<div class="main" id="main" role="main">	
+	 <div id="wrapper">
+
+
+        <nav class="navbar-default navbar-static-side" role="navigation">
+
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse"> 
+			  	<span class="sr-only">Toggle navigation</span> 
+			    <span class="icon-bar"></span> 
+			    <span class="icon-bar"></span> 
+			    <span class="icon-bar"></span> 
+			  </button>
+
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                   
+                    <li>
+                        <a href="#"><i class="fa fa-th-list fa-fw"></i> Playlists<span class="fa arrow"></span></a>
+                        
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/playlist/index">List Playlists</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $this->baseUrl(); ?>/admin/playlist/add">Add Playlists</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                </ul>
+                <!-- /#side-menu -->
+            </div>
+            <!-- /.sidebar-collapse -->
+        </nav>
+        <!-- /.navbar-static-side -->
+
+        <div id="page-wrapper">
+	        <a id="mainContent"></a> <!-- accessibility, skip to main content target --> 
+            <div class="row">
+                <div class="col-lg-12">
+                    
+                    <div id="layout_content">
+						<?php echo $this->layout()->content; ?>
+					</div>
+                    
+                    
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+	
+	
+	
+	
+	
+	
+</div>
+
+
+<footer class="ss-footer">
+	<div class="container">
+		
+	
+	<!-- #contentinfo :contentinfo is landmark region for the footer -->	
+	
+        <div class="contentinfo" id="contentinfo" role="contentinfo">
+          <div class="col-md-1 address" id="address">
+          	<div class="footer-logo"><a href="http://www.csus.edu"><img alt="Sac State Home"  src="http://www.csus.edu/Monet/Images/global/footer_logo.png" /></a></div>
+          </div>
+          
+          <div class="col-md-3 address" id="address">
+            <div itemtype="http://schema.org/EducationalOrganization">
+            	<p>
+            		<span itemprop="name">California State University, Sacramento</span><br/>
+              		<span itemprop="streetAddress">6000 J Street</span><br/>
+                	<span itemprop="addressLocality">Sacramento</span>, <span itemprop="addressRegion">CA</span> <span itemprop="postalCode">95819</span><br/>
+                	<span itemprop="telephone">(916) 278-6011</span>
+                </p>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="footer-icons">
+              <ul class="nav nav-pills">
+                <li><a href="http://www.facebook.com/sacstate" id="facebook_link"><img alt="facebook icon"  src="http://www.csus.edu/homep//Monet/Images/icons/facebook.png" /></a></li>
+                <li><a href="http://twitter.com/sacstate" id="twitter_link"><img alt="twitter icon"  src="http://www.csus.edu/homep//Monet/Images/icons/twitter.png" /></a></li>
+                <li><a href="http://www.youtube.com/SacStateVideo" id="youtube_link"><img alt="youtube icon"  src="http://www.csus.edu/homep//Monet/Images/icons/youtube.png" /></a></li>
+                <li><a href="http://www.flickr.com/photos/sacstate" id="flickr_link"><img alt="Flickr icon"  src="http://www.csus.edu/homep//Monet/Images/icons/flickr.jpg" /></a></li>
+              </ul>
+            </div>
+            <div class="footer-links">
+              <ul class="nav nav-pills">
+                <li><a href="http://www.csus.edu/contact/Comments.html">Comments &amp; Questions</a></li>
+                <li><a href="http://www.csus.edu/About/AtoZ.html">A to Z Index</a></li>
+                <li class="last"><a href="http://www.csus.edu/About/accessibility.html">Accessibility</a></li>
+                <li class="last"><a href="http://www.collegeportraits.org/CA/CSUS">College Portrait</a></li>
+              </ul>
+            </div>
+          </div>
+
+    <!-- end #contentinfo_container --> 
+
+	</div>
+	</div>
+</footer>
+
+
+
+
+
+
+
+
+<!-- js at the bottom of page for faster load times --> 
+<?php echo $this->partial('_admin-js-footer.phtml'); ?>
+
+
+<?php echo $this->partial('_admin-google-analytics.phtml'); ?>
+
+
+<!-- put nothing after this region -->
+
+</body>
+</html>
