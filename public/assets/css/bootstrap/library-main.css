@@ -1,0 +1,44 @@
+@CHARSET "UTF-8";
+
+body {
+	background-color: (255,255,255, 0.2);
+}
+
+.library-cover-image {
+	background: url('../../images/abstract-1920-480.png') no-repeat center center;
+	background-size: cover;
+	text-align: center;
+	padding: 10px 10px;
+}
+
+#strobeplayer {
+	margin-top:20px;
+	position:relative;
+	width:960px;
+	margin-left:auto;
+	margin-right:auto;
+}
+h1 {border:none; background-image:none; font-size:2em;}
+
+
+.video-play-sprite {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("http://www.csus.edu/homep/monet/images/video_play_medium.png");
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: 46px 92px;
+    height: 46px;
+    left: 40%;
+    opacity: 0.8;
+    position: absolute;
+    top: 33%;
+    width: 46px;
+    z-index: 1;
+}
+.video-play-sprite:hover {
+    background-position: 0 100%;
+    opacity: 1;
+}

@@ -5,20 +5,19 @@ class Playlist_IndexController extends Zend_Controller_Action
 
     public function init()
     {
+        /* Initialize action controller here */
     	//set different layout
-    	$this->_helper->layout->setLayout('playlist-layout');
+    	$this->_helper->layout->setLayout('playlist-layout');   
+
     	
-    	//get playlists table
-		$this->db_table = new Playlist_Model_DbTable_Playlists();
+    	$this->db_table = new Playlist_Model_DbTable_Videos();
+
+   	  
     }
 
     public function indexAction()
     {
         // action body
-        
-    	$playlists = $this->db_table->listitems();
-    	$this->view->playlists = $playlists;
-    	
     }
 
 

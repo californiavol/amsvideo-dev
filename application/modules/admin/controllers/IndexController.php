@@ -17,6 +17,8 @@ class Admin_IndexController extends Zend_Controller_Action
     	$this->usersTable = new Admin_Model_DbTable_Users();
     	$this->videosTable = new Application_Model_DbTable_Videos();
     	$this->coursesTable = new Application_Model_DbTable_Courses();
+    	
+    	$this->tbl = new Playlist_Model_DbTable_Playlists();
     }
 
     public function indexAction()
