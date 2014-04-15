@@ -10,8 +10,7 @@ class Playlist_IndexController extends Zend_Controller_Action
     	$this->_helper->layout->setLayout('playlist-layout');   
 
     	
-    	$this->db_table = new Playlist_Model_DbTable_Videos();
-
+    	$this->db_table = new Playlist_Model_DbTable_Playlists();
    	  
     }
 
