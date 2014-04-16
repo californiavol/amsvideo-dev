@@ -1,6 +1,6 @@
 <?php
 
-class Admin_Form_Register extends Zend_Form
+class Admin_Form_Register extends App_Form
 {
 
  	private $elementDecorators = array(
@@ -18,6 +18,8 @@ class Admin_Form_Register extends Zend_Form
  
     public function init()
     {
+    	parent::init();
+    	
         $this->setMethod('post');
  
         $firstName = new Zend_Form_Element_Text('first_name', array(

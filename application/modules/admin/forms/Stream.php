@@ -1,6 +1,6 @@
 <?php
 
-class Admin_Form_Stream extends Zend_Form
+class Admin_Form_Stream extends App_Form
 {
 	
 	private $elementDecorators = array(
@@ -18,6 +18,8 @@ class Admin_Form_Stream extends Zend_Form
 
     public function init()
     {
+        parent::init();
+        
         /* Form Elements & Other Definitions Here ... */
     	$this->setMethod('post');
     	$this->setAttrib('class', 'form');

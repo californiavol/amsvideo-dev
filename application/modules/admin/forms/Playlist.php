@@ -1,6 +1,6 @@
 <?php
 
-class Admin_Form_Playlist extends Zend_Form
+class Admin_Form_Playlist extends App_Form
 {
 
 	 private $elementDecorators = array(
@@ -18,7 +18,7 @@ class Admin_Form_Playlist extends Zend_Form
 
     public function init()
     {
-        
+        parent::init();
     	
     	$this->setMethod('post');
     	$this->setAttrib('class', 'form-inline');

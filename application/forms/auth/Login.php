@@ -1,11 +1,13 @@
 <?php
 
 
-class Application_Form_Auth_Login extends Zend_Form
+class Application_Form_Auth_Login extends App_Form
 {
 	
 	public function init()
 	{
+		parent::init();
+		
  		$this->setMethod('post');
  
         $this->addElement(

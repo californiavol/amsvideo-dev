@@ -1,6 +1,6 @@
 <?php
 
-class Admin_Form_Login extends Zend_Form
+class Admin_Form_Login extends App_Form
 {
 
  private $elementDecorators = array(
@@ -25,6 +25,8 @@ class Admin_Form_Login extends Zend_Form
  
     public function init()
     {
+    	parent::init();
+    	
         $this->setMethod('post');
  
         $username = new Zend_Form_Element_Text('username', array(
