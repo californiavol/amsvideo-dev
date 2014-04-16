@@ -14,10 +14,17 @@ class Admin_Form_Department extends Zend_Form
         array(array('data' => 'HtmlTag'), array('tag' => 'span')),
         
     );
+    
+
 
     public function init()
     {
-        
+
+ 		$this->addElementPrefixPath(
+ 			'App_Filter',
+ 			APPLICATION_PATH . '/../library/App/filter/',
+ 			'filter'
+ 		);    	
     	
     	$this->setMethod('post');
     	$this->setAttrib('class', 'form-inline');
@@ -29,7 +36,7 @@ class Admin_Form_Department extends Zend_Form
                 'label' => 'Department/Program:',
         		'class' => 'form-control',
                 'required' => true,
-                'filters'    => array('StringTrim'),
+                'filters'    => array('StringTrim', 'HTMLPurifier'),
             ));
  
  

@@ -3,7 +3,6 @@
 class VideoController extends Zend_Controller_Action
 {
 
-
 	
 	public function init()
     {
@@ -11,10 +10,7 @@ class VideoController extends Zend_Controller_Action
     	
     	$this->db_table = new Application_Model_DbTable_Videos();
 
-    	//set context switch for xml output in rssAction()
-    	$contextSwitch = $this->_helper->getHelper('contextSwitch');
-        $contextSwitch->addActionContext('rss', 'xml', array('headers' => array('Content-Type' => 'application/rss+xml; charset=ISO-8859-1')))
-                      ->initContext();
+
                       
 
                       
@@ -27,6 +23,13 @@ class VideoController extends Zend_Controller_Action
 
     public function rssAction()
     {
+    	
+    	$this->_helper->layout()->disableLayout();
+    	
+    	//set context switch for xml output in rssAction()
+    	$contextSwitch = $this->_helper->getHelper('contextSwitch');
+        $contextSwitch->addActionContext('rss', 'xml', array('headers' => array('Content-Type' => 'application/rss+xml; charset=ISO-8859-1')))
+                      ->initContext();    	
 
     	$id = $this->_getParam('cid');
     	$items = $this->db_table->getCourseVideos($id);
@@ -63,9 +66,10 @@ class VideoController extends Zend_Controller_Action
     	}
 
     	
-    	
-        //var_dump($feed->export('atom'));
+        //var_dump($feed->export('rss'));
         $this->view->rssoutput = $feed->export('rss');
+       
+        
         
 
     }

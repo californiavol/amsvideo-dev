@@ -43,10 +43,10 @@
 		  		</p>
  			</div>
  			
- 			<h4>Recorded Videos</h4>
+ 	
 	 		
 		    <?php if ($this->course) {
-		    	echo '<a href="/default/video/rss/cid/'.$this->course['class_nbr'].'?format=xml">rss</a>';
+		    	echo '<h4><a href="'.$this->baseUrl().'/default/video/rss/cid/'.$this->course['class_nbr'].'?format=xml"><i class="fa fa-rss-square"></i></a> Recorded Videos<h4>';
 		    	echo '<ul>';
 		    	echo $this->partialLoop('index/_courseVideoLoop.phtml', 'default', $this->coursevideos);
 		    	//echo $this->partialLoop('index/_courseVideoLoop.phtml', 'default', array('coursevideos' => $this->coursevideos, 'linkEnabled' => $this->linkEnabled));
