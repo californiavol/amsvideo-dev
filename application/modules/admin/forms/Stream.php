@@ -31,7 +31,7 @@ class Admin_Form_Stream extends App_Form
                 'label' => 'Stream Name:',
         		'class' => 'form-control',
                 'required' => true,
-                'filters'    => array('StringTrim'),
+                'filters'    => array('StringTrim', 'HTMLPurifier'),
             ));
  
  		$this->addElement(
@@ -40,7 +40,7 @@ class Admin_Form_Stream extends App_Form
                 'label' => 'RTMP URL:',
         		'class' => 'form-control',
                 'required' => true,
-                'filters'    => array('StringTrim'),
+                'filters'    => array('StringTrim', 'HTMLPurifier'),
             ));
             
         $this->addElement(
@@ -49,7 +49,7 @@ class Admin_Form_Stream extends App_Form
                 'label' => 'HDS URL:',
         		'class' => 'form-control',
                 'required' => true,
-                'filters'    => array('StringTrim'),
+                'filters'    => array('StringTrim', 'HTMLPurifier'),
             ));            
 
         $this->addElement(
@@ -58,7 +58,7 @@ class Admin_Form_Stream extends App_Form
                 'label' => 'HLS URL:',
         		'class' => 'form-control',
                 'required' => true,
-                'filters'    => array('StringTrim'),
+                'filters'    => array('StringTrim', 'HTMLPurifier'),
             ));             
             
         $this->addElement('button', 'button', array(

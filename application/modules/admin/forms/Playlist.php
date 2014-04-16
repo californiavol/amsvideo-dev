@@ -30,7 +30,7 @@ class Admin_Form_Playlist extends App_Form
                 'label' => 'Add New Playlist:',
         		'class' => 'form-control',
                 'required' => true,
-                'filters'    => array('StringTrim'),
+                'filters'    => array('StringTrim', 'HTMLPurifier'),
             ));
  
  

@@ -27,7 +27,7 @@ class Admin_Form_Register extends App_Form
             'label' => 'First name',
             'required' => true,
             'filters' => array(
-                'StringTrim'
+                'StringTrim', 'HTMLPurifier'
             ),
             'validators' => array(
                 array('StringLength', false, array(2, 50))
@@ -40,7 +40,7 @@ class Admin_Form_Register extends App_Form
             'label' => 'First name',
             'required' => true,
             'filters' => array(
-                'StringTrim'
+                'StringTrim', 'HTMLPurifier'
             ),
             'validators' => array(
                 array('StringLength', false, array(2, 50))
@@ -53,7 +53,7 @@ class Admin_Form_Register extends App_Form
             'label' => 'Email',
             'required' => true,
             'filters' => array(
-                'StringTrim'
+                'StringTrim', 'HTMLPurifier'
             ),
             'validators' => array(
                 'EmailAddress'
@@ -67,7 +67,7 @@ class Admin_Form_Register extends App_Form
             'label' => 'Username',
             'required' => true,
             'filters' => array(
-                'StringTrim'
+                'StringTrim', 'HTMLPurifier'
             ),
             'validators' => array(
                 array('StringLength', false, array(3, 50))
@@ -80,7 +80,7 @@ class Admin_Form_Register extends App_Form
             'label' => 'Password',
             'required' => true,
             'filters' => array(
-                'StringTrim'
+                'StringTrim', 'HTMLPurifier'
             ),
             'validators' => array(
                 array('StringLength', false, array(6, 50))
@@ -94,8 +94,8 @@ class Admin_Form_Register extends App_Form
         $role->setDecorators($this->elementDecorators);
         $role->setLabel('Select a role');
         $role->addMultiOption('user', 'User');
+        $role->addMultiOption('editor', 'Editor');
         $role->addMultiOption('admin', 'Admin');
-        
         
         
  

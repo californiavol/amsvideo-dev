@@ -34,7 +34,7 @@ class Admin_Form_Login extends App_Form
             'label' => 'Username',
             'required' => true,
             'filters' => array(
-                'StringTrim'
+                'StringTrim', 'HTMLPurifier'
             ),
             'validators' => array(
                 array('StringLength', false, array(3, 50))
@@ -47,7 +47,7 @@ class Admin_Form_Login extends App_Form
             'label' => 'Password',
             'required' => true,
             'filters' => array(
-                'StringTrim'
+                'StringTrim', 'HTMLPurifier'
             ),
             'validators' => array(
                 array('StringLength', false, array(6, 50))

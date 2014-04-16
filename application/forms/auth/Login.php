@@ -14,12 +14,13 @@ class Application_Form_Auth_Login extends App_Form
             'text', 'username', array(
                 'label' => 'Username:',
                 'required' => true,
-                'filters'    => array('StringTrim'),
+                'filters'    => array('StringTrim', 'HTMLPurifier'),
             ));
  
         $this->addElement('password', 'password', array(
             'label' => 'Password:',
             'required' => true,
+        'filters'    => array('HTMLPurifier'),
             ));
  
         $this->addElement('submit', 'submit', array(
