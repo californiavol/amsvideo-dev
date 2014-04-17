@@ -1,6 +1,6 @@
 <?php
 
-class Admin_Form_Stream extends Zend_Form
+class Admin_Form_Stream extends App_Form
 {
 	
 	private $elementDecorators = array(
@@ -18,6 +18,8 @@ class Admin_Form_Stream extends Zend_Form
 
     public function init()
     {
+        parent::init();
+        
         /* Form Elements & Other Definitions Here ... */
     	$this->setMethod('post');
     	$this->setAttrib('class', 'form');
@@ -29,7 +31,7 @@ class Admin_Form_Stream extends Zend_Form
                 'label' => 'Stream Name:',
         		'class' => 'form-control',
                 'required' => true,
-                'filters'    => array('StringTrim'),
+                'filters'    => array('StringTrim', 'HTMLPurifier'),
             ));
  
  		$this->addElement(
@@ -38,7 +40,7 @@ class Admin_Form_Stream extends Zend_Form
                 'label' => 'RTMP URL:',
         		'class' => 'form-control',
                 'required' => true,
-                'filters'    => array('StringTrim'),
+                'filters'    => array('StringTrim', 'HTMLPurifier'),
             ));
             
         $this->addElement(
@@ -47,7 +49,7 @@ class Admin_Form_Stream extends Zend_Form
                 'label' => 'HDS URL:',
         		'class' => 'form-control',
                 'required' => true,
-                'filters'    => array('StringTrim'),
+                'filters'    => array('StringTrim', 'HTMLPurifier'),
             ));            
 
         $this->addElement(
@@ -56,7 +58,7 @@ class Admin_Form_Stream extends Zend_Form
                 'label' => 'HLS URL:',
         		'class' => 'form-control',
                 'required' => true,
-                'filters'    => array('StringTrim'),
+                'filters'    => array('StringTrim', 'HTMLPurifier'),
             ));             
             
         $this->addElement('button', 'button', array(

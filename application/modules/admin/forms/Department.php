@@ -1,6 +1,6 @@
 <?php
 
-class Admin_Form_Department extends Zend_Form
+class Admin_Form_Department extends App_Form
 {
 	 private $elementDecorators = array(
         'ViewHelper',
@@ -19,12 +19,8 @@ class Admin_Form_Department extends Zend_Form
 
     public function init()
     {
-
- 		$this->addElementPrefixPath(
- 			'App_Filter',
- 			APPLICATION_PATH . '/../library/App/filter/',
- 			'filter'
- 		);    	
+		parent::init();
+   	
     	
     	$this->setMethod('post');
     	$this->setAttrib('class', 'form-inline');
