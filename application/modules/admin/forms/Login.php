@@ -1,6 +1,6 @@
 <?php
 
-class Admin_Form_Login extends Zend_Form
+class Admin_Form_Login extends App_Form
 {
 
  private $elementDecorators = array(
@@ -25,6 +25,8 @@ class Admin_Form_Login extends Zend_Form
  
     public function init()
     {
+    	parent::init();
+    	
         $this->setMethod('post');
  
         $username = new Zend_Form_Element_Text('username', array(
@@ -32,7 +34,7 @@ class Admin_Form_Login extends Zend_Form
             'label' => 'Username',
             'required' => true,
             'filters' => array(
-                'StringTrim'
+                'StringTrim', 'HTMLPurifier'
             ),
             'validators' => array(
                 array('StringLength', false, array(3, 50))
@@ -45,7 +47,7 @@ class Admin_Form_Login extends Zend_Form
             'label' => 'Password',
             'required' => true,
             'filters' => array(
-                'StringTrim'
+                'StringTrim', 'HTMLPurifier'
             ),
             'validators' => array(
                 array('StringLength', false, array(6, 50))

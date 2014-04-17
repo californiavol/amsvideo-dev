@@ -1,12 +1,14 @@
 <?php
 
 
-class Application_Form_Embed extends Zend_Form
+class Application_Form_Embed extends App_Form
 {
 	
 	public function init()
 	{
- 		$this->setMethod('get');
+ 		parent::init();
+		
+		$this->setMethod('get');
  		$this->setAttrib('id', 'target');
  
         $this->addElement(
