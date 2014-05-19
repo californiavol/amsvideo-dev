@@ -4,6 +4,7 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
 {
 
     protected $_name = 'courses';
+    protected $_filePath;
     
 
     public function init()
@@ -11,7 +12,7 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
 		//$logger = Zend_Registry::get('log');
 		//$this->logger = $logger;
 		//$this->logger->log('Informational message', Zend_Log::INFO);
-    }   
+    }
     
     public function getCourses()
     {
@@ -40,6 +41,21 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
 		return $row;   	
     }
     
+    public function getCoursesByTerm($semester = null, $year = null)
+    {
+		if (($semester != null) || ($year != null)) {
+        	$select = $this->select()
+        			->from($this->_name)
+        			->order('name')
+        			->where('semester = ?', $semester)
+        			->where('year = ?', $year);
+ 		
+			$rows = $this->fetchAll($select);
+			return $rows;
+			
+		}	   	
+    }
+    
 	public function getCourseVideos($class_nbr)
 	{
 		$select = $this->select();
@@ -52,29 +68,10 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
 		return $rows;
 	}
     
-	public function getCurrentSemester()
-	{
-		$row = $this->fetchRow($this->select()->limit(1));
-		$semester = $row->semester;
-		return $semester; 		
-	}
-	
-	public function getCurrentYear()
-	{
-		$row = $this->fetchRow($this->select()->limit(1));
-		$year = $row->year;
-		return $year; 		
-	}
-	
-    public function parseCsv()
-    {
-    	$this->_parseCsv();
-    }
-    
-    public function insertCsv() 
+    public function insertCsv($inputFile) 
     {
     	//parse the csv
-    	$data = $this->_parseCsv();
+    	$data = $this->_parseCsv($inputFile);
     	
     	//insert into db
     	if($this->_insertCsv2Db($data)) {
@@ -82,11 +79,10 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
     	}
     }      
 
-    private function _parseCsv()
+    private function _parseCsv($inputFile)
     {
     	require_once APPLICATION_PATH . '/../library/vendors/Datasource.php';
     	
-    	$inputFile = APPLICATION_PATH . '/../data/csv/sac_cm_courses.csv';
     	$csv = new File_CSV_DataSource;
 		$csv->load($inputFile);
 		$csvArray = $csv->connect();
@@ -170,7 +166,6 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
     }
 
     
-
 
 
 

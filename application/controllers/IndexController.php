@@ -67,7 +67,8 @@ class IndexController extends Zend_Controller_Action
     
     public function welcomeAction()
     {
-    	$this->view->msg = 'welcome';
+    	$this->view->courses = $this->coursesTable->getCourses();
+    	$this->view->courseCount = $this->coursesTable->getCourseCount();
     }
 
     public function coursepageAction()

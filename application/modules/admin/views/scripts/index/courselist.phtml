@@ -2,7 +2,11 @@
 	<div class="col-lg-12">
     	<div class="panel panel-default">
 	      	<div class="panel-heading">
-	      		<h1>Streaming Video Course List <?php echo $this->courseCount; ?></h1>
+	      		<h1>Streaming Video Course List</h1>
+	      		<p>
+	      			<?php echo $this->form; ?>
+	      		</p>
+	      		<p><?php echo $this->semester; ?> <?php echo $this->year; ?> - <?php if ($this->courseCount) {echo $this->courseCount . ' Courses'; } ?></p>
       		</div>
       		<!-- /.panel-heading -->
       		<div class="panel-body">
@@ -19,7 +23,7 @@
 			              </tr>
 			            </thead>
 			            <tbody>
-				            <?php echo $this->partialLoop('index/_courseListBrief.phtml', $this->courses); ?>      
+				            <?php echo $this->partialLoop('index/_courseListBrief.phtml', 'admin', $this->courses); ?>      
 			            </tbody>
           			</table>
         		</div>
