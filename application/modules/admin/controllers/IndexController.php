@@ -50,7 +50,7 @@ class Admin_IndexController extends Zend_Controller_Action
 
     public function insertcoursesAction()
     {
-    	$filePath = APPLICATION_PATH . '/../data/csv/sac_cm_courses.csv';
+    	$filePath = APPLICATION_PATH . '/../data/csv/courses/sac_cm_courses.csv';
     	
     	if ($this->coursesTable->insertCsv($filePath)) {
     		$this->_helper->redirector('courselist');
