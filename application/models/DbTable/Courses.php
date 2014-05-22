@@ -3,9 +3,7 @@
 class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
 {
 
-    protected $_name = 'courses';
-    protected $_filePath;
-    
+    protected $_name = 'courses'; 
 
     public function init()
     {

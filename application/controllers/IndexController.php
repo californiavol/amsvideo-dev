@@ -45,18 +45,34 @@ class IndexController extends Zend_Controller_Action
 		}
 		
     	if ($this->class_nbr && !$this->videoId) {
-	    	//get individual course if class_nbr param set
+	    	
+    		//get individual course if class_nbr param set
     	    $this->view->course = $this->coursesTable->getCourseByClassNbr($this->class_nbr);
-    		$this->view->coursevideos = $this->videosTable->getVideosByClassNbr($this->class_nbr);
-			//$this->view->coursevideos = $this->videosTable->getCourseVideos($this->class_nbr);
-    		
+    		//get course associated videos
+    	    $this->view->coursevideos = $this->videosTable->getVideosByClassNbr($this->class_nbr);
+    	     		
     	} elseif ($this->class_nbr && $this->videoId) {
     		
+    		//get individual course if class_nbr param set
     	    $this->view->course = $this->coursesTable->getCourseByClassNbr($this->class_nbr);
-    		$this->view->coursevideos = $this->videosTable->getVideosByClassNbr($this->class_nbr);  
-    		//get individual video
-    		$this->view->video = $this->videosTable->getVideoById($this->videoId);
+    		//get course associated videos
+    		$coursevideos = 
+    	    $this->view->coursevideos = $this->videosTable->getVideosByClassNbr($this->class_nbr);  			
+			
+			//get individual video
+			$video = $this->videosTable->getVideoById($this->videoId);
+    		$this->view->video = $video;
     		
+    	    //we have to deal with fall 2013 videos which have different filename convention
+			$betaThresholdDate = '2013-12-31 12:00:00';
+			
+    		$available_datetime = date('Y-m-d H:i:s', strtotime($video['recorded_available_datetime']));
+			if ($available_datetime < $betaThresholdDate) {
+				$this->view->useOsmf2013;
+			}
+			
+			
+			
     	} else {
     		//redirect to courselist
     		$this->redirect('/default/index/welcome');
