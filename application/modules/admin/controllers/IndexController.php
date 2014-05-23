@@ -246,21 +246,6 @@ class Admin_IndexController extends Zend_Controller_Action
         // action body
     }
 
-    public function listvideosAction()
-    {
-        // action body
-        $result = $this->videosTable->getAllVideos();
-        
-        $page= $this->_getParam('page', 1);
-	    $paginator = Zend_Paginator::factory($result);
-	    $paginator->setItemCountPerPage(10);
-	    $paginator->setCurrentPageNumber($page);
-    	$this->view->paginator=$paginator;
-    	
-    	
-    	//get video count
-    	$this->view->count = $this->videosTable->getVideoCount();
-    }
 
     public function analyticsAction()
     {
