@@ -6,4 +6,4 @@ Bootstrap.php
 .project
 index.php
 *zend_cache
-~.sql
+*.sql
