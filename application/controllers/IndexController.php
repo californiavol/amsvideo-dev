@@ -69,9 +69,7 @@ class IndexController extends Zend_Controller_Action
     		$available_datetime = date('Y-m-d H:i:s', strtotime($video['recorded_available_datetime']));
 			if ($available_datetime < $betaThresholdDate) {
 				$this->view->useOsmf2013 = TRUE;
-			}
-			
-			
+			}	
 			
     	} else {
     		//redirect to courselist
@@ -110,20 +108,7 @@ class IndexController extends Zend_Controller_Action
     public function live4Action()
     {
         // action body
-    }
-
-    public function atcsAction()
-    {
-        // action body
-    }
-
-
-    public function strobeplayerAction()
-    {
-        // action body
-    }
-
-    
+    }    
 
     public function outputlinksAction()
     {
