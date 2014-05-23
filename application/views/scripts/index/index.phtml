@@ -13,8 +13,7 @@
    			
 		  	<?php if ($this->video) {
 				
-		  		if (!$this->useOsmf2013) {
-		  			echo 'not use archive';
+		  		if ($this->useOsmf2013) {
 		  			echo $this->partial('index/_osmfplayer-2013.phtml', 'default', array('course' => $this->course, 'video' => $this->video));
 		  		} else {
 			  		echo $this->partial('index/_osmfplayer.phtml', 'default', array('course' => $this->course, 'video' => $this->video));	
