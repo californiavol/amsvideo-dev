@@ -599,6 +599,12 @@ a.list-group-item.active:focus .list-group-item-text {
 	.ss-coursevideos-list ul li h4 {color:#fff; font-size:1.2em; padding-bottom:0; margin-bottom:0;}
 	.ss-coursevideos-list ul li p {color:#fff; font-weight:normal;  font-size:1em; /* padding-left:0; */ /* padding-right:1em; */ /* padding-bottom:0; */ line-height:normal; margin-bottom:0.2em; text-transform:capitalize;}    
 
+
+
+	.ss-primary-nav-links {
+		background: url("http://www.csus.edu/Monet/Images/header/menu-gradient2.png") repeat-y scroll 0 0 transparent;
+	}
+
 }
 
 @media (max-device-width: 1280px) and (orientation: landscape) { 
