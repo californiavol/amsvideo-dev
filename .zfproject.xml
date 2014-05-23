@@ -45,6 +45,10 @@
             <controllerFile controllerName="Playlist">
               <actionMethod actionName="index"/>
             </controllerFile>
+            <controllerFile controllerName="Index">
+              <actionMethod actionName="index"/>
+              <actionMethod actionName="backuptable"/>
+            </controllerFile>
           </controllersDirectory>
           <formsDirectory enabled="false">
             <formFile formName="Playlist"/>
@@ -59,6 +63,9 @@
             <viewScriptsDirectory>
               <viewControllerScriptsDirectory forControllerName="Playlist">
                 <viewScriptFile forActionName="index"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Index">
+                <viewScriptFile forActionName="backuptable"/>
               </viewControllerScriptsDirectory>
             </viewScriptsDirectory>
             <viewHelpersDirectory/>

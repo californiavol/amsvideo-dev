@@ -84,7 +84,7 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
   {
     require_once  APPLICATION_PATH . '/../library/vendors/DataSource.php';
 
-    $inputFile = APPLICATION_PATH . '/../data/csv/sac_cm_videos.csv';
+    $inputFile = APPLICATION_PATH . '/../data/csv/videos/sac_cm_videos.csv';
     $csv = new File_CSV_DataSource;
     $csv->load($inputFile);
     $csvArray = $csv->connect();
@@ -108,7 +108,7 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
     $csvData = $data;
 
     //empty the videos table                                                                                                   
-    $this->getAdapter()->query('TRUNCATE TABLE videos');
+    //$this->getAdapter()->query('TRUNCATE TABLE videos');
     
     //get the courses table
     $coursesTable = new Application_Model_DbTable_Courses();

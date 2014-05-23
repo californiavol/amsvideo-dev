@@ -10,9 +10,16 @@
 
 	<div class="row ss-videoplayer backdrop">
    		<div class="col-md-8" id="osmfcontainer">
-	
+   			
 		  	<?php if ($this->video) {
-				echo $this->partial('index/_osmfplayer.phtml', 'default', array('course' => $this->course, 'video' => $this->video));
+				
+		  		if ($this->useOsmf2013) {
+		  			echo $this->partial('index/_osmfplayer-2013.phtml', 'default', array('course' => $this->course, 'video' => $this->video));
+		  		} else {
+			  		echo $this->partial('index/_osmfplayer.phtml', 'default', array('course' => $this->course, 'video' => $this->video));	
+		  		}
+		  		
+		  		
 				echo '<div id="ss_video_title"><em>Now playing: '. date('l M d', strtotime($this->video['start_dt'])) .'</div></em>';
 			} else {
 				echo $this->partial('index/_osmfplayerFallback.phtml');

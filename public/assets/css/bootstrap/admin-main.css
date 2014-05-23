@@ -10,11 +10,6 @@
 
 
 /* No media query since this is the default in Bootstrap */
-
-
-
-h1 {}
-
 h1 {
 	font-family:"Trajan Pro", Georgia;
 	font-size:1.4em;
@@ -51,6 +46,10 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff001e14', end
 	*zoom:1;	
 }
 
+#ss_banner_nav .navbar-default {
+	background-color:#001e14;
+	border-color:#001e14;
+}
 
 
 
@@ -91,28 +90,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff001e14', end
     color:#00573d;
 }
 
-#ss_banner_nav {
-	margin-top:10px;
-}
 
-#ss_banner_nav .navbar-default {
-	background-color:#001e14;
-	border-color:#001e14;
-}
-
-#ss_banner_nav .navbar-default .navbar-text {
-  color: #f0e1b0;
-}
-
-#ss_banner_nav .navbar-default .navbar-nav > li > a {
-  color: #f0e1b0;
-}
-
-#ss_banner_nav .navbar-default .navbar-nav > li > a:hover,
-#ss_banner_nav .navbar-default .navbar-nav > li > a:focus {
-  color: #fff;
-  background-color: transparent;
-}
 
 #main .jumbotron { 
 	color:#00573d;
@@ -342,6 +320,8 @@ h4 {
     h2, h3 {
         font-size:12px;
     }
+    
+
 
 	#sacstate_video {
 		display:block;
@@ -417,6 +397,59 @@ h4 {
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {  
+
+	#ss_banner_nav {
+		margin-top:10px;
+		background: url("http://www.csus.edu/Monet/Images/header/menu-gradient2.png") repeat-y scroll 0 0 transparent;
+	}
+	
+	#ss_banner_nav .navbar-default {
+		background-color:#001e14;
+		border-color:#001e14;
+	}
+	
+	#ss_banner_nav .navbar-default .navbar-text {
+	  color: #f0e1b0;
+	}
+	
+	
+	#ss_banner_nav .navbar-default .navbar-nav > li > a:link,
+	#ss_banner_nav .navbar-default .navbar-nav > li > a:visited {
+	  color: #fff;
+	  font-size:0.7em;
+	  font-family:"Georgia";
+	  text-transform:uppercase;
+	  padding:8px 5px;
+	  line-height:normal;
+	}
+	
+	#ss_banner_nav .navbar-default .navbar-nav > li > a:hover,
+	#ss_banner_nav .navbar-default .navbar-nav > li > a:focus {
+	  color: #f0e1b0;
+	  background-color: transparent;
+	}
+	
+	.ss-primary-nav-links {
+		background: url("http://www.csus.edu/Monet/Images/header/menu-gradient2.png") repeat-y scroll 40% 0 transparent;
+		height:29px;
+	}
+	
+	.quicklinks-button {
+		background-image: url("http://www.csus.edu/Monet/Images/header/quick_links.gif");
+	    background-repeat: repeat-x;
+	    height:29px;
+	}
+	
+	.quicklinks-button a {
+		color:#f0e1b0;
+	}
+	
+	.quicklinks.dropdown-menu {
+		left:-113px;
+	}
+
+	
+	
 	#sacstate_video {
 		display:block;
 		position:relative;
