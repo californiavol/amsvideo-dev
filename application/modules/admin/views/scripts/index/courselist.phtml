@@ -23,7 +23,11 @@
 			              </tr>
 			            </thead>
 			            <tbody>
-				            <?php echo $this->partialLoop('index/_courseListBrief.phtml', 'admin', $this->courses); ?>      
+				            <?php 
+				            	if ($this->courses) {
+				            		echo $this->partialLoop('index/_courseListBrief.phtml', 'admin', $this->courses);
+				            	}
+			            	?>      
 			            </tbody>
           			</table>
         		</div>
