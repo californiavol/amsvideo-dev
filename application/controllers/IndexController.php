@@ -45,18 +45,32 @@ class IndexController extends Zend_Controller_Action
 		}
 		
     	if ($this->class_nbr && !$this->videoId) {
-	    	//get individual course if class_nbr param set
+	    	
+    		//get individual course if class_nbr param set
     	    $this->view->course = $this->coursesTable->getCourseByClassNbr($this->class_nbr);
-    		$this->view->coursevideos = $this->videosTable->getVideosByClassNbr($this->class_nbr);
-			//$this->view->coursevideos = $this->videosTable->getCourseVideos($this->class_nbr);
-    		
+    		//get course associated videos
+    	    $this->view->coursevideos = $this->videosTable->getVideosByClassNbr($this->class_nbr);
+    	     		
     	} elseif ($this->class_nbr && $this->videoId) {
     		
+    		//get individual course if class_nbr param set
     	    $this->view->course = $this->coursesTable->getCourseByClassNbr($this->class_nbr);
-    		$this->view->coursevideos = $this->videosTable->getVideosByClassNbr($this->class_nbr);  
-    		//get individual video
-    		$this->view->video = $this->videosTable->getVideoById($this->videoId);
+    		//get course associated videos
+    		$coursevideos = 
+    	    $this->view->coursevideos = $this->videosTable->getVideosByClassNbr($this->class_nbr);  			
+			
+			//get individual video
+			$video = $this->videosTable->getVideoById($this->videoId);
+    		$this->view->video = $video;
     		
+    	    //we have to deal with fall 2013 videos which have different filename convention
+			$betaThresholdDate = '2013-12-31 12:00:00';
+			
+    		$available_datetime = date('Y-m-d H:i:s', strtotime($video['recorded_available_datetime']));
+			if ($available_datetime < $betaThresholdDate) {
+				$this->view->useOsmf2013 = TRUE;
+			}	
+			
     	} else {
     		//redirect to courselist
     		$this->redirect('/default/index/welcome');
@@ -67,7 +81,8 @@ class IndexController extends Zend_Controller_Action
     
     public function welcomeAction()
     {
-    	$this->view->msg = 'welcome';
+    	$this->view->courses = $this->coursesTable->getCourses();
+    	$this->view->courseCount = $this->coursesTable->getCourseCount();
     }
 
     public function coursepageAction()
@@ -93,57 +108,7 @@ class IndexController extends Zend_Controller_Action
     public function live4Action()
     {
         // action body
-    }
-
-    public function atcsAction()
-    {
-        // action body
-    }
-
-
-    public function strobeplayerAction()
-    {
-        // action body
-    }
-
-    public function phpcasAction()
-    {
-        // Load the settings 
-                                        		$cas_host = 'testcas.csus.edu';
-                                        		$cas_port = 443;
-                                        		$cas_context = '/csus.cas';
-                                        		$cas_server_ca_cert_path = 'serviceValidate';
-                                        		// Load the CAS lib
-                                        		require_once 'CAS.php';
-                                        		
-                                        		// Uncomment to enable debugging
-                                        		phpCAS::setDebug();
-                                        		
-                                        		// Initialize phpCAS
-                                        		phpCAS::client(CAS_VERSION_2_0, $cas_host, $cas_port, $cas_context);
-                                        		
-                                        		// For production use set the CA certificate that is the issuer of the cert
-                                        		// on the CAS server and uncomment the line below
-                                        		phpCAS::setCasServerCACert($cas_server_ca_cert_path, false);
-                                        		
-                                        		// For quick testing you can disable SSL validation of the CAS server.
-                                        		// THIS SETTING IS NOT RECOMMENDED FOR PRODUCTION.
-                                        		// VALIDATING THE CAS SERVER IS CRUCIAL TO THE SECURITY OF THE CAS PROTOCOL!
-                                        		//phpCAS::setNoCasServerValidation();
-                                        		
-                                        		// force CAS authentication
-                                        		phpCAS::forceAuthentication();
-                                        		
-                                        		// at this step, the user has been authenticated by the CAS server
-                                        		// and the user's login name can be read with phpCAS::getUser().
-                                        		
-                                        		$this->view->phpCAS = phpCAS;
-                                        		
-                                        		// logout if desired
-                                        		if (isset($_REQUEST['logout'])) {
-                                        			phpCAS::logout();
-                                        		}
-    }
+    }    
 
     public function outputlinksAction()
     {

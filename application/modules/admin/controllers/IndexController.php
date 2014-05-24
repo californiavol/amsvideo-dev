@@ -23,26 +23,36 @@ class Admin_IndexController extends Zend_Controller_Action
 
     public function indexAction()
     {
-    	
-    	$this->view->currentSemester = $this->coursesTable->getCurrentSemester();
-    	$this->view->currentYear = $this->coursesTable->getCurrentYear();
     	$this->view->courseCount = $this->coursesTable->getCourseCount();
     	$this->view->videoCount = $this->videosTable->getVideoCount();
     }
 
     public function courselistAction()
     {
+    	$termForm = new Admin_Form_Term();
+    	$this->view->form = $termForm;
     	
-    	$this->view->courses = $this->coursesTable->getCourses();
-    	$this->view->courseCount = $this->coursesTable->getCourseCount();
+    	$semester = $this->_getParam('semester');
+    	$this->view->semester = $semester;
     	
-    	$this->view->dt = $this->videosTable->convertDate();
+    	$year = $this->_getParam('year');
+    	$this->view->year = $year;
+    	
+    	$courses = $this->coursesTable->getCoursesByTerm($semester, $year);
+    	$this->view->courses = $courses;
+    	
+    	if ($courses != null) {
+    		$this->view->courseCount = count($courses);
+    	}
+    	
 
     }
 
     public function insertcoursesAction()
     {
-    	if ($this->coursesTable->insertCsv()) {
+    	$filePath = APPLICATION_PATH . '/../data/csv/courses/sac_cm_courses.csv';
+    	
+    	if ($this->coursesTable->insertCsv($filePath)) {
     		$this->_helper->redirector('courselist');
     	}
     	
@@ -236,35 +246,20 @@ class Admin_IndexController extends Zend_Controller_Action
         // action body
     }
 
-    public function listvideosAction()
-    {
-        // action body
-        $result = $this->videosTable->getAllVideos();
-        
-        $page= $this->_getParam('page', 1);
-	    $paginator = Zend_Paginator::factory($result);
-	    $paginator->setItemCountPerPage(10);
-	    $paginator->setCurrentPageNumber($page);
-    	$this->view->paginator=$paginator;
-    	
-    	
-    	//get video count
-    	$this->view->count = $this->videosTable->getVideoCount();
-    }
 
     public function analyticsAction()
     {
     	
     }
 
-    
-	public function embedAction()
-	{
+    public function embedAction()
+    {
 		$this->view->form = new Application_Form_Embed();
-	}
-    
-    
+    }
+
 }
+
+
 
 
 
