@@ -41,6 +41,7 @@ class Admin_Form_Stream extends App_Form
         		'class' => 'form-control',
                 'required' => true,
                 'filters'    => array('StringTrim', 'HTMLPurifier'),
+ 				'validators' => array('FILTER_VALIDATE_URL'),
             ));
             
         $this->addElement(
