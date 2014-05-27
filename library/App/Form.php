@@ -10,7 +10,7 @@ class App_Form extends Zend_Form
 	{
 		$this->addElementPrefixPath(
  			'App_Filter',
- 			APPLICATION_PATH . '/../library/App/filter/',
+ 			APPLICATION_PATH . '/../library/App/Filter/',
  			'filter'
  		); 
 	}

@@ -89,7 +89,7 @@ class Admin_IndexController extends Zend_Controller_Action
 			$request = $this->getRequest();
 			$users = $this->usersTable;
 							
-			$form = new Admin_Form_Login();                         
+			$form = new Admin_Form_Login();                   
 		
 			// IF POST DATA HAS BEEN SUBMITTED
 			if ($request->isPost()) {
