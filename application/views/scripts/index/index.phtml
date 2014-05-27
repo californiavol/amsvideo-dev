@@ -20,7 +20,7 @@
 		  		}
 		  		
 		  		
-				echo '<div id="ss_video_title"><em>Now playing: '. date('l M d', strtotime($this->video['start_dt'])) .'</div></em>';
+				echo '<br/><div class="info-block" id="ss_video_title"><em>Now playing: '. date('l M d', strtotime($this->video['start_dt'])) .'</em></div>';
 			} else {
 				echo $this->partial('index/_osmfplayerFallback.phtml');
 			}?>
