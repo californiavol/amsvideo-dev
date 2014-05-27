@@ -85,10 +85,6 @@ class IndexController extends Zend_Controller_Action
     	$this->view->courseCount = $this->coursesTable->getCourseCount();
     }
 
-    public function coursepageAction()
-    {
-    	$this->view->coursevideos = $this->videosTable->getVideosByClassNbr($this->class_nbr);
-    }
 
     public function live1Action()
     {

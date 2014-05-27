@@ -32,7 +32,7 @@ class Admin_Form_Login extends App_Form
         $username = new Zend_Form_Element_Text('username', array(
             'decorators' => $this->elementDecorators,
             'label' => 'Username',
-            'required' => true,
+            'required' => true, 
             'filters' => array(
                 'StringTrim', 'HTMLPurifier'
             ),
@@ -55,13 +55,6 @@ class Admin_Form_Login extends App_Form
             'class' => 'input-password'
         ));
  
-        $rememberMe = new Zend_Form_Element_Checkbox('rememberMe', array(
-            'decorators' => $this->checkboxDecorators,
-            'label' => 'Remember me?',
-            'required' => true,
-            'class' => 'input-checkbox'
-        ));
- 
         $submit = new Zend_Form_Element_Submit('login', array(
             'decorators' => $this->buttonDecorators,
             'label' => 'Login',
@@ -71,7 +64,6 @@ class Admin_Form_Login extends App_Form
         $this->addElements(array(
             $username,
             $password,
-            $rememberMe,
             $submit
         ));
     }
