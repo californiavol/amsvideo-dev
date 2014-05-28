@@ -93,6 +93,8 @@ a {color:#f0e1b0;}
   background-color: transparent;
 }
 
+
+
 #main .jumbotron { 
 	color:#00573d;
 	background:url(/assets/images/MarqueeBackdropLIGHT.png) no-repeat;
@@ -468,6 +470,7 @@ a.list-group-item.active:focus .list-group-item-text {
 	
 	#course_meta p {
 		padding: 1em;
+		color:#444;
 	}
 	
 
@@ -548,7 +551,7 @@ a.list-group-item.active:focus .list-group-item-text {
 		color:#fff;
 	}
 	
-	.ss-videoplayer p {color:#fff;}
+	.ss-videoplayer p {color:#444;}
 	
 	.ss-videoplayer a {}
 	
@@ -591,7 +594,7 @@ a.list-group-item.active:focus .list-group-item-text {
 	/********************************/
 	/** course videos list **/
 	.ss-coursevideos-list {display:block; position:relative; }
-	.ss-coursevideos-list ul {padding-left:0;margin-left:0; overflow-y:scroll; overflow-x:hidden; height:480px;}
+	.ss-coursevideos-list ul {padding-left:0;margin-left:0; overflow-y:scroll; overflow-x:hidden; height:590px;}
 	.ss-coursevideos-list ul li {background-color:#262626;color:#fff; padding:1em; border-bottom:1px inset #444; transition: opacity 1s ease 0s;}
 	
 	.ss-coursevideos-list ul li:hover {background-color:#262626;color:#fff; padding:1em; border-bottom:1px inset #444; opacity:0.8;}
