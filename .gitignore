@@ -5,5 +5,5 @@ Bootstrap.php
 .buildpath
 .project
 index.php
-*zend_cache
+zend_cache*
 *.sql
