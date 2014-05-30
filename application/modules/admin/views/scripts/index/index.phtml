@@ -1,5 +1,5 @@
 <h1>Admin Dashboard</h1>
-<p><?php echo $this->currentSemester; ?> <?php echo $this->currentYear; ?> Courses: <?php echo $this->courseCount; ?> Videos: <?php echo $this->videoCount; ?></p>
+<p>Courses: <?php echo $this->courseCount; ?> Videos: <?php echo $this->videoCount; ?></p>
 
  	<div class="row">
  	<div class="col-lg-8">
@@ -9,6 +9,7 @@
                             <i class="fa fa-save fa-fw"></i> Ingest Data
                         </div>
                         <div class="panel-body">
+                        
 	                        <p>Read .csv files from /data/video/data/csv/, parse it, and insert it into a MySql database.</p>
 							<p>
 		              			<a class="btn btn-default" href="<?php echo $this->baseUrl(); ?>/admin/index/insertcourses" role="button">Load Courses &raquo;</a>

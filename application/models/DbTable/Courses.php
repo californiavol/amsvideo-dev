@@ -92,9 +92,6 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
     {
     	$csvData = $data;
     	//var_dump($csvData);
-	  	
-    	//empty the courses table
-	  	//$this->getAdapter()->query('TRUNCATE TABLE courses');    	
     	
     	$val = array();
     	foreach ($csvData as $val) {
