@@ -56,8 +56,8 @@ class IndexController extends Zend_Controller_Action
     		//get individual course if class_nbr param set
     	    $this->view->course = $this->coursesTable->getCourseByClassNbr($this->class_nbr);
     		//get course associated videos
-    		$coursevideos = 
-    	    $this->view->coursevideos = $this->videosTable->getVideosByClassNbr($this->class_nbr);  			
+    		$coursevideos = $this->videosTable->getVideosByClassNbr($this->class_nbr);
+    	    $this->view->coursevideos = $coursevideos;  			
 			
 			//get individual video
 			$video = $this->videosTable->getVideoById($this->videoId);
@@ -85,10 +85,6 @@ class IndexController extends Zend_Controller_Action
     	$this->view->courseCount = $this->coursesTable->getCourseCount();
     }
 
-    public function coursepageAction()
-    {
-    	$this->view->coursevideos = $this->videosTable->getVideosByClassNbr($this->class_nbr);
-    }
 
     public function live1Action()
     {
