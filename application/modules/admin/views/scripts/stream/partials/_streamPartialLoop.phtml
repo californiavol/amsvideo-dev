@@ -1,13 +1,45 @@
 <tr>
 	<td>
-		<a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'stream', 'action' => 'getstream', 'id' => $this->id)); ?>"><?php echo $this->escape($this->name);  ?></a>
-	</td>
-	<td>
-		<ul>
-			<li>RTMP Url: <?php echo $this->rtmp_url; ?></li>
-			<li>HLS Url:  <?php echo $this->hls_url; ?></li>
-			<li>HDS Url:  <?php echo $this->hds_url; ?></li>
-		</ul>
+		
+			<a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'stream', 'action' => 'getstream', 'id' => $this->id)); ?>"><?php echo $this->escape($this->name);  ?></a>
+			<br/>
+			<img class="img-responsive portfolio-item" src="http://lorempixel.com/100/100/<?php
+																						$input = array("people", "sports", "abstract", "city", "food");
+																						$rand_keys = array_rand($input, 1);
+																						echo $input[$rand_keys];
+																						?>" />
+		
+		
+		
+		
+		
+		<!-- Button trigger modal -->
+		<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal_<?php echo $this->id; ?>">
+		  URLs
+		</button>
+		
+		<!-- Modal -->
+		<div class="modal fade bs-example-modal-lg" id="myModal_<?php echo $this->id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel_<?php echo $this->id; ?>" aria-hidden="true">
+		  <div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		        <h4 class="modal-title" id="myModalLabel_<?php echo $this->id; ?>"><?php echo $this->escape($this->name);  ?></h4>
+		      </div>
+		      <div class="modal-body">
+		        <ul>
+					<li>RTMP Url: <?php echo $this->rtmp_url; ?></li>
+					<li>HLS Url:  <?php echo $this->hls_url; ?></li>
+					<li>HDS Url:  <?php echo $this->hds_url; ?></li>
+				</ul>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>		
+
 	</td>	
 </tr>
 

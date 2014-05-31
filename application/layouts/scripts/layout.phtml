@@ -11,7 +11,6 @@
 <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css" />
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 
-<link href="<?php echo $this->baseUrl(); ?>/assets/css/video-styles.css" media="all" rel="stylesheet" type="text/css"/>
 <link href="<?php echo $this->baseUrl(); ?>/assets/css/bootstrap/main.css" media="all" rel="stylesheet" type="text/css"/>
 
 
@@ -39,8 +38,6 @@
 <!--  #skip  Skip link as defined by webaim http://webaim.org/techniques/css/invisiblecontent/ -->
 <div class="sr-only" id="skip"><a href="#mainContent">Skip to Main Content</a></div>
 
-
-
 <header class="ss-header">
 	<div class="container">
 		<!-- navbar -->
@@ -54,7 +51,9 @@
 			    <span class="icon-bar"></span> 
 			    <span class="icon-bar"></span> 
 			  </button>
-			  <a href="http://www.csus.edu/" title="Sacramento State Homepage"></a> 
+			  <a class="ss-logo" href="http://www.csus.edu/" title="Sacramento State Homepage">
+			  	<img src="<?php echo $this->baseUrl(); ?>/assets/images/ss-logo-banner.png" />
+			  </a> 
 			</div>
 		      <div class="collapse navbar-collapse">
 		        <ul class="nav navbar-nav pull-right">
@@ -154,7 +153,7 @@
 
 
 <!-- js at the bottom of page for faster load times --> 
-<script src="<?php echo $this->baseUrl(); ?>/assets/js/osmf.js" type="text/javascript"></script> 
+
 
 
 <!-- google anayltics --> 

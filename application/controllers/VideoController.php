@@ -2,17 +2,20 @@
 
 class VideoController extends Zend_Controller_Action
 {
-
+  public function preDispatch()
+  {
+    $this->_helper->layout()->disableLayout();
+  }
 	
 	public function init()
-    {
-        /* Initialize action controller here */
+    {    	
+    	//set context switch for xml output in rssAction()
+    	$contextSwitch = $this->_helper->getHelper('contextSwitch');
+        $contextSwitch->addActionContext('rss', array('xml'), array('headers' => array('Content-Type' => 'application/rss+xml; charset=ISO-8859-1')))
+                      ->initContext();  
+    	
     	
     	$this->db_table = new Application_Model_DbTable_Videos();
-
-
-                      
-
                       
     }
 
@@ -24,12 +27,7 @@ class VideoController extends Zend_Controller_Action
     public function rssAction()
     {
     	
-    	$this->_helper->layout()->disableLayout();
-    	
-    	//set context switch for xml output in rssAction()
-    	$contextSwitch = $this->_helper->getHelper('contextSwitch');
-        $contextSwitch->addActionContext('rss', 'xml', array('headers' => array('Content-Type' => 'application/rss+xml; charset=ISO-8859-1')))
-                      ->initContext();    	
+  	
 
     	$id = $this->_getParam('cid');
     	$items = $this->db_table->getCourseVideos($id);

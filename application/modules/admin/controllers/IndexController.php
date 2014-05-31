@@ -25,6 +25,7 @@ class Admin_IndexController extends Zend_Controller_Action
     {
     	$this->view->courseCount = $this->coursesTable->getCourseCount();
     	$this->view->videoCount = $this->videosTable->getVideoCount();
+    	
     }
 
     public function courselistAction()
@@ -50,9 +51,9 @@ class Admin_IndexController extends Zend_Controller_Action
 
     public function insertcoursesAction()
     {
-    	$filePath = APPLICATION_PATH . '/../data/csv/courses/sac_cm_courses.csv';
+    	$inputFile = APPLICATION_PATH . '/../data/csv/sac_cm_courses.csv';
     	
-    	if ($this->coursesTable->insertCsv($filePath)) {
+    	if ($this->coursesTable->insertCsv($inputFile)) {
     		$this->_helper->redirector('courselist');
     	}
     	
@@ -60,7 +61,9 @@ class Admin_IndexController extends Zend_Controller_Action
 
     public function insertvideosAction()
     {
-       	if ($this->videosTable->insertCsv()) {
+       	$inputFile = APPLICATION_PATH . '/../data/csv/sac_cm_videos.csv';
+    	
+    	if ($this->videosTable->insertCsv($inputFile)) {
     		$this->_helper->redirector('listvideos');
     	}
     }
@@ -89,7 +92,7 @@ class Admin_IndexController extends Zend_Controller_Action
 			$request = $this->getRequest();
 			$users = $this->usersTable;
 							
-			$form = new Admin_Form_Login();                         
+			$form = new Admin_Form_Login();                   
 		
 			// IF POST DATA HAS BEEN SUBMITTED
 			if ($request->isPost()) {

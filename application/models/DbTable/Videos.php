@@ -80,11 +80,10 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 	  	return $row;
 	}  
 	
-  private function _parseCsv()
+  private function _parseCsv($inputFile)
   {
     require_once  APPLICATION_PATH . '/../library/vendors/DataSource.php';
 
-    $inputFile = APPLICATION_PATH . '/../data/csv/videos/sac_cm_videos.csv';
     $csv = new File_CSV_DataSource;
     $csv->load($inputFile);
     $csvArray = $csv->connect();
@@ -92,10 +91,10 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
     return $csvArray;
   }
 
-  public function insertCsv()
+  public function insertCsv($inputFile)
   {
     //parse the csv                                                                                                            
-    $data = $this->_parseCsv();
+    $data = $this->_parseCsv($inputFile);
 
     //insert into db                                                                                                           
     if($this->_insertCsv2Db($data)) {
@@ -106,9 +105,6 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
   private function _insertCsv2Db($data = array())
   {
     $csvData = $data;
-
-    //empty the videos table                                                                                                   
-    //$this->getAdapter()->query('TRUNCATE TABLE videos');
     
     //get the courses table
     $coursesTable = new Application_Model_DbTable_Courses();
