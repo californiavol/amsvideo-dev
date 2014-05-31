@@ -71,7 +71,6 @@ class Admin_Form_Login extends App_Form
         $this->addElements(array(
             $username,
             $password,
-            $rememberMe,
             $submit
         ));
     }
