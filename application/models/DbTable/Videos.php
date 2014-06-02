@@ -83,7 +83,7 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
   private function _parseCsv($inputFile)
   {
     require_once  APPLICATION_PATH . '/../library/vendors/DataSource.php';
-
+    
     $csv = new File_CSV_DataSource;
     $csv->load($inputFile);
     $csvArray = $csv->connect();
@@ -95,8 +95,8 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
   {
     //parse the csv                                                                                                            
     $data = $this->_parseCsv($inputFile);
-
-    //insert into db                                                                                                           
+    
+    //insert into db                                                                                                        
     if($this->_insertCsv2Db($data)) {
       return true;
     }

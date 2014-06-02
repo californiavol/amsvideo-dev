@@ -61,10 +61,11 @@ class Admin_IndexController extends Zend_Controller_Action
 
     public function insertvideosAction()
     {
-       	$inputFile = APPLICATION_PATH . '/../data/csv/sac_cm_videos.csv';
+
+    	$inputFile = APPLICATION_PATH . '/../data/csv/sac_cm_videos.csv';
     	
     	if ($this->videosTable->insertCsv($inputFile)) {
-    		$this->_helper->redirector('listvideos');
+    		$this->_helper->redirector('courselist');
     	}
     }
 
