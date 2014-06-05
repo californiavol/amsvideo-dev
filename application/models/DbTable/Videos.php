@@ -5,6 +5,17 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 
     protected $_name = 'videos';
     
+
+    protected $_referenceMap    = array(
+        'Video' => array(
+            'columns'           => array('class_nbr'),
+            'refTableClass'     => 'Application_Model_DbTable_Courses',
+            'refColumns'        => array('id'),
+    		'onDelete'          => self::CASCADE, 
+    		'onUpdate'          => self::RESTRICT
+        )
+    ); 
+    
     public function init()
     {
 		//$logger = Zend_Registry::get('log');

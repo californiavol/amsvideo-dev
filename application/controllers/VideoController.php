@@ -2,10 +2,6 @@
 
 class VideoController extends Zend_Controller_Action
 {
-  public function preDispatch()
-  {
-    $this->_helper->layout()->disableLayout();
-  }
 	
 	public function init()
     {    	
@@ -69,6 +65,13 @@ class VideoController extends Zend_Controller_Action
        
         
         
+
+    }
+    
+    public function bugsbyaccountAction()
+    {
+    	$table = new Application_Model_DbTable_Courses();
+    	
 
     }
 
