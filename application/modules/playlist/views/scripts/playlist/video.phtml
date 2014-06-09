@@ -1,0 +1,28 @@
+
+
+<div class="library-cover-image">
+<div id="strobeplayer">
+  
+  <object id="sacstate_video" >
+   <param name="movie" value='http://www2.csus.edu/video/assets/players/StrobeMediaPlayback.swf?src=<?php echo $this->playlistStream['hds_url']; ?>&poster=<?php echo $this->playlistStream['poster']; ?>&bufferingOverlay=false&optimizeInitialIndex=true&minContinuousPlayback=30&bufferTime=12&initialBufferTime=8&expandedBufferTime=10' />
+<param name="allowFullScreen" value="true"/>
+    <!--[if !IE]>-->
+    <object type="application/x-shockwave-flash" data="http://www2.csus.edu/video/assets/players/StrobeMediaPlayback.swf?src=<?php echo $this->playlistStream['rtmp_url']; ?>&poster=<?php echo $this->playlistStream['poster']; ?>&bufferingOverlay=false&optimizeInitialIndex=true&minContinuousPlayback=30&bufferTime=12&initialBufferTime=8&expandedBufferTime=10" width="100%" height="540px">
+<param name="allowFullScreen" value="true"/>     
+ <!--<![endif]-->
+      
+      <div>
+        <p>
+          <video id="sacstate_video_html5" width="auto" height="100%" controls poster="<?php echo $this->playlistStream['poster']; ?>">
+            <source src="<?php echo $this->playlistStream['hls_url']; ?>">
+            Your browser does not support Flash Player 10.1 or the HTML5 video element. 
+          </video>
+        </p>
+      </div>
+      <!--[if !IE]>-->
+    </object>
+    <!--<![endif]-->
+  </object>
+</div>
+<h1><?php echo $this->playlistStream['name']; ?></h1>
+</div>

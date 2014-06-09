@@ -21,6 +21,17 @@ class Playlist_PlaylistController extends Zend_Controller_Action
         $this->view->playlistVideos = $playlistVideos;
     }
 
+    public function videoAction()
+    {
+        $id = $this->getParam('id');
+        
+        $playlistStream = $this->streamsTbl->getPlaylistStream($id);
+        
+        $this->view->playlistStream = $playlistStream;
+    }
+
 
 }
+
+
 

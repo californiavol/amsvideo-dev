@@ -15,7 +15,9 @@ class Playlist_AdminController extends Zend_Controller_Action
 
     public function deleteAction()
     {
-        // action body
+    	$id = $this->getParam('pl');
+    	$this->playlists_tbl->deletePlaylist($id);
+    	$this->_helper->redirector('index', 'index', 'playlist');
     }
 
 

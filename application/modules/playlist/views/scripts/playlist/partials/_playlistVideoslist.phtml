@@ -1,3 +1,7 @@
-<li>
-	stream id <?php echo $this->s_id. '  '.$this->name; ?>
-</li>	
+<div class="col-sm-2">
+	<a href="<?php echo $this->url(array('module' => 'playlist', 'controller' => 'playlist', 'action' => 'video', 'id' => $this->s_id, 'plv' => null)); ?>">
+    	<img class="img-responsive portfolio-item" src="<?php echo $this->s_thumbnail; ?>">
+        <span class="video-play-sprite"></span>
+	</a>
+    <p><?php echo $this->s_name; ?> </p>
+</div>

@@ -500,7 +500,7 @@ h4 {
 	    display:block;
 	    position:relative;
 		padding:0.5em;
-	    background:url('http://www.csus.edu/cached/Colleges/2.0/assets/images/gray-noise-background.jpg') no-repeat;
+	    background:url('../../images/devoops_pattern_b10.png') repeat;
 	    background-color: #262626;
 	    border:0.5em solid #161616;
 	
@@ -571,7 +571,10 @@ h4 {
 	
 	.ss-coursevideos-list ul li h4 {color:#fff; font-size:1.2em; padding-bottom:0; margin-bottom:0;}
 	.ss-coursevideos-list ul li p {color:#fff; font-weight:normal;  font-size:1em; /* padding-left:0; */ /* padding-right:1em; */ /* padding-bottom:0; */ line-height:normal; margin-bottom:0.2em; text-transform:capitalize;}    
-
+	.ss-coursevideos-list ul li a:link,
+	.ss-coursevideos-list ul li a:visited,
+	.ss-coursevideos-list ul li a:hover,
+	.ss-coursevideos-list ul li a:active {color:#f0e1b0;} 
 }
 
 @media (max-device-width: 1280px) and (orientation: landscape) { 

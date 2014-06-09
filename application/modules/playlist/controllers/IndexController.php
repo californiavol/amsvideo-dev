@@ -17,18 +17,12 @@ class Playlist_IndexController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        // action body
-        $playlistVideos = $this->playlist_videos_tbl->getPlaylistVideos();
-        $this->view->playlistVideos = $playlistVideos;
-        //var_dump($playlistVideos);
+        $playlists = $this->playlists_tbl->listitems();
+        
+        $this->view->playlists = $playlists;
     }
     
-    public function deleteAction()
-    {
-    	$id = $this->getParam('pl');
-    	$this->playlists_tbl->deletePlaylist($id);
-    	$this->_helper->redirector('index', 'index', 'playlist');
-    }
+
 
 
 }

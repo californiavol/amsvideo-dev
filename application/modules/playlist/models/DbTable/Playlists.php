@@ -33,12 +33,12 @@ class Playlist_Model_DbTable_Playlists extends Zend_Db_Table_Abstract
     {
         $select = $this->select();
         $select->setIntegrityCheck(false);				
- 		$select->from(array('pl' => $this->_name), 
-                     array('pl_name' => 'pl.name')) 
+ 		$select->from(array('pl' => $this->_name)) 
+               ->columns(array('pl_name' => 'pl.name')) 
                ->join(array('plv' => 'playlist_videos'), 
                       'plv.playlist_id = pl.id',
                			array())
-               ->join(array('s' => 'streams'), 's.id = plv.video_id', array('s_id' => 's.id', 'name'))			 
+               ->join(array('s' => 'streams'), 's.id = plv.video_id', array('s_id' => 's.id', 's_name' => 's.name', 's_thumbnail' => 's.thumbnail'))			 
                ->where('pl.id = ?', $id); 				
 				
  		
