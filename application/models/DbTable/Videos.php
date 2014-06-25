@@ -5,6 +5,17 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 
     protected $_name = 'videos';
     
+
+    protected $_referenceMap    = array(
+        'Video' => array(
+            'columns'           => array('class_nbr'),
+            'refTableClass'     => 'Application_Model_DbTable_Courses',
+            'refColumns'        => array('id'),
+    		'onDelete'          => self::CASCADE, 
+    		'onUpdate'          => self::RESTRICT
+        )
+    ); 
+    
     public function init()
     {
 		//$logger = Zend_Registry::get('log');
@@ -83,7 +94,7 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
   private function _parseCsv($inputFile)
   {
     require_once  APPLICATION_PATH . '/../library/vendors/DataSource.php';
-
+    
     $csv = new File_CSV_DataSource;
     $csv->load($inputFile);
     $csvArray = $csv->connect();
@@ -95,8 +106,8 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
   {
     //parse the csv                                                                                                            
     $data = $this->_parseCsv($inputFile);
-
-    //insert into db                                                                                                           
+    
+    //insert into db                                                                                                        
     if($this->_insertCsv2Db($data)) {
       return true;
     }

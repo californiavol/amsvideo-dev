@@ -35,6 +35,10 @@
         <dbTableDirectory>
           <dbTableFile dbTableName="Courses"/>
           <dbTableFile dbTableName="Videos"/>
+          <dbTableFile dbTableName="Products"/>
+          <dbTableFile dbTableName="Accounts"/>
+          <dbTableFile dbTableName="Bugs"/>
+          <dbTableFile dbTableName="BugsProducts"/>
         </dbTableDirectory>
       </modelsDirectory>
       <modulesDirectory enabled="false">
@@ -81,6 +85,11 @@
             </controllerFile>
             <controllerFile controllerName="Admin">
               <actionMethod actionName="index"/>
+              <actionMethod actionName="delete"/>
+            </controllerFile>
+            <controllerFile controllerName="Playlist">
+              <actionMethod actionName="index"/>
+              <actionMethod actionName="video"/>
             </controllerFile>
           </controllersDirectory>
           <formsDirectory enabled="false"/>
@@ -89,6 +98,7 @@
             <dbTableDirectory enabled="false">
               <dbTableFile dbTableName="Playlist"/>
               <dbTableFile dbTableName="PlaylistVideos"/>
+              <dbTableFile dbTableName="Streams"/>
             </dbTableDirectory>
           </modelsDirectory>
           <viewsDirectory>
@@ -98,6 +108,15 @@
               </viewControllerScriptsDirectory>
               <viewControllerScriptsDirectory forControllerName="Admin">
                 <viewScriptFile forActionName="index"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Admin">
+                <viewScriptFile forActionName="index"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Playlist">
+                <viewScriptFile forActionName="index"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Playlist">
+                <viewScriptFile forActionName="video"/>
               </viewControllerScriptsDirectory>
             </viewScriptsDirectory>
             <viewHelpersDirectory/>
@@ -177,6 +196,9 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Playlist">
             <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Admin">
+            <viewScriptFile forActionName="delete"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

@@ -5,6 +5,9 @@ class Playlist_Model_DbTable_Playlists extends Zend_Db_Table_Abstract
 
     protected $_name = 'playlists';
     
+    protected $_dependentTables = array('Playlist_Model_DbTable_PlaylistVideos');
+  
+    
     public function listitems()
  	{
         $select = $this->select()
@@ -24,13 +27,40 @@ class Playlist_Model_DbTable_Playlists extends Zend_Db_Table_Abstract
  	{
  		
  	} 
+ 	 
+
+    public function getPlaylistVideos($id)
+    {
+        $select = $this->select();
+        $select->setIntegrityCheck(false);				
+ 		$select->from(array('pl' => $this->_name)) 
+               ->columns(array('pl_name' => 'pl.name')) 
+               ->join(array('plv' => 'playlist_videos'), 
+                      'plv.playlist_id = pl.id',
+               			array('pl_name' => 'pl.name'))
+               ->join(array('s' => 'streams'), 's.id = plv.video_id', array('s_id' => 's.id', 's_name' => 's.name', 's_thumbnail' => 's.thumbnail'))			 
+               ->where('pl.id = ?', $id); 				
+				
+ 		
+		$rows = $this->fetchAll($select);
+		return $rows;     	
+    }
+	
+	public function deletePlaylist($id)
+	{
+		//find the row that matches the id
+		$row = $this->find($id)->current();
+		if ($row) {
+			//delete dependent rows
+			$row->delete();
+			return true;
+		} else {
+			throw new Zend_Exception('Delete playlist failed; could not find playlist');
+		}
+	} 	
  	
- 	public function delete($where = null)
- 	{
- 		if ($where == NULL) {
- 			return FALSE;
- 		}
- 	}  
+ 	
+ 	
 
 
 }

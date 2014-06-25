@@ -4,7 +4,10 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
 {
 
     protected $_name = 'courses'; 
+    protected $_dependentTables = array('Application_Model_DbTable_Videos');
 
+
+    
     public function init()
     {
 		//$logger = Zend_Registry::get('log');
@@ -161,6 +164,14 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
     }
 
     
+	public function findVideosByCourse()
+	{
+		
+		$courseRow = $this->fetchRow($this->select()->where('class_nbr = ?', '50329'));
+			
+		$videosByCourse = $courseRow->findDependentRowset('Application_Model_DbTable_Videos', 'Video');
+		return $videosByCourse;	
+	}
 
 
 

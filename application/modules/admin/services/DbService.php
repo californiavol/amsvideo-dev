@@ -1,11 +1,13 @@
 <?php
 class Admin_Service_DbService
 {
+	
+
 	function __construct()
 	{
 		//get bootstrap
 		$bootstrap = Zend_Controller_Front::getInstance()->getParam('bootstrap');
-		$this->db = $bootstrap->getResource('db');	
+		$this->db = $bootstrap->getResource('db');		
 	}
 	
 	
@@ -29,8 +31,17 @@ class Admin_Service_DbService
 	}
 	
 	
+	public function deleteCoursesAndVideosBySemesterYear($semester, $year)
+	{
+		
+	}
 	
 	
+	
+	
+
+
+		
 	
 	
 }
