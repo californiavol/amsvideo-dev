@@ -37,7 +37,7 @@ class Playlist_Model_DbTable_Playlists extends Zend_Db_Table_Abstract
                ->columns(array('pl_name' => 'pl.name')) 
                ->join(array('plv' => 'playlist_videos'), 
                       'plv.playlist_id = pl.id',
-               			array())
+               			array('pl_name' => 'pl.name'))
                ->join(array('s' => 'streams'), 's.id = plv.video_id', array('s_id' => 's.id', 's_name' => 's.name', 's_thumbnail' => 's.thumbnail'))			 
                ->where('pl.id = ?', $id); 				
 				
