@@ -79,6 +79,72 @@ class IndexController extends Zend_Controller_Action
 		
     }
     
+
+/**
+ * casAction
+ *
+ * CAS Login Action
+*/
+public function casAction() 
+{
+     
+    $auth = Zend_Auth::getInstance();
+     
+	//$options = new Zend_Config_Ini(APPLICATION_PATH . '/configs/application.ini');
+    
+	$config = array(
+	    'hostname'  => 'testcas.csus.edu',
+	    'port'      => 443,
+	    'path'      => 'csus.cas/',
+	   
+
+	);
+	
+	$adapter = new Zend_Auth_Adapter_Cas($config);
+
+	$adapter->setQueryParams($this->getRequest()->getQuery());
+	$adapter->setTicket();
+	
+    // If no identity is set and a ticket exists, attempt to authenticate
+    if(!$auth->hasIdentity() && $adapter->hasTicket()) {
+
+        $result = $auth->authenticate($adapter);
+        
+        if(!$result->isValid()) {
+            $this->view->messages = $result->getMessages();
+            return;
+        }
+    }
+  
+ 
+    // Logout if requested
+    if(isset($_GET['logout'])) {
+ 
+        $auth->clearIdentity();
+         
+        // Specify the landing URL to hit after logout
+        $landingUrl = 'http://' . $_SERVER['HTTP_HOST'];
+        $this->_redirect($adapter->getLogoutUrl($landingUrl));
+    }
+     
+    // Send to CAS for authentication
+    
+    if(!$auth->hasIdentity()) {
+        $this->_redirect($adapter->getLoginUrl());
+    }
+    
+    if ($auth->hasIdentity()) {
+    	$identity = $auth->getIdentity();
+    	
+    	$this->view->identity = $identity->user;
+    	$this->view->attributes = $identity->attributes;
+    	
+    }
+    
+    
+    
+}
+    
     public function welcomeAction()
     {
     	$this->view->courses = $this->coursesTable->getCourses();

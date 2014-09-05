@@ -1,0 +1,18 @@
+<h1>cas test</h1>
+<p>Identity: <?php echo $this->identity; ?></p>
+<p>Display Name: <?php echo $this->attributes->DisplayName; ?></p>
+<p><a href="https://testcas.csus.edu/csus.cas/logout">logout</a></p>
+
+<?php print_r($this->messages); ?>
+
+
+<?php
+
+
+ 	//Zend_Debug::dump($this->messages, eval('return __FILE__;') . ' $this->messages', true);
+     
+    //Zend_Debug::dump($_COOKIE, eval('return __FILE__;') . ' $_COOKIE', true);
+     
+    //Zend_Debug::dump($_SESSION, eval('return __FILE__;') . ' $_SESSION', true);
+     
+    //Zend_Debug::dump($_SERVER, eval('return __FILE__;') . ' $_SERVER', true);

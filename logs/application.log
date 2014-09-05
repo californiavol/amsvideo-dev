@@ -373,3 +373,27 @@ Stack trace:
 #6 /Applications/MAMP/htdocs/amsvideo-dev/src/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
 #7 /Applications/MAMP/htdocs/amsvideo-dev/public/index.php(32): Zend_Application->run()
 #8 {main}
+2014-07-16T11:24:05-07:00 INFO (6): hello logger
+2014-07-16T11:26:00-07:00 INFO (6): hello logger
+2014-07-16T11:26:16-07:00 INFO (6): hello logger
+2014-07-16T11:26:55-07:00 INFO (6): hello logger
+2014-07-16T11:27:00-07:00 INFO (6): hello logger
+2014-07-16T11:33:29-07:00 INFO (6): test env: 
+2014-07-16T11:35:20-07:00 INFO (6): test env: development
+2014-07-16T11:36:17-07:00 INFO (6): test env: development
+2014-07-16T11:36:28-07:00 INFO (6): test env: development
+2014-07-16T11:37:07-07:00 INFO (6): test env: development
+2014-07-16T11:37:25-07:00 INFO (6): test env: development
+2014-07-16T11:37:28-07:00 INFO (6): test env: development
+2014-07-16T11:37:31-07:00 INFO (6): test env: development
+2014-07-16T11:47:49-07:00 INFO (6): file logger
+2014-07-16T11:51:12-07:00 INFO (6): file logger
+2014-07-16T11:53:05-07:00 INFO (6): exception 'Zend_Exception' with message 'exception occured' in /Applications/MAMP/htdocs/amsvideo-dev/application/modules/admin/controllers/LogController.php:20
+Stack trace:
+#0 /Applications/MAMP/htdocs/amsvideo-dev/src/Zend/Controller/Action.php(516): Admin_LogController->indexAction()
+#1 /Applications/MAMP/htdocs/amsvideo-dev/src/Zend/Controller/Dispatcher/Standard.php(308): Zend_Controller_Action->dispatch('indexAction')
+#2 /Applications/MAMP/htdocs/amsvideo-dev/src/Zend/Controller/Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#3 /Applications/MAMP/htdocs/amsvideo-dev/src/Zend/Application/Bootstrap/Bootstrap.php(97): Zend_Controller_Front->dispatch()
+#4 /Applications/MAMP/htdocs/amsvideo-dev/src/Zend/Application.php(366): Zend_Application_Bootstrap_Bootstrap->run()
+#5 /Applications/MAMP/htdocs/amsvideo-dev/public/index.php(27): Zend_Application->run()
+#6 {main}
