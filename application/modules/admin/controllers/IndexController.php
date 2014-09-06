@@ -6,6 +6,8 @@ class Admin_IndexController extends Zend_Controller_Action
     public function init()
     {
         /* Initialize action controller here */
+    	$adminActions = array('index', 'insertcourses', 'insertvideos', 'addcourses', 'embed', 'analytics');
+    	$this->_helper->_acl->allow('administration', $adminActions);
     	
     	//set different layout
     	$this->_helper->layout->setLayout('admin-layout');
@@ -54,6 +56,8 @@ class Admin_IndexController extends Zend_Controller_Action
     	$inputFile = APPLICATION_PATH . '/../data/csv/sac_cm_courses.csv';
     	
     	if ($this->coursesTable->insertCsv($inputFile)) {
+    		throw new Zend_Exception('could not insert course data');
+    	} else {
     		$this->_helper->redirector('courselist');
     	}
     	

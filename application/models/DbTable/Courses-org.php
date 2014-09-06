@@ -71,24 +71,24 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
     
     public function insertCsv($inputFile) 
     {
-      //parse the csv
-      $data = $this->_parseCsv($inputFile);
-     
-      //insert into db
-      if($this->_insertCsv2Db($data)) {
-	return true;
-      }
+    	//parse the csv
+    	$data = $this->_parseCsv($inputFile);
+    	
+    	//insert into db
+    	if($this->_insertCsv2Db($data)) {
+    		return true;
+    	}
     }      
 
     private function _parseCsv($inputFile)
     {
-      require_once APPLICATION_PATH . '/../library/vendors/DataSource.php';
-
-      $csv = new File_CSV_DataSource;      
-      $csv->load($inputFile);
-      $csvArray = $csv->connect();
-      //var_dump($csvArray);
-      return $csvArray;    	
+    	require_once APPLICATION_PATH . '/../library/vendors/Datasource.php';
+    	
+    	$csv = new File_CSV_DataSource;
+		$csv->load($inputFile);
+		$csvArray = $csv->connect();
+		//var_dump($csvArray);
+		return $csvArray;    	
     }
     
     private function _insertCsv2Db($data = array())
@@ -158,9 +158,8 @@ class Application_Model_DbTable_Courses extends Zend_Db_Table_Abstract
     		);
     		//var_dump($data);
     		$this->insert($data);	
-		
+    			
     	}
-	
     	return TRUE;
     }
 

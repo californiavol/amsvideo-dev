@@ -5,6 +5,17 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
 
     protected $_name = 'videos';
     
+
+    protected $_referenceMap    = array(
+        'Video' => array(
+            'columns'           => array('class_nbr'),
+            'refTableClass'     => 'Application_Model_DbTable_Courses',
+            'refColumns'        => array('id'),
+    		'onDelete'          => self::CASCADE, 
+    		'onUpdate'          => self::RESTRICT
+        )
+    ); 
+    
     public function init()
     {
 		//$logger = Zend_Registry::get('log');
@@ -83,16 +94,20 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
   private function _parseCsv($inputFile)
   {
     require_once  APPLICATION_PATH . '/../library/vendors/DataSource.php';
+    
     $csv = new File_CSV_DataSource;
     $csv->load($inputFile);
     $csvArray = $csv->connect();
+
     return $csvArray;
   }
 
   public function insertCsv($inputFile)
   {
-
+    //parse the csv                                                                                                            
     $data = $this->_parseCsv($inputFile);
+    
+    //insert into db                                                                                                        
     if($this->_insertCsv2Db($data)) {
       return true;
     }
@@ -101,7 +116,7 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
   private function _insertCsv2Db($data = array())
   {
     $csvData = $data;
-
+    
     //get the courses table
     $coursesTable = new Application_Model_DbTable_Courses();
 
@@ -109,14 +124,15 @@ class Application_Model_DbTable_Videos extends Zend_Db_Table_Abstract
     $val = array();
     foreach ($csvData as $val) {
     	
-      //Use START_DT 'START_DT' 27-jan-2014 to create filename_partial
-      $filename_partial = date('Y_m_d', strtotime($val['START_DT']));      
+    	//Use START_DT 'START_DT' 27-jan-2014 to create filename_partial
+		$date = DateTime::createFromFormat('j-M-Y', $val['START_DT']);
+        $filename_partial =  $date->format('Y_m_d');
         
-      //get row from courses table by class_nbr
-      $row = $coursesTable->fetchRow($coursesTable->select()
-				     ->where('class_nbr = ?', $val['CLASS_NBR'])
-				     ->limit(1)
-				     );      
+        //get row from courses table by class_nbr
+  		$row = $coursesTable->fetchRow($coursesTable->select()
+				 ->where('class_nbr = ?', $val['CLASS_NBR'])
+				 ->limit(1)
+				 );      
          	
 				 
         $live_start_datetime = date('Y-m-d H:i:s', strtotime($val['START_DT'].' '.$row['start_time']));
